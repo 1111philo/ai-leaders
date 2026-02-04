@@ -41,7 +41,7 @@ const Advisors: React.FC = () => {
                 <div className="text-center mb-20">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Your Advisors</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
-                        Your advisors are industry veterans who know what it takes to get an Living-Wage WordPress job. We're your coaches. Your advocates.
+                        Your advisors are industry veterans who know what it takes to get a Living-Wage WordPress job. We're your coaches. Your advocates.
                     </p>
                 </div>
 
