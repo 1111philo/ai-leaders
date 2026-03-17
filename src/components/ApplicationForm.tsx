@@ -399,9 +399,9 @@ const ApplicationForm: React.FC = () => {
         <section id="apply" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Cohort Two - Coming Soon</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Subscribe for updates</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
-                        Cohort One is now full. Subscribe for updates and be the first to know when applications open for Cohort Two.
+                        <strong>Cohort One is now full.</strong> Subscribe for updates and be the first to know when applications open for Cohort Two.
                     </p>
                 </div>
 
@@ -480,10 +480,6 @@ const ApplicationForm: React.FC = () => {
                                     Subscribe for Updates
                                 </span>
                             </button>
-                            
-                            <p className="text-center text-zinc-500 text-sm mt-8 font-medium italic">
-                                Note: Our first cohort is now full.
-                            </p>
                         </form>
                     </div>
 
