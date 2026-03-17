@@ -3,22 +3,25 @@ import React, { useState } from 'react';
 
 const FaqItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const contentId = `faq-content-${question.replace(/\s+/g, '-').toLowerCase()}`;
 
     return (
         <div className="border-b border-white/10">
             <button
                 className="w-full py-6 flex justify-between items-center text-left focus:outline-none group"
                 onClick={() => setIsOpen(!isOpen)}
+                aria-expanded={isOpen}
+                aria-controls={contentId}
             >
                 <span className="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">{question}</span>
-                <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} text-zinc-400`}>
+                <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''} text-zinc-300`}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                 </span>
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
-                <div className="text-gray-400 leading-relaxed max-w-2xl">{answer}</div>
+            <div id={contentId} className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
+                <div className="text-gray-300 leading-relaxed max-w-2xl">{answer}</div>
             </div>
         </div>
     );

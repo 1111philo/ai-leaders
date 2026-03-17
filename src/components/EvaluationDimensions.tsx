@@ -72,7 +72,7 @@ const EvaluationDimensions: React.FC<EvaluationDimensionsProps> = ({ stage, scor
                             <div className="space-y-1">
                                 <motion.h4
                                     layout="position"
-                                    className={`font-bold text-white ${isGenerated ? 'text-lg' : 'text-base text-gray-400'}`}
+                                    className={`font-bold text-white ${isGenerated ? 'text-lg' : 'text-base text-gray-300'}`}
                                 >
                                     {dim.title}
                                 </motion.h4>
@@ -97,7 +97,7 @@ const EvaluationDimensions: React.FC<EvaluationDimensionsProps> = ({ stage, scor
                         </div>
 
                         <div className="space-y-4">
-                            <p className="text-sm text-gray-400 leading-relaxed italic">
+                            <p className="text-sm text-gray-300 leading-relaxed italic">
                                 {isGenerated ? (feedback?.[dim.id] || dim.explanation) : dim.initialComment}
                             </p>
 
@@ -110,8 +110,8 @@ const EvaluationDimensions: React.FC<EvaluationDimensionsProps> = ({ stage, scor
                                         transition={{ duration: 0.4 }}
                                     >
                                         <div className="mt-4 pt-4 border-t border-white/10">
-                                            <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1.5 opacity-60">Scoring Rubric</p>
-                                            <p className="text-sm text-gray-400 italic leading-relaxed">
+                                            <p className="text-[10px] text-gray-300 uppercase font-black tracking-widest mb-1.5 opacity-60">Scoring Rubric</p>
+                                            <p className="text-sm text-gray-300 italic leading-relaxed">
                                                 {dim.rubric}
                                             </p>
                                         </div>

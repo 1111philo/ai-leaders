@@ -114,7 +114,7 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
 
                     {result.passed && (
                         <div className="mt-4 pt-4 border-t border-white/10">
-                            <p className="mb-4 text-sm text-zinc-400">Great job! Submit your work to mark this lesson as complete.</p>
+                            <p className="mb-4 text-sm text-zinc-300">Great job! Submit your work to mark this lesson as complete.</p>
                             <button
                                 onClick={handleFinalSubmit}
                                 disabled={isSubmitting}

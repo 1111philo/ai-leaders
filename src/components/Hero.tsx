@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
                     Earn Living-Wage Jobs.
                 </h1>
 
-                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
                     Master the tools defining the future of work. Join a community of innovators and secure your path to financial independence.
                 </p>
 

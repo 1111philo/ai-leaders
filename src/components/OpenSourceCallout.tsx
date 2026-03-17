@@ -41,7 +41,7 @@ const OpenSourceCallout: React.FC = () => {
                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
                             AI Leaders is an Open Source Platform
                         </h2>
-                        <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-xl">
+                        <p className="text-zinc-300 text-sm md:text-base leading-relaxed max-w-xl">
                             Work toward a job while contributing to a platform others can use.
                             Join our community of builders.
                         </p>

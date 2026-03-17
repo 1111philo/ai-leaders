@@ -260,7 +260,7 @@ const ApplicationForm: React.FC = () => {
                                     <p>We've confirmed your registration for the orientation on <span className="text-white font-bold">{orientationSelection}</span>.</p>
 
                                     <div className="mt-10 p-6 bg-white/5 border border-white/10 rounded-2xl text-left">
-                                        <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 mb-4">Your Zoom Link</h3>
+                                        <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Your Zoom Link</h3>
                                         <div className="flex flex-col md:flex-row gap-4">
                                             <code className="flex-grow bg-black/40 border border-white/5 p-4 rounded-xl text-xs text-blue-400 break-all font-mono">
                                                 {ORIENTATION_DETAILS[orientationSelection]?.zoom}
@@ -341,14 +341,14 @@ const ApplicationForm: React.FC = () => {
                             <p>
                                 Based on your responses, you've demonstrated the curiosity, persistence, and willingness to improve that defines an AI Leader. <strong>You are invited to register for an orientation.</strong>
                             </p>
-                            <p className="text-sm border-l-2 border-white/10 pl-6 text-gray-400 italic">
+                            <p className="text-sm border-l-2 border-white/10 pl-6 text-gray-300 italic">
                                 Orientation participants will be introduced to our program and invited to start their learning journey. From the initial cohort, the 40 strongest participants will be invited to participate in the Full Credential to create a portfolio that leads to WordPress living-wage job placement. This Full Credential opportunity is paid and designed to help learners who have demonstrated commitment to a career in technology to efficiently demonstrate the skills they need to earn a living wage job. Participants who successfully complete the Full Credential will earn a $1,000 honorarium.
                             </p>
                         </div>
 
                         <form onSubmit={handleOrientationSubmit} className="space-y-8">
                             <div className="space-y-4">
-                                <h3 className="text-xs font-black uppercase tracking-widest text-gray-500 mb-4">Select an Orientation Date</h3>
+                                <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Select an Orientation Date</h3>
 
                                 {[
                                     'March 18, 11:00 AM – 12:30 PM CST',
@@ -359,7 +359,7 @@ const ApplicationForm: React.FC = () => {
                                         key={option}
                                         className={`flex items-center p-5 rounded-2xl border cursor-pointer transition-all ${orientationSelection === option
                                             ? 'bg-green-500/10 border-green-500/50 text-white'
-                                            : 'bg-zinc-900/50 border-white/5 text-gray-400 hover:border-white/20'
+                                            : 'bg-zinc-900/50 border-white/5 text-gray-300 hover:border-white/20'
                                             }`}
                                     >
                                         <input
@@ -400,7 +400,7 @@ const ApplicationForm: React.FC = () => {
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Subscribe for updates</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
                         <strong>Cohort One is now full.</strong> Subscribe for updates and be the first to know when applications open for Cohort Two.
                     </p>
                 </div>
@@ -412,7 +412,7 @@ const ApplicationForm: React.FC = () => {
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 <div className="space-y-3">
-                                    <label htmlFor="fieldName" className="text-xs font-black uppercase tracking-widest text-zinc-400">Name</label>
+                                    <label htmlFor="fieldName" className="text-xs font-black uppercase tracking-widest text-zinc-300">Name</label>
                                     <input
                                         type="text"
                                         id="fieldName"
@@ -423,7 +423,7 @@ const ApplicationForm: React.FC = () => {
                                     />
                                 </div>
                                 <div className="space-y-3">
-                                    <label htmlFor="fieldEmail" className="text-xs font-black uppercase tracking-widest text-zinc-400">Email Address</label>
+                                    <label htmlFor="fieldEmail" className="text-xs font-black uppercase tracking-widest text-zinc-300">Email Address</label>
                                     <input
                                         type="email"
                                         id="fieldEmail"
@@ -437,7 +437,7 @@ const ApplicationForm: React.FC = () => {
 
                             <div className="space-y-8 mb-10">
                                 <div className="space-y-3">
-                                    <label htmlFor="fielddkjrtkyu" className="text-xs font-black uppercase tracking-widest text-zinc-400">Affiliation</label>
+                                    <label htmlFor="fielddkjrtkyu" className="text-xs font-black uppercase tracking-widest text-zinc-300">Affiliation</label>
                                     <div className="relative group">
                                         <select
                                             id="fielddkjrtkyu"
@@ -451,7 +451,7 @@ const ApplicationForm: React.FC = () => {
                                             <option value="34030738">University of Louisiana at Lafayette</option>
                                             <option value="34030739">None</option>
                                         </select>
-                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300 group-hover:text-zinc-300 transition-colors">
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                             </svg>
@@ -490,7 +490,7 @@ const ApplicationForm: React.FC = () => {
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 <div className="space-y-3">
-                                    <label htmlFor="firstName" className="text-xs font-black uppercase tracking-widest text-zinc-400">First Name</label>
+                                    <label htmlFor="firstName" className="text-xs font-black uppercase tracking-widest text-zinc-300">First Name</label>
                                     <input
                                         type="text"
                                         id="firstName"
@@ -509,7 +509,7 @@ const ApplicationForm: React.FC = () => {
                                     )}
                                 </div>
                                 <div className="space-y-3">
-                                    <label htmlFor="lastName" className="text-xs font-black uppercase tracking-widest text-zinc-400">Last Name</label>
+                                    <label htmlFor="lastName" className="text-xs font-black uppercase tracking-widest text-zinc-300">Last Name</label>
                                     <input
                                         type="text"
                                         id="lastName"
@@ -531,7 +531,7 @@ const ApplicationForm: React.FC = () => {
 
                             <div className="space-y-8 mb-10">
                                 <div className="space-y-3">
-                                    <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-zinc-400">Email Address</label>
+                                    <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-zinc-300">Email Address</label>
                                     <input
                                         type="email"
                                         id="email"
@@ -551,7 +551,7 @@ const ApplicationForm: React.FC = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label htmlFor="linkedin" className="text-xs font-black uppercase tracking-widest text-zinc-400">LinkedIn Profile URL (Optional)</label>
+                                    <label htmlFor="linkedin" className="text-xs font-black uppercase tracking-widest text-zinc-300">LinkedIn Profile URL (Optional)</label>
                                     <input
                                         type="url"
                                         id="linkedin"
@@ -571,7 +571,7 @@ const ApplicationForm: React.FC = () => {
                                 </div>
 
                                 <div className="space-y-3">
-                                    <label htmlFor="affiliation" className="text-xs font-black uppercase tracking-widest text-zinc-400">Affiliation</label>
+                                    <label htmlFor="affiliation" className="text-xs font-black uppercase tracking-widest text-zinc-300">Affiliation</label>
                                     <div className="relative group">
                                         <select
                                             id="affiliation"
@@ -586,7 +586,7 @@ const ApplicationForm: React.FC = () => {
                                             <option value="Louisiana Tech University">Louisiana Tech University</option>
                                             <option value="None">None</option>
                                         </select>
-                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300 group-hover:text-zinc-300 transition-colors">
                                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                             </svg>
@@ -606,7 +606,7 @@ const ApplicationForm: React.FC = () => {
                             <div className="space-y-6 mt-6">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-4">
-                                        <div className="flex-none px-3 py-1 bg-zinc-800 rounded text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                                        <div className="flex-none px-3 py-1 bg-zinc-800 rounded text-[10px] font-black text-zinc-300 uppercase tracking-widest">
                                             Application Task
                                         </div>
                                         <div className="flex-grow h-px bg-white/5" />
@@ -675,7 +675,7 @@ const ApplicationForm: React.FC = () => {
                                         </div>
                                         <div>
                                             <p className="text-red-500 text-xs font-bold uppercase tracking-widest">Action Required</p>
-                                            <p className="text-gray-400 text-[10px] leading-relaxed">
+                                            <p className="text-gray-300 text-[10px] leading-relaxed">
                                                 Please correct the {Object.keys(errors).length} highlighted field{Object.keys(errors).length === 1 ? '' : 's'} above to continue.
                                             </p>
                                         </div>
@@ -684,14 +684,14 @@ const ApplicationForm: React.FC = () => {
 
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center px-2">
-                                        <p className="text-xs text-zinc-400 font-mono">
+                                        <p className="text-xs text-zinc-300 font-mono">
                                             Protected by ReCAPTCHA v3
                                         </p>
                                     </div>
                                     {!import.meta.env.VITE_RECAPTCHA_SITE_KEY && (
                                         <div className="p-4 bg-red-900/20 border border-red-500/30 rounded-xl text-center">
                                             <p className="text-red-400 text-xs font-bold mb-1">Configuration Error</p>
-                                            <p className="text-gray-400 text-[10px] leading-relaxed">
+                                            <p className="text-gray-300 text-[10px] leading-relaxed">
                                                 ReCAPTCHA Site Key is missing. Check your <code className="text-white">.env</code> file.
                                             </p>
                                         </div>
@@ -765,7 +765,7 @@ const ApplicationForm: React.FC = () => {
                     <div className="lg:col-span-2 space-y-10 order-1 lg:order-2">
                         <div className="border-l-2 border-white/10 pl-6 py-2">
                             <h3 className="text-2xl font-black text-white mb-3">Evaluation Criteria</h3>
-                            <p className="text-zinc-400 leading-relaxed italic">
+                            <p className="text-zinc-300 leading-relaxed italic">
                                 We don't judge you on what you already know. We value how you think, learn, and iterate.
                             </p>
                         </div>
@@ -773,7 +773,7 @@ const ApplicationForm: React.FC = () => {
                         <EvaluationDimensions stage={stage} scores={scores} feedback={aiFeedback} />
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-10">
-                            <p className="text-xs text-gray-400 leading-relaxed italic">
+                            <p className="text-xs text-gray-300 leading-relaxed italic">
                             </p>
                         </div>
                     </div>
