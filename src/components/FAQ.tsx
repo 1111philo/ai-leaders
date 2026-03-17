@@ -28,18 +28,18 @@ const FAQ: React.FC = () => {
     const faqs = [
         {
             question: "What is the AI Leader Program and what do I get?",
-            answer: "A remote workforce program starting March 2026 that helps you earn a WordPress micro-credential and compete for living-wage WordPress job placement."
+            answer: "A remote workforce program that helps you earn a WordPress micro-credential and compete for living-wage WordPress job placement."
         },
         {
             question: "Who can apply?",
-            answer: "The first cohort is limited to 80 people in Louisiana and Illinois."
+            answer: "Each cohort is limited to 80 people in Louisiana and Illinois."
         },
         {
             question: "How do I register, and how are participants selected?",
             answer: (
                 <div className="space-y-4">
                     <p>Apply at AI-Leaders.org. The application system immediately informs you if you are a strong candidate.</p>
-                    <p>Register for an Orientation. Strong candidates are invited to register for an AI Leaders orientation in March 2026.</p>
+                    <p>Register for an Orientation. Strong candidates are invited to register for an AI Leaders orientation.</p>
                     <p>Attend an orientation. Orientation participants will be introduced to our program and invited to start their learning journey.</p>
                     <p>From the initial cohort, the 40 strongest participants will be invited to participate in the Full Credential to create a portfolio that leads to WordPress living-wage job placement. This Full Credential opportunity is paid and designed to help learners who have demonstrated commitment to a career in technology to efficiently demonstrate the skills they need to earn a living wage job. Participants who successfully complete the Full Credential will earn a $1,000 honorarium.</p>
                 </div>
@@ -49,6 +49,25 @@ const FAQ: React.FC = () => {
         {
             question: "Where do I take the course, and is there a place I can work from?",
             answer: "The course is remote. Optional facility access is available at Louisiana Tech, University of Louisiana Lafayette, Tulane University, and University of Illinois Chicago."
+        },
+        {
+            question: "When is the next cohort?",
+            answer: (
+                <p>
+                    We're aiming to announce more by Summer 2026.{" "}
+                    <a
+                        href="#apply"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.dispatchEvent(new Event('open-subscribe-modal'));
+                        }}
+                        className="text-white hover:text-gray-300 underline underline-offset-4 decoration-white/30 transition-colors"
+                    >
+                        Subscribe for updates
+                    </a>
+                    .
+                </p>
+            )
         }
     ];
 
