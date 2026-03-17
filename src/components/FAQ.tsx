@@ -62,7 +62,8 @@ const FAQ: React.FC = () => {
                         href="#apply"
                         onClick={(e) => {
                             e.preventDefault();
-                            window.dispatchEvent(new Event('open-subscribe-modal'));
+                            const el = document.getElementById('apply');
+                            if (el) el.scrollIntoView({ behavior: 'smooth' });
                         }}
                         className="text-white hover:text-gray-300 underline underline-offset-4 decoration-white/30 transition-colors"
                     >
