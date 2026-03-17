@@ -51,7 +51,7 @@ const FAQ: React.FC = () => {
 
         {
             question: "Where do I take the course, and is there a place I can work from?",
-            answer: "The course is remote. Optional facility access is available at Louisiana Tech, University of Louisiana Lafayette, Tulane University, and University of Illinois Chicago."
+            answer: "The course is remote. Optional facility access is available at Louisiana Tech, University of Louisiana Lafayette, Tulane University, and University of Illinois Chicago. Additional locations are added as needed."
         },
         {
             question: "When is the next cohort?",
