@@ -32,7 +32,7 @@ const Partners: React.FC = () => {
     return (
         <section id="partners" className="py-24 bg-zinc-950 border-y border-white/5">
             <div className="container mx-auto px-6 text-center">
-                <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase mb-12">AI Leaders Partners</p>
+                <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase mb-12">AI Leaders Partners</p>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {partners.map((partner) => (

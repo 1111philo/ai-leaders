@@ -40,7 +40,7 @@ const Advisors: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center mb-20">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Your Advisors</h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
                         Your advisors are industry veterans who know what it takes to get an Living-Wage WordPress job. We're your coaches. Your advocates.
                     </p>
                 </div>
@@ -68,7 +68,7 @@ const Advisors: React.FC = () => {
                                         href={advisor.linkedin}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-zinc-400 hover:text-[#0077b5] transition-colors p-1"
+                                        className="text-zinc-300 hover:text-[#0077b5] transition-colors p-1"
                                         aria-label={`${advisor.name}'s LinkedIn`}
                                     >
                                         <LinkedinIcon className="w-5 h-5" />
@@ -79,7 +79,7 @@ const Advisors: React.FC = () => {
                                     {advisor.role}
                                 </p>
 
-                                <p className="text-gray-400 leading-relaxed">
+                                <p className="text-gray-300 leading-relaxed">
                                     {advisor.bio}
                                 </p>
                             </div>

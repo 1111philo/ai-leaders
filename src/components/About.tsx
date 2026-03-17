@@ -8,7 +8,7 @@ const About: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-16 items-center">
                     <div className="md:w-1/2">
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            Bridging the Gap to the <span className="text-gray-400">Future of Tech.</span>
+                            Bridging the Gap to the <span className="text-gray-300">Future of Tech.</span>
                         </h2>
                         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                             <p>
@@ -20,11 +20,11 @@ const About: React.FC = () => {
                             <div className="flex gap-4 mt-8">
                                 <div className="p-4 border border-white/10 rounded-lg bg-white/5 w-full">
                                     <h3 className="text-xl font-bold mb-2">AI Tooling</h3>
-                                    <p className="text-sm text-gray-400">Master prompting, agents, and LLM integration.</p>
+                                    <p className="text-sm text-gray-300">Master prompting, agents, and LLM integration.</p>
                                 </div>
                                 <div className="p-4 border border-white/10 rounded-lg bg-white/5 w-full">
                                     <h3 className="text-xl font-bold mb-2">WordPress</h3>
-                                    <p className="text-sm text-gray-400">Build professional, scalable websites.</p>
+                                    <p className="text-sm text-gray-300">Build professional, scalable websites.</p>
                                 </div>
                             </div>
                         </div>
