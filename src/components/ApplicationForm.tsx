@@ -401,7 +401,7 @@ const ApplicationForm: React.FC = () => {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Cohort Two - Coming Soon</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
-                        Subscribe for updates and be the first to know when applications open for Cohort Two.
+                        Cohort One is now full. Subscribe for updates and be the first to know when applications open for Cohort Two.
                     </p>
                 </div>
 
