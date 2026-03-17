@@ -405,9 +405,9 @@ const ApplicationForm: React.FC = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-                    {/* Column 1, 2, 3: The Form (Left) */}
-                    <div className="lg:col-span-3 order-2 lg:order-1">
+                <div className="max-w-2xl mx-auto">
+                    {/* Center Column: The Form */}
+                    <div className="w-full">
                         <form id="subForm" className="js-cm-form bg-black border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="5B5E7037DA78A748374AD499497E309E0871BD843AA9E2CFA467A8A3E7853931272BD796FD1DE54DBBECCB9B003E01BAC1231EF71648E4A2F7E698E44C38A9E1">
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -480,6 +480,10 @@ const ApplicationForm: React.FC = () => {
                                     Subscribe for Updates
                                 </span>
                             </button>
+                            
+                            <p className="text-center text-zinc-500 text-sm mt-8 font-medium italic">
+                                Note: Our first cohort is now full.
+                            </p>
                         </form>
                     </div>
 
