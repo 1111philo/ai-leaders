@@ -115,7 +115,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             onClick={(e) => handleNavClick(e, '/#apply')}
                             className={`px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${activeSection === 'apply' ? 'bg-zinc-200 text-black scale-105' : 'bg-white text-black hover:bg-zinc-200'}`}
                         >
-                            Apply Now
+                            Subscribe
                         </Link>
                     </div>
                 </div>

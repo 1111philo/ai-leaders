@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import type { TransparencyStage } from './EvaluationDimensions';
@@ -7,13 +7,23 @@ import { analyzeApplication } from '../services/ai';
 import { sendNotification, sendOrientationSelection } from '../services/notifications';
 import { syncToGoogleSheet } from '../services/googleSheets';
 
-
 const ApplicationForm: React.FC = () => {
     const [stage, setStage] = useState<TransparencyStage>(0);
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [isSubmittingOrientation, setIsSubmittingOrientation] = useState(false);
     const [orientationSelection, setOrientationSelection] = useState<string>('');
     const [isCopied, setIsCopied] = useState(false);
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://js.createsend1.com/javascript/copypastesubscribeformlogic.js';
+        script.async = true;
+        document.body.appendChild(script);
+        
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     const ORIENTATION_DETAILS: Record<string, { start: string, end: string, zoom: string, googleDates: string }> = {
         'March 18, 11:00 AM – 12:30 PM CST': {
@@ -389,15 +399,93 @@ const ApplicationForm: React.FC = () => {
         <section id="apply" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Join the Program</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Cohort Two - Coming Soon</h2>
                     <p className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
-                        Apply for AI Leaders. The application system immediately informs you if you are a strong candidate. Strong candidates are invited to an orientation.
+                        Subscribe for updates and be the first to know when applications open for Cohort Two.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
                     {/* Column 1, 2, 3: The Form (Left) */}
                     <div className="lg:col-span-3 order-2 lg:order-1">
+                        <form id="subForm" className="js-cm-form bg-black border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="5B5E7037DA78A748374AD499497E309E0871BD843AA9E2CFA467A8A3E7853931272BD796FD1DE54DBBECCB9B003E01BAC1231EF71648E4A2F7E698E44C38A9E1">
+                            {/* Identity Fields */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div className="space-y-3">
+                                    <label htmlFor="fieldName" className="text-xs font-black uppercase tracking-widest text-zinc-400">Name</label>
+                                    <input
+                                        type="text"
+                                        id="fieldName"
+                                        name="cm-name"
+                                        maxLength={200}
+                                        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium"
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-3">
+                                    <label htmlFor="fieldEmail" className="text-xs font-black uppercase tracking-widest text-zinc-400">Email Address</label>
+                                    <input
+                                        type="email"
+                                        id="fieldEmail"
+                                        name="cm-nthljjj-nthljjj"
+                                        maxLength={200}
+                                        className="js-cm-email-input qa-input-email w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="space-y-8 mb-10">
+                                <div className="space-y-3">
+                                    <label htmlFor="fielddkjrtkyu" className="text-xs font-black uppercase tracking-widest text-zinc-400">Affiliation</label>
+                                    <div className="relative group">
+                                        <select
+                                            id="fielddkjrtkyu"
+                                            name="cm-fo-dkjrtkyu"
+                                            className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium appearance-none cursor-pointer pr-12 hover:border-zinc-700"
+                                            required
+                                        >
+                                            <option value="" disabled selected={true}>Select your affiliation...</option>
+                                            <option value="34030736">University of Illinois Chicago</option>
+                                            <option value="34030737">Louisiana Tech University</option>
+                                            <option value="34030738">University of Louisiana at Lafayette</option>
+                                            <option value="34030739">None</option>
+                                        </select>
+                                        <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button
+                                type="submit"
+                                className="group relative w-full font-black py-5 rounded-2xl border border-white/10 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden flex items-center justify-center transition-colors duration-300 cursor-pointer hover:bg-white hover:text-black"
+                            >
+                                <motion.div
+                                    className="absolute inset-0 z-0 bg-blue-500/5 rounded-2xl blur-lg"
+                                    animate={{
+                                        opacity: [0.2, 0.4, 0.2],
+                                        scale: [0.98, 1.02, 0.98],
+                                    }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                />
+                                <span className="relative z-10 flex items-center justify-center gap-3">
+                                    Subscribe for Updates
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+
+                    {false && (
+                        <>
+                            <div className="lg:col-span-3 order-2 lg:order-1">
                         <form onSubmit={handleSubmit} className="bg-black border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -686,13 +774,14 @@ const ApplicationForm: React.FC = () => {
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-10">
                             <p className="text-xs text-gray-400 leading-relaxed italic">
-                                <strong>Note:</strong> We value persistence. If your first score isn't perfect, use the unlocked feedback to refine your answer and resubmit.
                             </p>
                         </div>
                     </div>
+                        </>
+                    )}
                 </div>
-            </div >
-        </section >
+            </div>
+        </section>
     );
 };
 

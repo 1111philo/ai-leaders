@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">Applications Open for Spring 2026</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort Two - Coming Soon</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
 
                             {/* 5. Text Content */}
                             <span className="relative z-10 text-white uppercase text-xs tracking-[0.3em] flex items-center gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Start Your Application
+                                Receive Updates
                                 <motion.svg
                                     className="w-4 h-4"
                                     fill="none"
