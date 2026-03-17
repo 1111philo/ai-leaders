@@ -35,7 +35,7 @@ const FAQ: React.FC = () => {
         },
         {
             question: "Who can apply?",
-            answer: "Each cohort is limited to 80 people in Louisiana and Illinois."
+            answer: "AI Leaders is for those interested in exploring a career in technology."
         },
         {
             question: "How do I register, and how are participants selected?",
