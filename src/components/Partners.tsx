@@ -47,7 +47,7 @@ const Partners: React.FC = () => {
                             <img
                                 src={partner.logo}
                                 alt={partner.name}
-                                className="max-h-full max-w-full w-auto object-contain opacity-30 grayscale group-hover:opacity-100 group-hover:grayscale-0 group-hover:saturate-[1.3] transition-all duration-500"
+                                className="max-h-full max-w-full w-auto object-contain transition-all duration-500 group-hover:scale-105"
                             />
                         </a>
                     ))}
