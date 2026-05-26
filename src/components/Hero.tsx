@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Master the tools defining the future of work. Join a community of innovators and secure your path to financial independence.
+                    Earn a Micro-credential in AI Leadership and WordPress development.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

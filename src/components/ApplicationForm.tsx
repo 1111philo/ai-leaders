@@ -685,7 +685,25 @@ const ApplicationForm: React.FC = () => {
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center px-2">
                                         <p className="text-xs text-zinc-300 font-mono">
-                                            Protected by ReCAPTCHA v3
+                                            This site is protected by reCAPTCHA and the Google{' '}
+                                            <a
+                                                href="https://policies.google.com/privacy"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="underline hover:text-white"
+                                            >
+                                                Privacy Policy
+                                            </a>{' '}
+                                            and{' '}
+                                            <a
+                                                href="https://policies.google.com/terms"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="underline hover:text-white"
+                                            >
+                                                Terms of Service
+                                            </a>{' '}
+                                            apply.
                                         </p>
                                     </div>
                                     {!import.meta.env.VITE_RECAPTCHA_SITE_KEY && (

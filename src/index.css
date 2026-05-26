@@ -18,3 +18,9 @@ body {
   background-color: #000000;
   color: #ffffff;
 }
+
+/* Hide the reCAPTCHA v3 badge. Per Google's terms, the required
+   disclosure is shown inline next to the application form instead. */
+.grecaptcha-badge {
+  visibility: hidden;
+}

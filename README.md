@@ -2,7 +2,7 @@
 
 **Learn AI. Learn WordPress. Earn Living-Wage Jobs.**
 
-Master the tools defining the future of work. Join a community of innovators and secure your path to financial independence.
+Earn a Micro-credential in AI Leadership and WordPress development.
 
 We hope this site becomes the AI Leaders learning platform, empowering the next generation of tech professionals.
 
