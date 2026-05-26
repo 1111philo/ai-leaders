@@ -1,0 +1,51 @@
+import React from 'react';
+
+const reasons = [
+    {
+        title: "AI-Enabled",
+        body: "Every graduate is fluent in modern AI tooling — prompting, agents, and LLM integration — and uses it to ship work faster."
+    },
+    {
+        title: "WordPress-Skilled",
+        body: "Hands-on, portfolio-backed experience building professional, scalable WordPress sites and full-stack features."
+    },
+    {
+        title: "Rigorously Vetted",
+        body: "Candidates earn a micro-credential through real production work, not multiple-choice tests. You see proof, not promises."
+    },
+    {
+        title: "Living-Wage Ready",
+        body: "Trained to step into living-wage roles and contribute from day one, with coaching on communication and collaboration."
+    }
+];
+
+const WhyHire: React.FC = () => {
+    return (
+        <section id="why" className="py-24 bg-black">
+            <div className="container mx-auto px-6">
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                        Why Hire <span className="text-gray-300">AI Leaders.</span>
+                    </h2>
+                    <p className="text-gray-300 text-lg leading-relaxed">
+                        Our graduates pair human judgment with AI leverage — the exact combination teams need to move faster without sacrificing quality.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {reasons.map((reason) => (
+                        <div
+                            key={reason.title}
+                            className="p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:bg-white/5 hover:border-white/20 transition-all duration-300"
+                        >
+                            <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
+                            <p className="text-sm text-gray-300 leading-relaxed">{reason.body}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default WhyHire;

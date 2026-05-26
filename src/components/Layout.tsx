@@ -32,7 +32,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        const sections = ['about', 'advisors', 'faq', 'apply'];
+        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'skills', 'platform', 'process', 'connect'];
 
         sections.forEach((id) => {
             const el = document.getElementById(id);
@@ -48,23 +48,51 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     const location = useLocation();
 
-    const navLinks = [
-        { name: 'About', href: '/#about', id: 'about' },
-        { name: 'Advisors', href: '/#advisors', id: 'advisors' },
-        { name: 'FAQ', href: '/#faq', id: 'faq' },
+    // Smooth-scroll to the anchor after navigating to a page with a hash.
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.substring(1);
+            // Wait a tick for the destination page to render.
+            const timer = setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+            return () => clearTimeout(timer);
+        }
+    }, [location.pathname, location.hash]);
+
+    const primaryNav = [
+        {
+            name: 'For Students',
+            path: '/',
+            links: [
+                { name: 'About', href: '/#about', id: 'about' },
+                { name: 'Advisors', href: '/#advisors', id: 'advisors' },
+                { name: 'FAQ', href: '/#faq', id: 'faq' },
+            ],
+        },
+        {
+            name: 'For Employers',
+            path: '/employers',
+            links: [
+                { name: 'Why Hire', href: '/employers#why', id: 'why' },
+                { name: 'Their Skills', href: '/employers#skills', id: 'skills' },
+                { name: 'The Platform', href: '/employers#platform', id: 'platform' },
+                { name: 'Hiring Process', href: '/employers#process', id: 'process' },
+                { name: 'Get in Touch', href: '/employers#connect', id: 'connect' },
+            ],
+        },
     ];
 
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-        if (href.startsWith('/#')) {
-            const id = href.substring(2);
-            if (location.pathname === '/') {
-                e.preventDefault();
-                const el = document.getElementById(id);
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                    // Update URL without reload
-                    window.history.pushState(null, '', `/#${id}`);
-                }
+    // Smooth-scroll when the target section already exists on the current page.
+    const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        const [path, id] = href.split('#');
+        if (id && location.pathname === (path || '/')) {
+            e.preventDefault();
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState(null, '', href);
             }
         }
     };
@@ -75,18 +103,47 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                     <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AI LEADERS</Link>
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.id}
-                                to={link.href}
-                                onClick={(e) => handleNavClick(e, link.href)}
-                                className={`transition-all duration-300 ${(location.pathname === link.href || activeSection === link.id)
-                                    ? 'text-white border-b border-white'
-                                    : 'text-zinc-300 hover:text-white'
-                                    }`}
+                        {primaryNav.map((item) => (
+                            <div
+                                key={item.path}
+                                className="relative group py-2"
+                                onKeyDown={(e) => {
+                                    // Close the submenu and return focus to the trigger on Escape.
+                                    if (e.key === 'Escape') {
+                                        (e.currentTarget.querySelector('a') as HTMLElement | null)?.focus();
+                                        (document.activeElement as HTMLElement | null)?.blur();
+                                    }
+                                }}
                             >
-                                {link.name}
-                            </Link>
+                                <Link
+                                    to={item.path}
+                                    aria-haspopup="true"
+                                    className={`transition-all duration-300 ${location.pathname === item.path
+                                        ? 'text-white border-b border-white'
+                                        : 'text-zinc-300 hover:text-white'
+                                        }`}
+                                >
+                                    {item.name}
+                                </Link>
+                                {/* Submenu: revealed on hover and on keyboard focus (focus-within) */}
+                                <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
+                                    <div className="min-w-44 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl py-2">
+                                        {item.links.map((link) => (
+                                            <Link
+                                                key={link.id}
+                                                to={link.href}
+                                                onClick={(e) => handleAnchorClick(e, link.href)}
+                                                className={`block px-5 py-2.5 text-sm transition-colors focus:outline-none focus-visible:bg-white/10 focus-visible:text-white ${activeSection === link.id
+                                                    ? 'text-white'
+                                                    : 'text-zinc-300 hover:text-white hover:bg-white/5'
+                                                    }`}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </div>
                     <div className="flex items-center space-x-3 md:space-x-4">
@@ -118,7 +175,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </a>
                         <Link
                             to="/#apply"
-                            onClick={(e) => handleNavClick(e, '/#apply')}
+                            onClick={(e) => handleAnchorClick(e, '/#apply')}
                             className={`px-4 md:px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${activeSection === 'apply' ? 'bg-zinc-200 text-black scale-105' : 'bg-white text-black hover:bg-zinc-200'}`}
                         >
                             Sign Up

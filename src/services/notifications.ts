@@ -137,6 +137,88 @@ export const sendNotification = async (data: NotificationData): Promise<boolean>
     }
 };
 
+export interface EmployerInquiryData {
+    company: string;
+    name: string;
+    email: string;
+    roles: string;
+}
+
+export const sendEmployerInquiry = async (data: EmployerInquiryData): Promise<boolean> => {
+    const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
+
+    if (import.meta.env.VITE_DISABLE_SLACK === 'true') {
+        console.info('Slack employer notifications are disabled (VITE_DISABLE_SLACK=true). Skipping.');
+        return true;
+    }
+
+    if (!webhookUrl) {
+        console.warn('Slack Webhook URL not configured (VITE_SLACK_WEBHOOK_URL)');
+        return false;
+    }
+
+    try {
+        const payload = {
+            blocks: [
+                {
+                    type: "header",
+                    text: {
+                        type: "plain_text",
+                        text: "🤝 New Employer Inquiry",
+                        emoji: true
+                    }
+                },
+                {
+                    type: "section",
+                    fields: [
+                        {
+                            type: "mrkdwn",
+                            text: `*Company:*\n${data.company}`
+                        },
+                        {
+                            type: "mrkdwn",
+                            text: `*Contact:*\n${data.name}`
+                        }
+                    ]
+                },
+                {
+                    type: "section",
+                    fields: [
+                        {
+                            type: "mrkdwn",
+                            text: `*Email:*\n${data.email}`
+                        }
+                    ]
+                },
+                {
+                    type: "divider"
+                },
+                {
+                    type: "section",
+                    text: {
+                        type: "mrkdwn",
+                        text: `*Roles / Needs:*\n>${data.roles.replace(/\n/g, "\n>")}`
+                    }
+                }
+            ]
+        };
+
+        await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        return true;
+    } catch (error) {
+        console.error('Error sending employer inquiry:', error);
+        return false;
+    }
+};
+
 export const sendOrientationSelection = async (data: OrientationData): Promise<boolean> => {
     const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
