@@ -23,7 +23,7 @@ const EmployerHero: React.FC = () => {
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Hire from a pool of vetted, work-ready talent trained in Generative AI and WordPress development — and ready to deliver from day one.
+                    Hire vetted, work-ready talent trained in Generative AI and WordPress development — ready to contribute from day one.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -3,7 +3,7 @@ import React from 'react';
 const reasons = [
     {
         title: "AI-Enabled",
-        body: "Every graduate is fluent in modern AI tooling — prompting, agents, and LLM integration — and uses it to ship work faster."
+        body: "Fluent in modern AI tooling — prompting, agents, and LLM integration — and using it to ship faster."
     },
     {
         title: "WordPress-Skilled",
@@ -11,11 +11,11 @@ const reasons = [
     },
     {
         title: "Rigorously Vetted",
-        body: "Candidates earn a micro-credential through real production work, not multiple-choice tests. You see proof, not promises."
+        body: "Graduates earn a micro-credential through real production work, not multiple-choice tests — proof, not promises."
     },
     {
         title: "Living-Wage Ready",
-        body: "Trained to step into living-wage roles and contribute from day one, with coaching on communication and collaboration."
+        body: "Prepared for living-wage roles, with coaching in communication and collaboration alongside the technical skills."
     }
 ];
 

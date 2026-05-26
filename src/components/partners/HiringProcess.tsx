@@ -11,7 +11,7 @@ const steps = [
     },
     {
         title: "Interview & Hire",
-        body: "Meet your shortlist, review their production work, and bring on team members ready to contribute from day one."
+        body: "Meet your shortlist, review their real production work, and bring on team members who can hit the ground running."
     }
 ];
 
