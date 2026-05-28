@@ -34,6 +34,10 @@ const FAQ: React.FC = () => {
             answer: "A remote workforce program that helps you earn a WordPress micro-credential and compete for living-wage WordPress job placement."
         },
         {
+            question: "How is this different from a bootcamp?",
+            answer: "AI Leaders is reflective by design. Bootcamps optimize for the day you get hired; we optimize for the years after. In our experience, people keep jobs longer when they've established who they are than when they're showcasing a stack of newly learned skills — so self-knowledge is built into the curriculum alongside the technical work."
+        },
+        {
             question: "Who can apply?",
             answer: "AI Leaders is for those interested in exploring a career in technology."
         },

@@ -12,10 +12,10 @@ const About: React.FC = () => {
                         </h2>
                         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                             <p>
-                                AI Leaders is more than just a coding bootcamp. It is a comprehensive program designed to equip participants with high-demand skills in Generative AI and WordPress development.
+                                AI Leaders is a remote program that teaches Generative AI and WordPress development &mdash; the technical pairing currently opening doors to living-wage jobs.
                             </p>
                             <p>
-                                Our mission is simple: empower individuals with the tools they need to secure living-wage jobs in the rapidly evolving digital economy. We focus on practical, real-world applications that employers are looking for right now.
+                                AI Leaders is reflective by design. Most programs stack skills and hope a career follows. In our experience, people keep jobs longer when they've established <em>who they are</em> than when they're showcasing what they've just learned &mdash; tools change, the person using them is what lasts. So every lesson pairs the technical work with the reflective work, on purpose.
                             </p>
                             <div className="flex gap-4 mt-8">
                                 <div className="p-4 border border-white/10 rounded-lg bg-white/5 w-full">
