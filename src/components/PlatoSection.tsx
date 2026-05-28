@@ -24,7 +24,7 @@ const callouts = [
 
 const PlatoSection: React.FC = () => {
     return (
-        <section id="plato" className="py-24 bg-black relative overflow-hidden">
+        <section id="platform" className="py-24 bg-black relative overflow-hidden">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-60 z-0 pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
@@ -40,7 +40,7 @@ const PlatoSection: React.FC = () => {
                             Your agentic coach throughout the program — meeting you where you are, and ready when you are.
                         </p>
 
-                        <div className="space-y-5 mb-8">
+                        <div className="space-y-5">
                             {callouts.map((c) => (
                                 <div key={c.title}>
                                     <h3 className="text-base font-bold text-white mb-1">{c.title}</h3>
@@ -48,6 +48,22 @@ const PlatoSection: React.FC = () => {
                                 </div>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="md:w-1/2 flex flex-col items-center gap-6">
+                        <figure className="w-full">
+                            <img
+                                src={platoLesson}
+                                alt="Plato lesson view: the conversational coach asks a reflective question and patiently waits for the participant to be ready"
+                                loading="lazy"
+                                width={1400}
+                                height={1025}
+                                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+                            />
+                            <figcaption className="text-center text-sm text-gray-400 mt-3">
+                                Plato's chat-based interface
+                            </figcaption>
+                        </figure>
 
                         <a
                             href="https://github.com/1111philo/plato"
@@ -58,17 +74,6 @@ const PlatoSection: React.FC = () => {
                             <GithubIcon className="w-4 h-4 transition-transform group-hover:rotate-12" />
                             <span>Plato is Open Source — view on GitHub</span>
                         </a>
-                    </div>
-
-                    <div className="md:w-1/2">
-                        <img
-                            src={platoLesson}
-                            alt="Plato lesson view: the conversational coach asks a reflective question and patiently waits for the participant to be ready"
-                            loading="lazy"
-                            width={1400}
-                            height={1025}
-                            className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
-                        />
                     </div>
                 </div>
             </div>

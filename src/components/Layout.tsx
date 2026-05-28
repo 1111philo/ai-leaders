@@ -67,6 +67,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             path: '/',
             links: [
                 { name: 'About', href: '/#about', id: 'about' },
+                { name: 'The Platform', href: '/#platform', id: 'platform' },
                 { name: 'Advisors', href: '/#advisors', id: 'advisors' },
                 { name: 'FAQ', href: '/#faq', id: 'faq' },
             ],

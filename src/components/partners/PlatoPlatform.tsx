@@ -40,7 +40,7 @@ const PlatoPlatform: React.FC = () => {
                             The fully agentic platform behind every AI Leaders graduate you hire.
                         </p>
 
-                        <div className="space-y-5 mb-8">
+                        <div className="space-y-5">
                             {callouts.map((c) => (
                                 <div key={c.title}>
                                     <h3 className="text-base font-bold text-white mb-1">{c.title}</h3>
@@ -48,6 +48,22 @@ const PlatoPlatform: React.FC = () => {
                                 </div>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="md:w-1/2 flex flex-col items-center gap-6">
+                        <figure className="w-full">
+                            <img
+                                src={platoDashboard}
+                                alt="Plato admin dashboard showing learner engagement metrics, lesson pacing, and on-target rates"
+                                loading="lazy"
+                                width={1600}
+                                height={1220}
+                                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+                            />
+                            <figcaption className="text-center text-sm text-gray-400 mt-3">
+                                Plato's KPI-powered dashboard
+                            </figcaption>
+                        </figure>
 
                         <a
                             href="https://github.com/1111philo/plato"
@@ -58,17 +74,6 @@ const PlatoPlatform: React.FC = () => {
                             <GithubIcon className="w-4 h-4 transition-transform group-hover:rotate-12" />
                             <span>Plato is Open Source — view on GitHub</span>
                         </a>
-                    </div>
-
-                    <div className="md:w-1/2">
-                        <img
-                            src={platoDashboard}
-                            alt="Plato admin dashboard showing learner engagement metrics, lesson pacing, and on-target rates"
-                            loading="lazy"
-                            width={1600}
-                            height={1220}
-                            className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
-                        />
                     </div>
                 </div>
             </div>
