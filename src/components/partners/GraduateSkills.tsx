@@ -36,7 +36,7 @@ const GraduateSkills: React.FC = () => {
                         What Our Graduates Can Do.
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        The AI Leaders curriculum is built around the work employers need right now — from AI fluency to shipping production code.
+                        Our graduates don't arrive as freshly-minted technicians — they arrive as people who know themselves, fluent in AI, and ready to apply that combination to production work.
                     </p>
                 </div>
 
