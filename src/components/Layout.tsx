@@ -194,7 +194,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-6 md:mb-0">
                             <div className="text-xl font-bold tracking-tight mb-2 uppercase">AI LEADERS</div>
-                            <p className="text-zinc-300 text-sm">Empowering the next generation of tech leaders.</p>
+                            <p className="text-zinc-300 text-sm">Harnessing the next generation of tech leaders.</p>
                         </div>
                         <div className="text-gray-300 text-sm">
                             Questions? Email <a href="mailto:help@ai-leaders.org" className="text-white hover:underline transition-all">help@ai-leaders.org</a>
