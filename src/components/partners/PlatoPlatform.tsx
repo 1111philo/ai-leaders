@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import platoDashboard from '../../assets/plato-dashboard.webp';
 
 const GithubIcon = ({ className }: { className?: string }) => (
@@ -8,18 +7,18 @@ const GithubIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-const features = [
+const callouts = [
     {
-        title: "Fully Agentic",
-        body: "AI agents guide every participant through hands-on production work, adapting in real time to how they think and build."
+        title: "Fully agentic",
+        body: "AI coaches guide every participant through real production work, adapting in real time."
     },
     {
-        title: "Evidence-Based",
-        body: "Skills are demonstrated through real projects and assessed continuously — producing a portfolio, not just a grade."
+        title: "Evidence-based",
+        body: "Graduates demonstrate skills on real projects — producing a portfolio, not just a grade."
     },
     {
-        title: "Built to Scale",
-        body: "Plato delivers personalized, mentor-quality guidance to every participant at once, so quality never dilutes with growth."
+        title: "Built to scale",
+        body: "Mentor-quality guidance for every participant at once, without dilution as you grow the cohort."
     }
 ];
 
@@ -29,55 +28,48 @@ const PlatoPlatform: React.FC = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-black to-black opacity-60 z-0 pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                        <span className="text-sm font-medium tracking-wide text-gray-300">The Platform</span>
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        Meet <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Plato</span>.
-                    </h2>
-                    <p className="text-gray-300 text-lg leading-relaxed">
-                        The first fully agentic platform built to support a new generation of practitioners — and the engine behind every AI Leaders graduate you hire.
-                    </p>
-                </div>
+                <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
+                    <div className="md:w-1/2">
+                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                            <span className="text-sm font-medium tracking-wide text-gray-300">The Platform</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+                            Meet <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Plato</span>.
+                        </h2>
+                        <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                            The fully agentic platform behind every AI Leaders graduate you hire.
+                        </p>
 
-                <div className="max-w-5xl mx-auto mb-16">
-                    <img
-                        src={platoDashboard}
-                        alt="Plato admin dashboard showing learner engagement metrics, lesson pacing, and on-target rates"
-                        loading="lazy"
-                        width={1600}
-                        height={1220}
-                        className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
-                    />
-                </div>
+                        <div className="space-y-5 mb-8">
+                            {callouts.map((c) => (
+                                <div key={c.title}>
+                                    <h3 className="text-base font-bold text-white mb-1">{c.title}</h3>
+                                    <p className="text-sm text-gray-400 leading-relaxed">{c.body}</p>
+                                </div>
+                            ))}
+                        </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    {features.map((feature) => (
-                        <motion.div
-                            key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4 }}
-                            className="p-8 border border-white/10 rounded-2xl bg-white/[0.02] backdrop-blur-sm hover:border-indigo-400/30 transition-all duration-300"
+                        <a
+                            href="https://github.com/1111philo/plato"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
                         >
-                            <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                            <p className="text-sm text-gray-300 leading-relaxed">{feature.body}</p>
-                        </motion.div>
-                    ))}
-                </div>
+                            <GithubIcon className="w-4 h-4 transition-transform group-hover:rotate-12" />
+                            <span>Plato is Open Source — view on GitHub</span>
+                        </a>
+                    </div>
 
-                <div className="text-center">
-                    <a
-                        href="https://github.com/1111philo/plato"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95"
-                    >
-                        <GithubIcon className="w-4 h-4 transition-transform group-hover:rotate-12" />
-                        <span>Plato is Open Source — view on GitHub</span>
-                    </a>
+                    <div className="md:w-1/2">
+                        <img
+                            src={platoDashboard}
+                            alt="Plato admin dashboard showing learner engagement metrics, lesson pacing, and on-target rates"
+                            loading="lazy"
+                            width={1600}
+                            height={1220}
+                            className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+                        />
+                    </div>
                 </div>
             </div>
         </section>

@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Harness AI <br className="hidden md:block" />
+                    Harness Your AI <br className="hidden md:block" />
                     + WordPress Powers.
                 </h1>
 
