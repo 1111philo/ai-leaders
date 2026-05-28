@@ -12,7 +12,7 @@ const About: React.FC = () => {
                         </h2>
                         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                             <p>
-                                AI Leaders is a remote program that teaches Generative AI and WordPress development &mdash; the technical pairing currently opening doors to living-wage jobs.
+                                AI Leaders is a remote program that helps you harness Generative AI and WordPress powers &mdash; the technical pairing currently opening doors to living-wage jobs.
                             </p>
                             <p>
                                 AI Leaders is reflective by design. Most programs stack skills and hope a career follows. In our experience, people keep jobs longer when they've established <em>who they are</em> than when they're showcasing what they've just learned &mdash; tools change, the person using them is what lasts. So every lesson pairs the technical work with the reflective work, on purpose.

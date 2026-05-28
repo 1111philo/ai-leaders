@@ -342,7 +342,7 @@ const ApplicationForm: React.FC = () => {
                                 Based on your responses, you've demonstrated the curiosity, persistence, and willingness to improve that defines an AI Leader. <strong>You are invited to register for an orientation.</strong>
                             </p>
                             <p className="text-sm border-l-2 border-white/10 pl-6 text-gray-300 italic">
-                                Orientation participants will be introduced to our program and invited to start their learning journey. From the initial cohort, the 40 strongest participants will be invited to participate in the Full Credential to create a portfolio that leads to WordPress living-wage job placement. This Full Credential opportunity is paid and designed to help learners who have demonstrated commitment to a career in technology to efficiently demonstrate the skills they need to earn a living wage job. Participants who successfully complete the Full Credential will earn a $1,000 honorarium.
+                                Orientation participants are introduced to the program and invited in. From the initial cohort, the 40 strongest are invited into the Full Credential — a paid opportunity to build a portfolio that competes for WordPress living-wage placements. It's designed for participants who've shown they're ready to harness their AI and WordPress powers in production work. Those who complete it earn a $1,000 honorarium.
                             </p>
                         </div>
 
@@ -615,7 +615,7 @@ const ApplicationForm: React.FC = () => {
                                         </span>
                                     </div>
                                     <p className="text-xl md:text-2xl font-light text-white leading-relaxed max-w-2xl">
-                                        Describe technical projects you've worked on and why you're interested in scaling up your AI and WordPress skills to earn a living-wage job.
+                                        Describe technical projects you've worked on and why you're interested in harnessing your AI and WordPress powers to earn a living-wage job.
                                     </p>
                                 </div>
                                 <textarea

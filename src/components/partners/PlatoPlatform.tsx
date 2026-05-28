@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const features = [
     {
         title: "Fully Agentic",
-        body: "AI agents guide every learner through hands-on production work, adapting in real time to how they think and build."
+        body: "AI agents guide every participant through hands-on production work, adapting in real time to how they think and build."
     },
     {
         title: "Evidence-Based",
@@ -12,7 +12,7 @@ const features = [
     },
     {
         title: "Built to Scale",
-        body: "Plato delivers personalized, mentor-quality learning to every participant at once, so quality never dilutes with growth."
+        body: "Plato delivers personalized, mentor-quality guidance to every participant at once, so quality never dilutes with growth."
     }
 ];
 
@@ -30,7 +30,7 @@ const PlatoPlatform: React.FC = () => {
                         Meet <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Plato</span>.
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        The first fully agentic platform built to support a new generation of learning — and the engine behind every AI Leaders graduate you hire.
+                        The first fully agentic platform built to support a new generation of practitioners — and the engine behind every AI Leaders graduate you hire.
                     </p>
                 </div>
 

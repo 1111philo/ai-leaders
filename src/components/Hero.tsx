@@ -14,13 +14,12 @@ const Hero: React.FC = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Learn AI. <br className="hidden md:block" />
-                    Learn WordPress. <br className="hidden md:block" />
-                    Earn Living-Wage Jobs.
+                    Harness AI <br className="hidden md:block" />
+                    + WordPress Powers.
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Earn a Micro-credential in AI Leadership and WordPress development.
+                    Earn a Micro-credential in AI Leadership and WordPress development — and compete for living-wage jobs.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
