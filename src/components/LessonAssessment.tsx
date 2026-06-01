@@ -82,6 +82,7 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
             <textarea
                 className="w-full bg-black border border-white/20 rounded p-4 text-white min-h-[150px] mb-4 focus:border-blue-500 outline-none"
                 placeholder="Type your response or paste your work here..."
+                aria-label="Your assessment submission"
                 value={submission}
                 onChange={(e) => setSubmission(e.target.value)}
                 disabled={isAssessing || isSubmitted}
@@ -96,15 +97,15 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
                     {isAssessing ? 'Analyzing...' : 'Assess My Work'}
                 </button>
 
-                {result && (
-                    <div className="flex-1">
-                        {result.passed ? (
+                <div className="flex-1" role="status" aria-live="polite">
+                    {result && (
+                        result.passed ? (
                             <span className="text-green-400 font-bold">Passed ({result.score}/100)</span>
                         ) : (
                             <span className="text-red-400 font-bold">Try Again ({result.score}/100)</span>
-                        )}
-                    </div>
-                )}
+                        )
+                    )}
+                </div>
             </div>
 
             {result && (

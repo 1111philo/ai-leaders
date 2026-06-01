@@ -60,7 +60,7 @@ const PlatoSection: React.FC = () => {
                                 height={1025}
                                 className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
                             />
-                            <figcaption className="text-center text-sm text-gray-400 mt-3">
+                            <figcaption className="text-center text-sm text-gray-400 -mt-4">
                                 Plato's chat-based interface
                             </figcaption>
                         </figure>

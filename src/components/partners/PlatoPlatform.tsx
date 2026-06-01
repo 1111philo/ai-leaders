@@ -60,7 +60,7 @@ const PlatoPlatform: React.FC = () => {
                                 height={1220}
                                 className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
                             />
-                            <figcaption className="text-center text-sm text-gray-400 mt-3">
+                            <figcaption className="text-center text-sm text-gray-400 -mt-4">
                                 Plato's KPI-powered dashboard
                             </figcaption>
                         </figure>

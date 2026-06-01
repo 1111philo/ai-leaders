@@ -4,11 +4,11 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { sendEmployerInquiry } from '../../services/notifications';
 import { syncToGoogleSheet } from '../../services/googleSheets';
 
-const FieldError: React.FC<{ message?: string }> = ({ message }) => {
+const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }) => {
     if (!message) return null;
     return (
-        <div className="flex items-center gap-1.5 mt-2">
-            <svg className="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+        <div id={id} role="alert" className="flex items-center gap-1.5 mt-2">
+            <svg className="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                 <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
             </svg>
             <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest">{message}</p>
@@ -103,7 +103,7 @@ const EmployerForm: React.FC = () => {
                         className="bg-zinc-900/50 border border-green-500/30 p-12 rounded-2xl shadow-2xl backdrop-blur-sm"
                     >
                         <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
@@ -136,10 +136,12 @@ const EmployerForm: React.FC = () => {
                                 id="company"
                                 value={formData.company}
                                 onChange={handleInputChange}
+                                aria-invalid={!!errors.company}
+                                aria-describedby={errors.company ? 'company-error' : undefined}
                                 className={`w-full bg-zinc-900 border ${errors.company ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
                                 required
                             />
-                            <FieldError message={errors.company} />
+                            <FieldError id="company-error" message={errors.company} />
                         </div>
                         <div className="space-y-3">
                             <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-zinc-300">Your Name</label>
@@ -148,10 +150,12 @@ const EmployerForm: React.FC = () => {
                                 id="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
+                                aria-invalid={!!errors.name}
+                                aria-describedby={errors.name ? 'name-error' : undefined}
                                 className={`w-full bg-zinc-900 border ${errors.name ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
                                 required
                             />
-                            <FieldError message={errors.name} />
+                            <FieldError id="name-error" message={errors.name} />
                         </div>
                     </div>
 
@@ -162,10 +166,12 @@ const EmployerForm: React.FC = () => {
                             id="email"
                             value={formData.email}
                             onChange={handleInputChange}
+                            aria-invalid={!!errors.email}
+                            aria-describedby={errors.email ? 'email-error' : undefined}
                             className={`w-full bg-zinc-900 border ${errors.email ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
                             required
                         />
-                        <FieldError message={errors.email} />
+                        <FieldError id="email-error" message={errors.email} />
                     </div>
 
                     <div className="space-y-3 mb-10">
@@ -176,10 +182,12 @@ const EmployerForm: React.FC = () => {
                             onChange={handleInputChange}
                             rows={5}
                             placeholder="Tell us about the roles, skills, and timeline you have in mind."
+                            aria-invalid={!!errors.roles}
+                            aria-describedby={errors.roles ? 'roles-error' : undefined}
                             className={`w-full bg-zinc-950 border ${errors.roles ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all text-sm leading-relaxed`}
                             required
                         ></textarea>
-                        <FieldError message={errors.roles} />
+                        <FieldError id="roles-error" message={errors.roles} />
                     </div>
 
                     <div className="space-y-4 mb-4">
@@ -213,7 +221,7 @@ const EmployerForm: React.FC = () => {
                         <span className="relative z-10 flex items-center justify-center gap-3">
                             {isSubmitting ? (
                                 <>
-                                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                     </svg>
@@ -222,7 +230,7 @@ const EmployerForm: React.FC = () => {
                             ) : (
                                 <>
                                     Get in Touch
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
                                 </>

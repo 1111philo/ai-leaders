@@ -50,11 +50,13 @@ const LessonChat: React.FC<LessonChatProps> = ({ lessonContext, lessonTitle, mas
     return (
         <div className="bg-zinc-900 border border-white/10 rounded-lg flex flex-col h-[600px] shadow-xl">
             <div className="p-4 border-b border-white/10 font-bold bg-zinc-800 rounded-t-lg flex justify-between items-center">
-                <span>AI Tutor</span>
-                {isLoading && <span className="text-xs text-blue-400 animate-pulse">Thinking...</span>}
+                <h2 className="text-base font-bold">AI Tutor</h2>
+                <span className="text-xs text-blue-400 animate-pulse" role="status" aria-live="polite">
+                    {isLoading ? 'Thinking…' : ''}
+                </span>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4" aria-live="polite" aria-label="Conversation with AI tutor">
                 {messages.map((msg, i) => (
                     <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-[85%] rounded-lg p-3 text-sm leading-relaxed ${msg.role === 'user'
@@ -75,6 +77,7 @@ const LessonChat: React.FC<LessonChatProps> = ({ lessonContext, lessonTitle, mas
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         placeholder="Ask a question..."
+                        aria-label="Ask the AI tutor a question"
                         disabled={isLoading}
                         className="flex-1 bg-black border border-white/20 rounded p-2 text-white focus:border-blue-500 outline-none disabled:opacity-50"
                     />

@@ -87,6 +87,7 @@ const EmployerHero: React.FC = () => {
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
+                                    aria-hidden="true"
                                     variants={{
                                         initial: { x: 0 },
                                         hover: { x: 5 }

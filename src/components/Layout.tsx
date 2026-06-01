@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
 const SlackIcon = ({ className }: { className?: string }) => (
@@ -11,6 +12,7 @@ const SlackIcon = ({ className }: { className?: string }) => (
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState<string>('');
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,6 +49,25 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     }, []);
 
     const location = useLocation();
+
+    // Close the mobile menu whenever the route or hash changes.
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [location.pathname, location.hash]);
+
+    // While the mobile menu is open, lock body scroll and allow Escape to close it.
+    useEffect(() => {
+        if (!isMobileMenuOpen) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsMobileMenuOpen(false);
+        };
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', onKeyDown);
+        return () => {
+            document.body.style.overflow = '';
+            window.removeEventListener('keydown', onKeyDown);
+        };
+    }, [isMobileMenuOpen]);
 
     // Smooth-scroll to the anchor after navigating to a page with a hash.
     useEffect(() => {
@@ -100,7 +121,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
     return (
         <div className="min-h-screen flex flex-col bg-black text-white selection:bg-white selection:text-black">
-            <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-white focus:text-black focus:font-semibold"
+            >
+                Skip to main content
+            </a>
+            <nav aria-label="Main navigation" className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
                 <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                     <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AI LEADERS</Link>
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
@@ -170,7 +197,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </a>
                         <a
                             href="https://learn.ai-leaders.org/courses"
-                            className="text-zinc-300 hover:text-white transition-colors text-sm font-medium"
+                            className="hidden md:inline-block text-zinc-300 hover:text-white transition-colors text-sm font-medium"
                         >
                             Login
                         </a>
@@ -181,11 +208,73 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         >
                             Sign Up
                         </Link>
+                        <button
+                            type="button"
+                            onClick={() => setIsMobileMenuOpen((open) => !open)}
+                            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={isMobileMenuOpen}
+                            aria-controls="mobile-menu"
+                            className="md:hidden p-2 -mr-2 text-zinc-200 hover:text-white rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                        >
+                            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                                {isMobileMenuOpen ? (
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                                )}
+                            </svg>
+                        </button>
                     </div>
                 </div>
+
+                {/* Mobile menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            id="mobile-menu"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+                        >
+                            <div className="container mx-auto px-4 py-4 space-y-6">
+                                {primaryNav.map((item) => (
+                                    <div key={item.path}>
+                                        <Link
+                                            to={item.path}
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className={`block text-base font-semibold mb-2 ${location.pathname === item.path ? 'text-white' : 'text-zinc-200'}`}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                        <div className="pl-3 border-l border-white/10 space-y-1">
+                                            {item.links.map((link) => (
+                                                <Link
+                                                    key={link.id}
+                                                    to={link.href}
+                                                    onClick={(e) => { handleAnchorClick(e, link.href); setIsMobileMenuOpen(false); }}
+                                                    className={`block py-2 text-sm transition-colors ${activeSection === link.id ? 'text-white' : 'text-zinc-300 hover:text-white'}`}
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                                <a
+                                    href="https://learn.ai-leaders.org/courses"
+                                    className="block pt-2 border-t border-white/10 text-sm font-medium text-zinc-200 hover:text-white"
+                                >
+                                    Login
+                                </a>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
-            <main className="flex-grow pt-20">
+            <main id="main-content" className="flex-grow pt-20">
                 {children}
             </main>
 
