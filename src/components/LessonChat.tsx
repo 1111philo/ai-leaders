@@ -79,7 +79,7 @@ const LessonChat: React.FC<LessonChatProps> = ({ lessonContext, lessonTitle, mas
                         placeholder="Ask a question..."
                         aria-label="Ask the AI tutor a question"
                         disabled={isLoading}
-                        className="flex-1 bg-black border border-white/20 rounded p-2 text-white focus:border-blue-500 outline-none disabled:opacity-50"
+                        className="flex-1 bg-black border border-zinc-600 rounded p-2 text-white focus:border-blue-500 outline-none disabled:opacity-50"
                     />
                     <button
                         type="submit"

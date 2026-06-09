@@ -359,7 +359,7 @@ const ApplicationForm: React.FC = () => {
                                         key={option}
                                         className={`flex items-center p-5 rounded-2xl border cursor-pointer transition-all ${orientationSelection === option
                                             ? 'bg-green-500/10 border-green-500/50 text-white'
-                                            : 'bg-zinc-900/50 border-white/5 text-gray-300 hover:border-white/20'
+                                            : 'bg-zinc-900/50 border-zinc-600 text-gray-300 hover:border-zinc-400'
                                             }`}
                                     >
                                         <input
@@ -370,7 +370,7 @@ const ApplicationForm: React.FC = () => {
                                             onChange={(e) => setOrientationSelection(e.target.value)}
                                             className="sr-only"
                                         />
-                                        <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center ${orientationSelection === option ? 'border-green-400' : 'border-zinc-700'
+                                        <div className={`w-5 h-5 rounded-full border-2 mr-4 flex items-center justify-center ${orientationSelection === option ? 'border-green-400' : 'border-zinc-500'
                                             }`}>
                                             {orientationSelection === option && <div className="w-2.5 h-2.5 bg-green-400 rounded-full" />}
                                         </div>
@@ -418,7 +418,7 @@ const ApplicationForm: React.FC = () => {
                                         id="fieldName"
                                         name="cm-name"
                                         maxLength={200}
-                                        className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium"
+                                        className="w-full bg-zinc-900 border border-zinc-600 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium"
                                         required
                                     />
                                 </div>
@@ -429,7 +429,7 @@ const ApplicationForm: React.FC = () => {
                                         id="fieldEmail"
                                         name="cm-nthljjj-nthljjj"
                                         maxLength={200}
-                                        className="js-cm-email-input qa-input-email w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium"
+                                        className="js-cm-email-input qa-input-email w-full bg-zinc-900 border border-zinc-600 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium"
                                         required
                                     />
                                 </div>
@@ -442,7 +442,7 @@ const ApplicationForm: React.FC = () => {
                                         <select
                                             id="fielddkjrtkyu"
                                             name="cm-fo-dkjrtkyu"
-                                            className="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium appearance-none cursor-pointer pr-12 hover:border-zinc-700"
+                                            className="w-full bg-zinc-900 border border-zinc-600 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium appearance-none cursor-pointer pr-12 hover:border-zinc-500"
                                             required
                                         >
                                             <option value="" disabled selected={true}>Select your affiliation...</option>
@@ -496,7 +496,7 @@ const ApplicationForm: React.FC = () => {
                                         id="firstName"
                                         value={formData.firstName}
                                         onChange={handleInputChange}
-                                        className={`w-full bg-zinc-900 border ${errors.firstName ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                        className={`w-full bg-zinc-900 border ${errors.firstName ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                         required
                                     />
                                     {errors.firstName && (
@@ -515,7 +515,7 @@ const ApplicationForm: React.FC = () => {
                                         id="lastName"
                                         value={formData.lastName}
                                         onChange={handleInputChange}
-                                        className={`w-full bg-zinc-900 border ${errors.lastName ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                        className={`w-full bg-zinc-900 border ${errors.lastName ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                         required
                                     />
                                     {errors.lastName && (
@@ -537,7 +537,7 @@ const ApplicationForm: React.FC = () => {
                                         id="email"
                                         value={formData.email}
                                         onChange={handleInputChange}
-                                        className={`w-full bg-zinc-900 border ${errors.email ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                        className={`w-full bg-zinc-900 border ${errors.email ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                         required
                                     />
                                     {errors.email && (
@@ -558,7 +558,7 @@ const ApplicationForm: React.FC = () => {
                                         value={formData.linkedin}
                                         onChange={handleInputChange}
                                         placeholder="https://linkedin.com/in/yourprofile"
-                                        className={`w-full bg-zinc-900 border ${errors.linkedin ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                        className={`w-full bg-zinc-900 border ${errors.linkedin ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                     />
                                     {errors.linkedin && (
                                         <div className="flex items-center gap-1.5 mt-2">
@@ -577,7 +577,7 @@ const ApplicationForm: React.FC = () => {
                                             id="affiliation"
                                             value={formData.affiliation}
                                             onChange={handleInputChange}
-                                            className={`w-full bg-zinc-900 border ${errors.affiliation ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium appearance-none cursor-pointer pr-12 hover:border-zinc-700`}
+                                            className={`w-full bg-zinc-900 border ${errors.affiliation ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium appearance-none cursor-pointer pr-12 hover:border-zinc-500`}
                                             required
                                         >
                                             <option value="" disabled>Select your affiliation</option>
@@ -623,7 +623,7 @@ const ApplicationForm: React.FC = () => {
                                     value={formData.response}
                                     onChange={handleInputChange}
                                     rows={12}
-                                    className={`w-full bg-zinc-950 border ${errors.response ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-2xl px-6 py-6 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-mono text-sm leading-relaxed`}
+                                    className={`w-full bg-zinc-950 border ${errors.response ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-6 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-mono text-sm leading-relaxed`}
                                     placeholder="Write your response here... feel free to use AI to help you draft and refine it."
                                     aria-label="Technical project description and personal interest"
                                     required

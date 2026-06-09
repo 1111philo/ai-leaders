@@ -138,7 +138,7 @@ const EmployerForm: React.FC = () => {
                                 onChange={handleInputChange}
                                 aria-invalid={!!errors.company}
                                 aria-describedby={errors.company ? 'company-error' : undefined}
-                                className={`w-full bg-zinc-900 border ${errors.company ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                className={`w-full bg-zinc-900 border ${errors.company ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                 required
                             />
                             <FieldError id="company-error" message={errors.company} />
@@ -152,7 +152,7 @@ const EmployerForm: React.FC = () => {
                                 onChange={handleInputChange}
                                 aria-invalid={!!errors.name}
                                 aria-describedby={errors.name ? 'name-error' : undefined}
-                                className={`w-full bg-zinc-900 border ${errors.name ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                                className={`w-full bg-zinc-900 border ${errors.name ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                 required
                             />
                             <FieldError id="name-error" message={errors.name} />
@@ -168,7 +168,7 @@ const EmployerForm: React.FC = () => {
                             onChange={handleInputChange}
                             aria-invalid={!!errors.email}
                             aria-describedby={errors.email ? 'email-error' : undefined}
-                            className={`w-full bg-zinc-900 border ${errors.email ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all font-medium`}
+                            className={`w-full bg-zinc-900 border ${errors.email ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                             required
                         />
                         <FieldError id="email-error" message={errors.email} />
@@ -184,7 +184,7 @@ const EmployerForm: React.FC = () => {
                             placeholder="Tell us about the roles, skills, and timeline you have in mind."
                             aria-invalid={!!errors.roles}
                             aria-describedby={errors.roles ? 'roles-error' : undefined}
-                            className={`w-full bg-zinc-950 border ${errors.roles ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-800'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/10 transition-all text-sm leading-relaxed`}
+                            className={`w-full bg-zinc-950 border ${errors.roles ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm leading-relaxed`}
                             required
                         ></textarea>
                         <FieldError id="roles-error" message={errors.roles} />

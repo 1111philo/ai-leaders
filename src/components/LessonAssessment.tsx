@@ -80,7 +80,7 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
 
 
             <textarea
-                className="w-full bg-black border border-white/20 rounded p-4 text-white min-h-[150px] mb-4 focus:border-blue-500 outline-none"
+                className="w-full bg-black border border-zinc-600 rounded p-4 text-white min-h-[150px] mb-4 focus:border-blue-500 outline-none"
                 placeholder="Type your response or paste your work here..."
                 aria-label="Your assessment submission"
                 value={submission}
