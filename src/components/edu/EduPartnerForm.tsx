@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { sendEduPartnerInquiry } from '../../services/notifications';
+import { sendEduPartnerInquiryEmail } from '../../services/email';
 import { syncToGoogleSheet } from '../../services/googleSheets';
 
 const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }) => {
@@ -77,6 +78,7 @@ const EduPartnerForm: React.FC = () => {
         try {
             await Promise.all([
                 sendEduPartnerInquiry(formData),
+                sendEduPartnerInquiryEmail(formData),
                 syncToGoogleSheet({
                     email: formData.email,
                     firstName: formData.name,
