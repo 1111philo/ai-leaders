@@ -54,7 +54,7 @@ const EvaluationDimensions: React.FC<EvaluationDimensionsProps> = ({ stage, scor
                         className={`p-6 rounded-xl border transition-all duration-500 overflow-hidden relative ${isGenerated
                             ? `bg-zinc-900/50 shadow-lg shadow-white/5 ${score >= 80 ? 'border-green-500/50' : score >= 50 ? 'border-yellow-500/50' : 'border-indigo-500/50'
                             }`
-                            : 'bg-black/40 border-white/5 shadow-none'
+                            : 'bg-black/40 border-white/30 shadow-none'
                             }`}
                     >
                         {isGenerated && (
@@ -109,7 +109,7 @@ const EvaluationDimensions: React.FC<EvaluationDimensionsProps> = ({ stage, scor
                                         exit={{ opacity: 0, height: 0 }}
                                         transition={{ duration: 0.4 }}
                                     >
-                                        <div className="mt-4 pt-4 border-t border-white/10">
+                                        <div className="mt-4 pt-4 border-t border-white/30">
                                             <p className="text-[10px] text-gray-300 uppercase font-black tracking-widest mb-1.5 opacity-60">Scoring Rubric</p>
                                             <p className="text-sm text-gray-300 italic leading-relaxed">
                                                 {dim.rubric}

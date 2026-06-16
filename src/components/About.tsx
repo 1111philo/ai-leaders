@@ -18,11 +18,11 @@ const About: React.FC = () => {
                                 AI Leaders is reflective by design. Most programs stack skills and hope a career follows. In our experience, people keep jobs longer when they've established <em>who they are</em> than when they're showcasing what they've just learned &mdash; tools change, the person using them is what lasts. So every lesson pairs the technical work with the reflective work, on purpose.
                             </p>
                             <div className="flex gap-4 mt-8">
-                                <div className="p-4 border border-white/10 rounded-lg bg-white/5 w-full">
+                                <div className="p-4 border border-white/30 rounded-lg bg-white/10 w-full">
                                     <h3 className="text-xl font-bold mb-2">AI Tooling</h3>
                                     <p className="text-sm text-gray-300">Master prompting, agents, and LLM integration.</p>
                                 </div>
-                                <div className="p-4 border border-white/10 rounded-lg bg-white/5 w-full">
+                                <div className="p-4 border border-white/30 rounded-lg bg-white/10 w-full">
                                     <h3 className="text-xl font-bold mb-2">WordPress</h3>
                                     <p className="text-sm text-gray-300">Build professional, scalable websites.</p>
                                 </div>
@@ -33,7 +33,7 @@ const About: React.FC = () => {
                         <img
                             src={processGraphic}
                             alt="Course Process: AI Literacy Mastery, WordPress Micro Credential, and Job Placement"
-                            className="w-full max-w-lg rounded-2xl shadow-2xl border border-white/10"
+                            className="w-full max-w-lg rounded-2xl shadow-2xl border border-white/30"
                         />
                     </div>
                 </div>

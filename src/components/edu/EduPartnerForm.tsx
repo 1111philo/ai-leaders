@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { sendEmployerInquiry } from '../../services/notifications';
+import { sendEduPartnerInquiry } from '../../services/notifications';
 import { syncToGoogleSheet } from '../../services/googleSheets';
 
 const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }) => {
@@ -16,16 +16,16 @@ const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }
     );
 };
 
-const EmployerForm: React.FC = () => {
+const EduPartnerForm: React.FC = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [formData, setFormData] = useState({
-        company: '',
+        institution: '',
         name: '',
         email: '',
-        roles: ''
+        message: ''
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,14 +44,14 @@ const EmployerForm: React.FC = () => {
         e.preventDefault();
 
         const newErrors: Record<string, string> = {};
-        if (!formData.company) newErrors.company = "Please provide your company name.";
+        if (!formData.institution) newErrors.institution = "Please provide your institution name.";
         if (!formData.name) newErrors.name = "Please provide your name.";
         if (!formData.email) {
-            newErrors.email = "A work email is required so we can reach you.";
+            newErrors.email = "An email is required so we can reach you.";
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = "Please enter a valid email address (e.g., name@company.com).";
+            newErrors.email = "Please enter a valid email address (e.g., name@institution.edu).";
         }
-        if (!formData.roles) newErrors.roles = "Please tell us what roles you're hiring for.";
+        if (!formData.message) newErrors.message = "Please tell us about your interest in partnering.";
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -66,7 +66,7 @@ const EmployerForm: React.FC = () => {
             return;
         }
 
-        const token = await executeRecaptcha('employer_inquiry');
+        const token = await executeRecaptcha('edu_partner_inquiry');
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         if (!token && !isLocalhost) {
             alert("Security verification failed. Please try again.");
@@ -76,12 +76,12 @@ const EmployerForm: React.FC = () => {
         setIsSubmitting(true);
         try {
             await Promise.all([
-                sendEmployerInquiry(formData),
+                sendEduPartnerInquiry(formData),
                 syncToGoogleSheet({
                     email: formData.email,
                     firstName: formData.name,
-                    affiliation: formData.company,
-                    response: formData.roles
+                    affiliation: formData.institution,
+                    response: formData.message
                 })
             ]);
             setSubmitted(true);
@@ -109,7 +109,7 @@ const EmployerForm: React.FC = () => {
                         </div>
                         <h2 className="text-3xl font-bold text-white mb-4">Thanks — We'll Be in Touch</h2>
                         <p className="text-gray-300 text-lg leading-relaxed">
-                            We've received your inquiry and will reach out shortly to learn more about your hiring needs.
+                            We've received your inquiry and will reach out shortly to discuss partnership opportunities.
                         </p>
                     </motion.div>
                 </div>
@@ -121,27 +121,27 @@ const EmployerForm: React.FC = () => {
         <section id="connect" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6 max-w-2xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Hire AI Leaders</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Get in Touch</h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-                        Tell us what you're hiring for and we'll connect you with vetted, AI-enabled candidates.
+                        Interested in partnering with AI Leaders? Tell us about your institution and we'll schedule a conversation.
                     </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-black border border-white/30 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div className="space-y-3">
-                            <label htmlFor="company" className="text-xs font-black uppercase tracking-widest text-zinc-300">Company Name</label>
+                            <label htmlFor="institution" className="text-xs font-black uppercase tracking-widest text-zinc-300">Institution Name</label>
                             <input
                                 type="text"
-                                id="company"
-                                value={formData.company}
+                                id="institution"
+                                value={formData.institution}
                                 onChange={handleInputChange}
-                                aria-invalid={!!errors.company}
-                                aria-describedby={errors.company ? 'company-error' : undefined}
-                                className={`w-full bg-zinc-900 border ${errors.company ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
+                                aria-invalid={!!errors.institution}
+                                aria-describedby={errors.institution ? 'institution-error' : undefined}
+                                className={`w-full bg-zinc-900 border ${errors.institution ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium`}
                                 required
                             />
-                            <FieldError id="company-error" message={errors.company} />
+                            <FieldError id="institution-error" message={errors.institution} />
                         </div>
                         <div className="space-y-3">
                             <label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-zinc-300">Your Name</label>
@@ -160,7 +160,7 @@ const EmployerForm: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 mb-8">
-                        <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-zinc-300">Work Email</label>
+                        <label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-zinc-300">Email</label>
                         <input
                             type="email"
                             id="email"
@@ -175,19 +175,19 @@ const EmployerForm: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 mb-10">
-                        <label htmlFor="roles" className="text-xs font-black uppercase tracking-widest text-zinc-300">What Roles Are You Hiring For?</label>
+                        <label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-zinc-300">Tell Us About Your Interest</label>
                         <textarea
-                            id="roles"
-                            value={formData.roles}
+                            id="message"
+                            value={formData.message}
                             onChange={handleInputChange}
                             rows={5}
-                            placeholder="Tell us about the roles, skills, and timeline you have in mind."
-                            aria-invalid={!!errors.roles}
-                            aria-describedby={errors.roles ? 'roles-error' : undefined}
-                            className={`w-full bg-zinc-950 border ${errors.roles ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm leading-relaxed`}
+                            placeholder="Share your institution's goals, student population, or questions about the program."
+                            aria-invalid={!!errors.message}
+                            aria-describedby={errors.message ? 'message-error' : undefined}
+                            className={`w-full bg-zinc-950 border ${errors.message ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm leading-relaxed`}
                             required
                         ></textarea>
-                        <FieldError id="roles-error" message={errors.roles} />
+                        <FieldError id="message-error" message={errors.message} />
                     </div>
 
                     <div className="space-y-4 mb-4">
@@ -229,7 +229,7 @@ const EmployerForm: React.FC = () => {
                                 </>
                             ) : (
                                 <>
-                                    Get in Touch
+                                    Submit Inquiry
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
@@ -243,4 +243,4 @@ const EmployerForm: React.FC = () => {
     );
 };
 
-export default EmployerForm;
+export default EduPartnerForm;

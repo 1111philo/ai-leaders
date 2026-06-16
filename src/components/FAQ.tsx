@@ -6,7 +6,7 @@ const FaqItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ ques
     const contentId = `faq-content-${question.replace(/\s+/g, '-').toLowerCase()}`;
 
     return (
-        <div className="border-b border-white/10">
+        <div className="border-b border-white/30">
             <button
                 className="w-full py-6 flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg group"
                 onClick={() => setIsOpen(!isOpen)}

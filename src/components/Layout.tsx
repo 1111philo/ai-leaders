@@ -34,7 +34,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'platform', 'process', 'connect'];
+        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'platform', 'process', 'connect', 'benefits', 'requirements'];
 
         sections.forEach((id) => {
             const el = document.getElementById(id);
@@ -103,6 +103,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 { name: 'Get in Touch', href: '/employers#connect', id: 'connect' },
             ],
         },
+        {
+            name: 'For EDU Partners',
+            path: '/edu-partners',
+            links: [
+                { name: 'Benefits', href: '/edu-partners#benefits', id: 'benefits' },
+                { name: 'Requirements', href: '/edu-partners#requirements', id: 'requirements' },
+                { name: 'Partnership Process', href: '/edu-partners#process', id: 'process' },
+                { name: 'Get in Touch', href: '/edu-partners#connect', id: 'connect' },
+            ],
+        },
     ];
 
     // Smooth-scroll when the target section already exists on the current page.
@@ -126,7 +136,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             >
                 Skip to main content
             </a>
-            <nav aria-label="Main navigation" className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10' : 'bg-transparent'}`}>
+            <nav aria-label="Main navigation" className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/30' : 'bg-transparent'}`}>
                 <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                     <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AI LEADERS</Link>
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
@@ -154,7 +164,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                                 </Link>
                                 {/* Submenu: revealed on hover and on keyboard focus (focus-within) */}
                                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-50">
-                                    <div className="min-w-44 bg-black/90 backdrop-blur-md border border-white/10 rounded-xl shadow-2xl py-2">
+                                    <div className="min-w-44 bg-black/90 backdrop-blur-md border border-white/30 rounded-xl shadow-2xl py-2">
                                         {item.links.map((link) => (
                                             <Link
                                                 key={link.id}
@@ -235,7 +245,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-md border-t border-white/10"
+                            className="md:hidden overflow-hidden bg-black/95 backdrop-blur-md border-t border-white/30"
                         >
                             <div className="container mx-auto px-4 py-4 space-y-6">
                                 {primaryNav.map((item) => (
@@ -247,7 +257,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                                         >
                                             {item.name}
                                         </Link>
-                                        <div className="pl-3 border-l border-white/10 space-y-1">
+                                        <div className="pl-3 border-l border-white/30 space-y-1">
                                             {item.links.map((link) => (
                                                 <Link
                                                     key={link.id}
@@ -263,7 +273,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                                 ))}
                                 <a
                                     href="https://learn.ai-leaders.org/courses"
-                                    className="block pt-2 border-t border-white/10 text-sm font-medium text-zinc-200 hover:text-white"
+                                    className="block pt-2 border-t border-white/30 text-sm font-medium text-zinc-200 hover:text-white"
                                 >
                                     Login
                                 </a>
@@ -277,7 +287,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 {children}
             </main>
 
-            <footer className="bg-black border-t border-white/10 py-12">
+            <footer className="bg-black border-t border-white/30 py-12">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="mb-6 md:mb-0">

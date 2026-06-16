@@ -30,7 +30,7 @@ const PlatoPlatform: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row gap-12 lg:gap-16 items-center">
                     <div className="md:w-1/2">
-                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
                             <span className="text-sm font-medium tracking-wide text-gray-300">The Platform</span>
                         </div>
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -58,7 +58,7 @@ const PlatoPlatform: React.FC = () => {
                                 loading="lazy"
                                 width={1600}
                                 height={1220}
-                                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+                                className="w-full h-auto rounded-2xl shadow-2xl border border-white/30"
                             />
                             <figcaption className="text-center text-sm text-gray-400 -mt-4">
                                 Plato's KPI-powered dashboard

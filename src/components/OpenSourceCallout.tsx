@@ -14,7 +14,7 @@ const SlackIcon = ({ className }: { className?: string }) => (
 
 const OpenSourceCallout: React.FC = () => {
     return (
-        <section className="relative bg-zinc-950 border-y border-white/5 py-12 overflow-hidden">
+        <section className="relative bg-zinc-950 border-y border-white/30 py-12 overflow-hidden">
             {/* Dynamic Coding Background */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 {/* Subtle Grid */}

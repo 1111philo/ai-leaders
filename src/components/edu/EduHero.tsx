@@ -1,8 +1,12 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Hero: React.FC = () => {
+const EduHero: React.FC = () => {
+    const scrollTo = (id: string) => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
             {/* Background gradients */}
@@ -10,26 +14,22 @@ const Hero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort Two - Coming Soon</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">For Educational Partners</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-2 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Harness Your AI <br className="hidden md:block" />
-                    + WordPress Powers.
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
+                    Pathways to <br className="hidden md:block" />
+                    Employment.
                 </h1>
 
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent pb-2">
-                    Earn Living-Wage Jobs.
-                </h2>
-
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Earn a Micro-credential in AI Leadership and WordPress development — and compete for living-wage jobs.
+                    Help your students harness what they already know — and package it for living-wage jobs. Reflective by design, so careers last.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <div className="w-full sm:w-auto pb-1">
-                        <motion.a
-                            href="#apply"
+                        <motion.button
+                            onClick={() => scrollTo('connect')}
                             initial="initial"
                             whileHover="hover"
                             whileTap="tap"
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
 
                             {/* 5. Text Content */}
                             <span className="relative z-10 text-white uppercase text-xs tracking-[0.3em] flex items-center gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Receive Updates
+                                Become a Partner
                                 <motion.svg
                                     className="w-4 h-4"
                                     fill="none"
@@ -97,18 +97,18 @@ const Hero: React.FC = () => {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </motion.svg>
                             </span>
-                        </motion.a>
+                        </motion.button>
                     </div>
-                    <a
-                        href="#about"
-                        className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white/20 text-white font-black rounded-2xl hover:bg-white/5 transition-all uppercase text-xs tracking-[0.2em] flex items-center justify-center"
+                    <button
+                        onClick={() => scrollTo('benefits')}
+                        className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white/20 text-white font-black rounded-2xl hover:bg-white/5 transition-all uppercase text-xs tracking-[0.2em] flex items-center justify-center cursor-pointer"
                     >
-                        Learn More
-                    </a>
+                        See the Benefits
+                    </button>
                 </div>
             </div>
         </section>
     );
 };
 
-export default Hero;
+export default EduHero;

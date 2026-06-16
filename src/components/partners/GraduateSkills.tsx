@@ -29,7 +29,7 @@ const skills = [
 
 const GraduateSkills: React.FC = () => {
     return (
-        <section id="skills" className="py-24 bg-zinc-950 border-y border-white/5">
+        <section id="skills" className="py-24 bg-zinc-950 border-y border-white/30">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
@@ -44,7 +44,7 @@ const GraduateSkills: React.FC = () => {
                     {skills.map((skill, index) => (
                         <div
                             key={skill.title}
-                            className="p-8 border border-white/10 rounded-2xl bg-black/40 hover:border-white/20 transition-all duration-300"
+                            className="p-8 border border-white/30 rounded-2xl bg-black/40 hover:border-white/20 transition-all duration-300"
                         >
                             <div className="text-xs font-black uppercase tracking-widest text-gray-500 mb-4">
                                 {String(index + 1).padStart(2, '0')}

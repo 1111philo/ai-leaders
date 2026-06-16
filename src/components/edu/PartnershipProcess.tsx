@@ -2,29 +2,29 @@ import React from 'react';
 
 const steps = [
     {
-        title: "Tell Us What You Need",
-        body: "Share the roles, skills, and start dates you're hiring for. The more detail, the better the match."
+        title: "Connect With Us",
+        body: "Share your institution's goals, student population, and interest in the program. We'll schedule a conversation to explore fit."
     },
     {
-        title: "We Match Candidates",
-        body: "We surface graduates whose portfolios and skills fit your needs — each with verified, evidence-backed work."
+        title: "Review Partnership Agreement",
+        body: "We'll walk through requirements, timelines, and support resources to ensure alignment before launching."
     },
     {
-        title: "Interview & Hire",
-        body: "Meet your shortlist, review their real production work, and bring on team members who can hit the ground running."
+        title: "Launch & Support",
+        body: "Get access to curriculum, assessment tools, and ongoing support as you deliver the credential and connect students to jobs."
     }
 ];
 
-const HiringProcess: React.FC = () => {
+const PartnershipProcess: React.FC = () => {
     return (
-        <section id="process" className="py-24 bg-zinc-950 border-y border-white/20">
+        <section id="process" className="py-24 bg-black border-y border-white/20">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        How Hiring Works.
+                        How Partnership Works.
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        A simple path from your open role to a vetted, AI-enabled hire.
+                        A straightforward path from inquiry to active partnership.
                     </p>
                 </div>
 
@@ -44,4 +44,4 @@ const HiringProcess: React.FC = () => {
     );
 };
 
-export default HiringProcess;
+export default PartnershipProcess;

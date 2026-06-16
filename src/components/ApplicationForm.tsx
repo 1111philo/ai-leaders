@@ -259,10 +259,10 @@ const ApplicationForm: React.FC = () => {
                                 <>
                                     <p>We've confirmed your registration for the orientation on <span className="text-white font-bold">{orientationSelection}</span>.</p>
 
-                                    <div className="mt-10 p-6 bg-white/5 border border-white/10 rounded-2xl text-left">
+                                    <div className="mt-10 p-6 bg-white/5 border border-white/30 rounded-2xl text-left">
                                         <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Your Zoom Link</h3>
                                         <div className="flex flex-col md:flex-row gap-4">
-                                            <code className="flex-grow bg-black/40 border border-white/5 p-4 rounded-xl text-xs text-blue-400 break-all font-mono">
+                                            <code className="flex-grow bg-black/40 border border-white/30 p-4 rounded-xl text-xs text-blue-400 break-all font-mono">
                                                 {ORIENTATION_DETAILS[orientationSelection]?.zoom}
                                             </code>
                                             <button
@@ -293,7 +293,7 @@ const ApplicationForm: React.FC = () => {
                                             href={`https://www.google.com/calendar/render?action=TEMPLATE&text=AI+Leaders+Orientation&dates=${ORIENTATION_DETAILS[orientationSelection]?.googleDates}&details=Zoom+Link:+${encodeURIComponent(ORIENTATION_DETAILS[orientationSelection]?.zoom)}&location=Zoom`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-4 bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl text-xs font-bold uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2"
+                                            className="p-4 bg-white/5 border border-white/30 hover:bg-white/10 rounded-xl text-xs font-bold uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2"
                                         >
                                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                                 <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z" />
@@ -302,7 +302,7 @@ const ApplicationForm: React.FC = () => {
                                         </a>
                                         <button
                                             onClick={() => downloadICS(orientationSelection)}
-                                            className="p-4 bg-white/5 border border-white/10 hover:bg-white/10 rounded-xl text-xs font-bold uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2"
+                                            className="p-4 bg-white/5 border border-white/30 hover:bg-white/10 rounded-xl text-xs font-bold uppercase tracking-widest text-center transition-all flex items-center justify-center gap-2"
                                         >
                                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -341,7 +341,7 @@ const ApplicationForm: React.FC = () => {
                             <p>
                                 Based on your responses, you've demonstrated the curiosity, persistence, and willingness to improve that defines an AI Leader. <strong>You are invited to register for an orientation.</strong>
                             </p>
-                            <p className="text-sm border-l-2 border-white/10 pl-6 text-gray-300 italic">
+                            <p className="text-sm border-l-2 border-white/30 pl-6 text-gray-300 italic">
                                 Orientation participants are introduced to the program and invited in. From the initial cohort, the 40 strongest are invited into the Full Credential — a paid opportunity to build a portfolio that competes for WordPress living-wage placements. It's designed for participants who've shown they're ready to harness their AI and WordPress powers in production work. Those who complete it earn a $1,000 honorarium.
                             </p>
                         </div>
@@ -408,7 +408,7 @@ const ApplicationForm: React.FC = () => {
                 <div className="max-w-2xl mx-auto">
                     {/* Center Column: The Form */}
                     <div className="w-full">
-                        <form id="subForm" className="js-cm-form bg-black border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="5B5E7037DA78A748374AD499497E309E0871BD843AA9E2CFA467A8A3E7853931272BD796FD1DE54DBBECCB9B003E01BAC1231EF71648E4A2F7E698E44C38A9E1">
+                        <form id="subForm" className="js-cm-form bg-black border border-white/30 p-10 rounded-3xl shadow-2xl relative overflow-hidden" action="https://www.createsend.com/t/subscribeerror?description=" method="post" data-id="5B5E7037DA78A748374AD499497E309E0871BD843AA9E2CFA467A8A3E7853931272BD796FD1DE54DBBECCB9B003E01BAC1231EF71648E4A2F7E698E44C38A9E1">
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 <div className="space-y-3">
@@ -462,7 +462,7 @@ const ApplicationForm: React.FC = () => {
 
                             <button
                                 type="submit"
-                                className="group relative w-full font-black py-5 rounded-2xl border border-white/10 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden flex items-center justify-center transition-colors duration-300 cursor-pointer hover:bg-white hover:text-black"
+                                className="group relative w-full font-black py-5 rounded-2xl border border-white/30 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden flex items-center justify-center transition-colors duration-300 cursor-pointer hover:bg-white hover:text-black"
                             >
                                 <motion.div
                                     className="absolute inset-0 z-0 bg-blue-500/5 rounded-2xl blur-lg"
@@ -486,7 +486,7 @@ const ApplicationForm: React.FC = () => {
                     {false && (
                         <>
                             <div className="lg:col-span-3 order-2 lg:order-1">
-                        <form onSubmit={handleSubmit} className="bg-black border border-white/10 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
+                        <form onSubmit={handleSubmit} className="bg-black border border-white/30 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                             {/* Identity Fields */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                                 <div className="space-y-3">
@@ -723,7 +723,7 @@ const ApplicationForm: React.FC = () => {
                                 whileTap="tap"
                                 type="submit"
                                 disabled={isAnalyzing || !executeRecaptcha}
-                                className="group relative w-full font-black py-5 rounded-2xl border border-white/10 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors duration-300 cursor-pointer"
+                                className="group relative w-full font-black py-5 rounded-2xl border border-white/30 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors duration-300 cursor-pointer"
                             >
                                 {/* 1. Pulsing Glow Layer */}
                                 <motion.div
@@ -781,7 +781,7 @@ const ApplicationForm: React.FC = () => {
 
                     {/* Column 4 & 5: Evaluation Dimensions (Right) */}
                     <div className="lg:col-span-2 space-y-10 order-1 lg:order-2">
-                        <div className="border-l-2 border-white/10 pl-6 py-2">
+                        <div className="border-l-2 border-white/30 pl-6 py-2">
                             <h3 className="text-2xl font-black text-white mb-3">Evaluation Criteria</h3>
                             <p className="text-zinc-300 leading-relaxed italic">
                                 We don't judge you on what you already know. We value how you think, learn, and iterate.
@@ -790,7 +790,7 @@ const ApplicationForm: React.FC = () => {
 
                         <EvaluationDimensions stage={stage} scores={scores} feedback={aiFeedback} />
 
-                        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-10">
+                        <div className="bg-white/5 border border-white/30 rounded-2xl p-6 mt-10">
                             <p className="text-xs text-gray-300 leading-relaxed italic">
                             </p>
                         </div>

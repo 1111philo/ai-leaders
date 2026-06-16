@@ -36,7 +36,7 @@ const WhyHire: React.FC = () => {
                     {reasons.map((reason) => (
                         <div
                             key={reason.title}
-                            className="p-8 border border-white/10 rounded-2xl bg-white/[0.02] hover:bg-white/5 hover:border-white/20 transition-all duration-300"
+                            className="p-8 border border-white/30 rounded-2xl bg-white/[0.02] hover:bg-white/5 hover:border-white/40 transition-all duration-300"
                         >
                             <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
                             <p className="text-sm text-gray-300 leading-relaxed">{reason.body}</p>

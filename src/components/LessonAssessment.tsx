@@ -75,7 +75,7 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
     }
 
     return (
-        <div className="bg-zinc-900 border border-white/10 p-6 rounded-lg mt-12">
+        <div className="bg-zinc-900 border border-white/30 p-6 rounded-lg mt-12">
             <h2 className="text-2xl font-bold mb-4">Assessment Project</h2>
 
 
@@ -114,7 +114,7 @@ const LessonAssessment: React.FC<LessonAssessmentProps> = ({ lessonTitle, lesson
                     <p className="text-sm">{result.feedback}</p>
 
                     {result.passed && (
-                        <div className="mt-4 pt-4 border-t border-white/10">
+                        <div className="mt-4 pt-4 border-t border-white/30">
                             <p className="mb-4 text-sm text-zinc-300">Great job! Submit your work to mark this lesson as complete.</p>
                             <button
                                 onClick={handleFinalSubmit}

@@ -72,7 +72,7 @@ const Lessons: React.FC = () => {
             {/* Progress Dashboard */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
                 {Object.entries(domainProgress).map(([domain, stats]) => (
-                    <div key={domain} className="bg-zinc-900 border border-white/10 p-4 rounded-lg">
+                    <div key={domain} className="bg-zinc-900 border border-white/30 p-4 rounded-lg">
                         <h3 className="text-sm font-semibold text-zinc-400 mb-1">{domain.replace(/^\d+\.\s*/, '')}</h3>
                         <div className="flex items-end gap-2 mb-2">
                             <span className="text-2xl font-bold text-white">{stats.completed}</span>
@@ -91,7 +91,7 @@ const Lessons: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {lessons.map((lesson) => (
                     <Link to={`/lessons/${lesson.slug}`} key={lesson.slug} className="block group">
-                        <div className="bg-zinc-900 border border-white/10 p-6 rounded-lg h-full transition-all duration-300 group-hover:bg-zinc-800 group-hover:border-white/30 group-hover:scale-[1.02]">
+                        <div className="bg-zinc-900 border border-white/30 p-6 rounded-lg h-full transition-all duration-300 group-hover:bg-zinc-800 group-hover:border-white/30 group-hover:scale-[1.02]">
                             <div className="flex justify-between items-start mb-2">
                                 <span className={`text-xs font-semibold px-2 py-0.5 rounded ${lesson.domain === 'Domain' ? 'bg-gray-700' :
                                     lesson.domain === '0. Foundations' ? 'bg-blue-900 text-blue-100' :

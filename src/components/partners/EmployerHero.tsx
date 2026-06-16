@@ -13,7 +13,7 @@ const EmployerHero: React.FC = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-black to-black opacity-40 z-0"></div>
 
             <div className="container mx-auto px-6 relative z-10 text-center">
-                <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+                <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
                     <span className="text-sm font-medium tracking-wide text-gray-300">For Employers &amp; Partners</span>
                 </div>
 

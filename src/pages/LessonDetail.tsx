@@ -75,7 +75,7 @@ const LessonDetail: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-16 border-t border-white/10 pt-8">
+                <div className="mt-16 border-t border-white/30 pt-8">
                     <LessonAssessment
                         lessonTitle={lesson.title}
                         lessonId={lesson.id}
@@ -84,7 +84,7 @@ const LessonDetail: React.FC = () => {
                 </div>
             </div>
 
-            <div className="lg:w-1/3 border-l border-white/10 pl-0 lg:pl-12 pt-8 lg:pt-0">
+            <div className="lg:w-1/3 border-l border-white/30 pl-0 lg:pl-12 pt-8 lg:pt-0">
                 <div className="sticky top-24">
                     <LessonChat
                         lessonContext={lesson.rawContent}

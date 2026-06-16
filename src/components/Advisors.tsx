@@ -48,7 +48,7 @@ const Advisors: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
                     {advisors.map((advisor, idx) => (
                         <div key={idx} className="flex flex-col h-full">
-                            <div className="aspect-[4/5] bg-zinc-900 rounded-xl mb-8 overflow-hidden relative border border-white/5">
+                            <div className="aspect-[4/5] bg-zinc-900 rounded-xl mb-8 overflow-hidden relative border border-white/30">
                                 <motion.img
                                     src={advisor.image}
                                     alt={advisor.name}
