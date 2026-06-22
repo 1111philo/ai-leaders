@@ -7,7 +7,6 @@ import Advisors from '../components/Advisors';
 import OpenSourceCallout from '../components/OpenSourceCallout';
 import PlatoSection from '../components/PlatoSection';
 import FAQ from '../components/FAQ';
-import FinalistsBanner from '../components/FinalistsBanner';
 
 function Home() {
     const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
@@ -15,7 +14,6 @@ function Home() {
     return (
         <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey || ''}>
             <Hero />
-            <FinalistsBanner />
             <Partners />
             <About />
             <PlatoSection />

@@ -284,6 +284,19 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </nav>
 
             <main id="main-content" className="flex-grow pt-20">
+                <a
+                    href="https://aileaderswp.blog/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-zinc-900 border-b border-white/20 py-2.5 text-center text-sm font-medium text-gray-300 hover:text-white hover:bg-zinc-800 transition-all duration-300 group"
+                >
+                    <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-semibold">Meet Our Finalists</span>
+                    <span className="text-white/30 mx-2">·</span>
+                    <span>Cohort 1 portfolios from 40 graduates</span>
+                    <svg className="inline-block ml-2 w-3.5 h-3.5 text-gray-400 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
                 {children}
             </main>
 
