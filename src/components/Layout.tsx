@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import AnnouncementBanner from './AnnouncementBanner';
 
 const SlackIcon = ({ className }: { className?: string }) => (
     <svg viewBox="0 0 16 16" fill="currentColor" className={className} aria-hidden="true">
@@ -283,7 +284,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </AnimatePresence>
             </nav>
 
-            <main id="main-content" className="flex-grow pt-20">
+            <AnnouncementBanner />
+
+            <main id="main-content" className="flex-grow">
                 {children}
             </main>
 
