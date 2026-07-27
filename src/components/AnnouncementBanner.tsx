@@ -1,13 +1,19 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const AnnouncementBanner = () => {
+interface AnnouncementBannerProps {
+    /** Height of the fixed nav, so the banner sits flush beneath it. */
+    topOffset?: number;
+}
+
+const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
     return (
         <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative w-full bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-b border-purple-500/30 mt-20 overflow-hidden"
+            className="relative w-full bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-b border-purple-500/30 overflow-hidden"
+            style={{ marginTop: topOffset ?? '5rem' }}
             role="banner"
             aria-label="Announcement"
         >

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import AnnouncementBanner from './AnnouncementBanner';
@@ -14,6 +14,24 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState<string>('');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // The nav is fixed, so the banner below it needs a top offset equal to the
+    // nav bar's height. Measure it instead of hardcoding: the height differs
+    // between breakpoints (the mobile menu button is taller than the desktop
+    // CTA) and would drift if the nav's contents ever change. We measure the
+    // inner bar, not the <nav>, since the expanded mobile menu lives inside it.
+    const navBarRef = useRef<HTMLDivElement>(null);
+    const [navHeight, setNavHeight] = useState<number>();
+
+    useEffect(() => {
+        const bar = navBarRef.current;
+        if (!bar) return;
+        const measure = () => setNavHeight(bar.getBoundingClientRect().height);
+        measure();
+        const observer = new ResizeObserver(measure);
+        observer.observe(bar);
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -138,7 +156,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 Skip to main content
             </a>
             <nav aria-label="Main navigation" className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/30' : 'bg-transparent'}`}>
-                <div className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+                <div ref={navBarRef} className="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
                     <Link to="/" className="text-xl md:text-2xl font-bold tracking-tighter cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>AI LEADERS</Link>
                     <div className="hidden md:flex space-x-8 text-sm font-medium">
                         {primaryNav.map((item) => (
@@ -284,7 +302,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </AnimatePresence>
             </nav>
 
-            {location.pathname !== '/graduation' && <AnnouncementBanner />}
+            {location.pathname !== '/graduation' && <AnnouncementBanner topOffset={navHeight} />}
 
             <main id="main-content" className="flex-grow">
                 {children}
