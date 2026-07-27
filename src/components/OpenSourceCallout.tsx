@@ -57,7 +57,7 @@ const OpenSourceCallout: React.FC = () => {
                             <span>Join our Slack</span>
                         </a>
                         <a
-                            href="https://github.com/1111philo/ai-leaders"
+                            href="https://github.com/1111philo/plato"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative inline-flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold transition-all hover:scale-105 active:scale-95 whitespace-nowrap"

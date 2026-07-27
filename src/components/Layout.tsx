@@ -195,7 +195,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             <SlackIcon className="w-5 h-5" />
                         </a>
                         <a
-                            href="http://github.com/1111philo/ai-leaders/"
+                            href="https://github.com/1111philo/plato"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-zinc-300 hover:text-white transition-colors"
