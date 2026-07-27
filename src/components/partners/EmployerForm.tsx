@@ -123,9 +123,9 @@ const EmployerForm: React.FC = () => {
         <section id="connect" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6 max-w-2xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Hire AI Leaders</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Work With Us</h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-                        Tell us what you're hiring for and we'll connect you with vetted, AI-enabled candidates.
+                        Let's build new workforce opportunities together.
                     </p>
                 </div>
 

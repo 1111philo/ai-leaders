@@ -2,12 +2,12 @@ import React from 'react';
 
 const steps = [
     {
-        title: "Tell Us What You Need",
-        body: "Share the roles, skills, and start dates you're hiring for. The more detail, the better the match."
+        title: "Meet With Us",
+        body: "We start by understanding your team, your hiring needs, and the skills you're looking to build."
     },
     {
-        title: "We Match Candidates",
-        body: "We surface graduates whose portfolios and skills fit your needs — each with verified, evidence-backed work."
+        title: "Build the Program",
+        body: "Together we establish a course or internship that cultivates the talent your roles require."
     },
     {
         title: "Interview & Hire",
@@ -21,10 +21,10 @@ const HiringProcess: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        How Hiring Works.
+                        Partnership Process.
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        A simple path from your open role to a vetted, AI-enabled hire.
+                        A simple path from a first conversation to talent built for your team.
                     </p>
                 </div>
 

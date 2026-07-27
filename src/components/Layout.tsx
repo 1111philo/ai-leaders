@@ -35,7 +35,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'platform', 'process', 'connect', 'benefits', 'requirements'];
+        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'platform', 'case-study', 'process', 'connect', 'benefits', 'requirements'];
 
         sections.forEach((id) => {
             const el = document.getElementById(id);
@@ -98,9 +98,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             name: 'For Employers',
             path: '/employers',
             links: [
-                { name: 'Why Hire', href: '/employers#why', id: 'why' },
-                { name: 'The Platform', href: '/employers#platform', id: 'platform' },
-                { name: 'Hiring Process', href: '/employers#process', id: 'process' },
+                { name: 'What We Offer', href: '/employers#why', id: 'why' },
+                { name: 'Case Study', href: '/employers#case-study', id: 'case-study' },
+                { name: 'Partnership Process', href: '/employers#process', id: 'process' },
                 { name: 'Get in Touch', href: '/employers#connect', id: 'connect' },
             ],
         },

@@ -2,20 +2,16 @@ import React from 'react';
 
 const reasons = [
     {
-        title: "AI-Enabled",
-        body: "They bring their own judgment, amplified by fluency in prompting, agents, and LLM integration."
+        title: "Institutional Partnerships",
+        body: "We partner with major universities and colleges to source candidates from a diverse, motivated talent pool — before they hit the open market."
     },
     {
-        title: "WordPress-Skilled",
-        body: "Hands-on, portfolio-backed experience building professional, scalable WordPress sites and full-stack features."
+        title: "A Direct Pipeline",
+        body: "Tell us what you're building and we connect you with vetted, portfolio-backed candidates matched to your roles — proof of real production work, not promises."
     },
     {
-        title: "Rigorously Vetted",
-        body: "Graduates earn a micro-credential through real production work, not multiple-choice tests — proof, not promises."
-    },
-    {
-        title: "Built to Stay",
-        body: "Reflective by design: graduates spend as much time learning who they are as what they can do — so they integrate faster, adapt under change, and stay on teams longer."
+        title: "Future Workforce Leaders",
+        body: "Our courses cultivate leaders, not just hires: reflective by design, graduates integrate faster, adapt under change, and stay on teams longer."
     }
 ];
 
@@ -25,14 +21,14 @@ const WhyHire: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                        Why Hire <span className="text-gray-300">AI Leaders.</span>
+                        What We <span className="text-gray-300">Offer</span>
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        Our graduates pair human judgment with AI leverage — the exact combination teams need to move faster without sacrificing quality.
+                        <strong className="font-bold text-white">A pipeline for future talent.</strong> Work with major institutions to find talent and cultivate workforce leaders.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {reasons.map((reason) => (
                         <div
                             key={reason.title}

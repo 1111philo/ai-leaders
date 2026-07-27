@@ -18,12 +18,12 @@ const EmployerHero: React.FC = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Find AI-Enabled <br className="hidden md:block" />
-                    Team Members.
+                    Workforce Talent <br className="hidden md:block" />
+                    Pipeline
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Hire vetted, work-ready talent who pair real self-awareness with AI and WordPress leverage — people who ship on day one and stay past the first review cycle.
+                    We build courses and internships that cultivate job-ready talent.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -81,7 +81,7 @@ const EmployerHero: React.FC = () => {
 
                             {/* 5. Text Content */}
                             <span className="relative z-10 text-white uppercase text-xs tracking-[0.3em] flex items-center gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Hire Talent
+                                Partner
                                 <motion.svg
                                     className="w-4 h-4"
                                     fill="none"
@@ -100,10 +100,10 @@ const EmployerHero: React.FC = () => {
                         </motion.button>
                     </div>
                     <button
-                        onClick={() => scrollTo('skills')}
+                        onClick={() => scrollTo('process')}
                         className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white/20 text-white font-black rounded-2xl hover:bg-white/5 transition-all uppercase text-xs tracking-[0.2em] flex items-center justify-center cursor-pointer"
                     >
-                        See Their Skills
+                        Learn More
                     </button>
                 </div>
             </div>
