@@ -8,20 +8,20 @@ const CaseStudy: React.FC = () => {
                 <div className="flex flex-col md:flex-row gap-16 items-center">
                     <div className="md:w-1/2">
                         <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                            <span className="text-sm font-medium tracking-wide text-gray-300">Case Study · WordPress</span>
+                            <span className="text-sm font-medium tracking-wide text-gray-300">Case Study · Automattic</span>
                         </div>
                         <h2 id="case-study-heading" className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
                             Building the Next Generation of <span className="text-gray-300">WordPress Leaders.</span>
                         </h2>
                         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                             <p>
-                                WordPress wanted to leverage their platform for new educational opportunities.
+                                Automattic wanted to leverage WordPress for new educational opportunities.
                             </p>
                             <p>
                                 We built a course that centered students' job search around building a WordPress portfolio. Along the way, participants contribute to real projects, get to know the platform, and prove their skills through evidence, not tests.
                             </p>
                             <p>
-                                The result: a new generation of WordPress-enabled leaders.
+                                The result: a new generation of WordPress-enabled AI leaders at three major colleges.
                             </p>
                         </div>
                     </div>
