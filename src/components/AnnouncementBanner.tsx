@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const AnnouncementBanner = () => {
     return (
@@ -38,15 +39,13 @@ const AnnouncementBanner = () => {
                 >
                     <span aria-hidden="true">🎉 </span>Cohort One Complete!
                 </motion.p>
-                <a
-                    href="https://aileaderswp.blog/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <Link
+                    to="/graduation"
                     className="px-6 py-2 text-sm font-bold bg-white text-purple-900 rounded-full hover:bg-purple-50 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-800 whitespace-nowrap"
-                    aria-label="Meet the Finalists - opens in new tab"
+                    aria-label="Meet the Finalists"
                 >
                     Meet the Finalists <span aria-hidden="true">→</span>
-                </a>
+                </Link>
             </div>
         </motion.div>
     );

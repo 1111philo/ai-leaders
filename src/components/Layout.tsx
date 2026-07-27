@@ -284,7 +284,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </AnimatePresence>
             </nav>
 
-            <AnnouncementBanner />
+            {location.pathname !== '/graduation' && <AnnouncementBanner />}
 
             <main id="main-content" className="flex-grow">
                 {children}
