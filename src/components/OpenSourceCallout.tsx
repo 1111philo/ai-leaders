@@ -14,9 +14,10 @@ const SlackIcon = ({ className }: { className?: string }) => (
 
 const OpenSourceCallout: React.FC = () => {
     return (
-        <section className="relative bg-zinc-950 border-y border-white/30 py-12 overflow-hidden">
-            {/* Dynamic Coding Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
+        <section aria-labelledby="open-source-heading" className="relative bg-zinc-950 border-y border-white/30 py-12 overflow-hidden">
+            {/* Dynamic Coding Background — purely decorative, including the code
+                fragments, which otherwise get read aloud between the headings. */}
+            <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
                 {/* Subtle Grid */}
                 <div className="absolute inset-0 opacity-[0.03]"
                     style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
@@ -38,7 +39,7 @@ const OpenSourceCallout: React.FC = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
                     <div className="text-center md:text-left">
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
+                        <h2 id="open-source-heading" className="text-xl md:text-2xl font-bold text-white mb-2">
                             plato is an Open Source Platform
                         </h2>
                         <p className="text-zinc-300 text-sm md:text-base leading-relaxed max-w-xl">

@@ -7,6 +7,8 @@ interface AnnouncementBannerProps {
 }
 
 const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
+    // role="region", not "banner": banner is the site-header landmark, and this
+    // is a notice sitting below the header.
     return (
         <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -14,7 +16,7 @@ const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
             transition={{ duration: 0.5 }}
             className="relative w-full bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-b border-purple-500/30 overflow-hidden"
             style={{ marginTop: topOffset ?? '5rem' }}
-            role="banner"
+            role="region"
             aria-label="Announcement"
         >
             {/* Animated background accent */}

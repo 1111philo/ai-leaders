@@ -464,8 +464,12 @@ const ApplicationForm: React.FC = () => {
                                 type="submit"
                                 className="group relative w-full font-black py-5 rounded-2xl border border-white/30 mt-4 text-xs tracking-[0.2em] uppercase overflow-hidden flex items-center justify-center transition-colors duration-300 cursor-pointer hover:bg-white hover:text-black"
                             >
-                                <motion.div
-                                    className="absolute inset-0 z-0 bg-blue-500/5 rounded-2xl blur-lg"
+                                {/* A <div> inside a <button> is invalid content, which is why
+                                    VoiceOver announced this control as a group. The decorative
+                                    glow is a span so the button stays a button. */}
+                                <motion.span
+                                    aria-hidden="true"
+                                    className="absolute inset-0 z-0 block bg-blue-500/5 rounded-2xl blur-lg"
                                     animate={{
                                         opacity: [0.2, 0.4, 0.2],
                                         scale: [0.98, 1.02, 0.98],

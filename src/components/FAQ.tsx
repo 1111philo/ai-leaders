@@ -7,6 +7,9 @@ const FaqItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ ques
 
     return (
         <div className="border-b border-white/30">
+            {/* The question is a heading so screen reader users can navigate the
+                FAQ by heading; the button inside it is what toggles the answer. */}
+            <h3 className="m-0">
             <button
                 className="w-full py-6 flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg group"
                 onClick={() => setIsOpen(!isOpen)}
@@ -20,8 +23,13 @@ const FaqItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ ques
                     </svg>
                 </span>
             </button>
-            <div id={contentId} className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}>
-                <div className="text-gray-300 leading-relaxed max-w-2xl">{answer}</div>
+            </h3>
+            {/* `hidden` (not just max-height:0) so collapsed answers are genuinely
+                gone: out of the accessibility tree and out of the tab order. The
+                previous max-h-0 version stayed readable to screen readers, and
+                max-h-96 clipped the longer answers when open. */}
+            <div id={contentId} hidden={!isOpen}>
+                <div className="text-gray-300 leading-relaxed max-w-2xl pb-6">{answer}</div>
             </div>
         </div>
     );
@@ -58,35 +66,25 @@ const FAQ: React.FC = () => {
         },
         {
             question: "When is the next cohort?",
-            answer: (
-                <p>
-                    We're aiming to announce more by Summer 2026.{" "}
-                    <a
-                        href="#apply"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            const el = document.getElementById('apply');
-                            if (el) el.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        className="text-white hover:text-gray-300 underline underline-offset-4 decoration-white/30 transition-colors"
-                    >
-                        Subscribe for updates
-                    </a>
-                    .
-                </p>
-            )
+            // No link here: the subscribe form is the very next section, so a
+            // "Subscribe for updates" link immediately followed by a
+            // "Subscribe for updates" heading is pure redundancy.
+            answer: "We're aiming to announce more by Summer 2026. Use the subscribe form below to be the first to know."
         }
     ];
 
     return (
-        <section id="faq" className="py-24 bg-black">
+        <section id="faq" aria-labelledby="faq-heading" className="py-24 bg-black">
             <div className="container mx-auto px-6 max-w-4xl">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-12 text-center">Frequently Asked Questions</h2>
-                <div className="space-y-2">
+                <h2 id="faq-heading" className="text-3xl md:text-5xl font-bold tracking-tight mb-12 text-center">Frequently Asked Questions</h2>
+                {/* A real list, so screen readers announce "6 items" up front. */}
+                <ul className="space-y-2 list-none m-0 p-0">
                     {faqs.map((faq, index) => (
-                        <FaqItem key={index} question={faq.question} answer={faq.answer} />
+                        <li key={index}>
+                            <FaqItem question={faq.question} answer={faq.answer} />
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
         </section>
     );
