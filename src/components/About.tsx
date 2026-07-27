@@ -27,6 +27,30 @@ const About: React.FC = () => {
                                     <p className="text-sm text-gray-300">Build a website for your professional identity.</p>
                                 </div>
                             </div>
+                            {/* Third outcome, styled as a callout: it's the one that leads
+                                somewhere, so it spans the row and carries the accent. */}
+                            <a
+                                href="https://philosophers.group/ai-leaders-final-course-job-search-feedback-loop/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Job Placement — conquer the job placement feedback loop to make a career move (opens in a new tab)"
+                                className="group flex items-start gap-4 p-4 mt-4 border border-indigo-400/50 rounded-lg bg-gradient-to-r from-indigo-500/20 to-purple-500/20 transition-all hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                            >
+                                <div>
+                                    <h3 className="text-xl font-bold mb-2">
+                                        Job Placement
+                                    </h3>
+                                    <p className="text-sm text-gray-300">
+                                        Conquer the job placement feedback loop to make a career move.
+                                    </p>
+                                </div>
+                                <span
+                                    aria-hidden="true"
+                                    className="ml-auto text-indigo-300 transition-transform group-hover:translate-x-1"
+                                >
+                                    &rarr;
+                                </span>
+                            </a>
                         </div>
                     </div>
                     <div className="md:w-1/2 w-full">
