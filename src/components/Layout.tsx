@@ -206,7 +206,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                             </svg>
                         </a>
                         <a
-                            href="https://learn.ai-leaders.org/courses"
+                            href="https://plato.courses"
                             className="hidden md:inline-block text-zinc-300 hover:text-white transition-colors text-sm font-medium"
                         >
                             Login
@@ -273,7 +273,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                                     </div>
                                 ))}
                                 <a
-                                    href="https://learn.ai-leaders.org/courses"
+                                    href="https://plato.courses"
                                     className="block pt-2 border-t border-white/30 text-sm font-medium text-zinc-200 hover:text-white"
                                 >
                                     Login

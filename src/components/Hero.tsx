@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
 
                             {/* 5. Text Content */}
                             <span className="relative z-10 text-white uppercase text-xs tracking-[0.3em] flex items-center gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Receive Updates
+                                Get Started
                                 <motion.svg
                                     className="w-4 h-4"
                                     fill="none"

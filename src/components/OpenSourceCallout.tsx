@@ -39,7 +39,7 @@ const OpenSourceCallout: React.FC = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 max-w-5xl mx-auto">
                     <div className="text-center md:text-left">
                         <h2 className="text-xl md:text-2xl font-bold text-white mb-2">
-                            AI Leaders is an Open Source Platform
+                            plato is an Open Source Platform
                         </h2>
                         <p className="text-zinc-300 text-sm md:text-base leading-relaxed max-w-xl">
                             Work toward a job while contributing to a platform others can use.
