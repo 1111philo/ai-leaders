@@ -47,34 +47,34 @@ export const sendEmail = async (data: EmailData): Promise<boolean> => {
     }
 };
 
-export const sendEmployerInquiryEmail = async (data: {
+export const sendPartnerInquiryEmail = async (data: {
     company: string;
     name: string;
     email: string;
-    roles: string;
+    technology: string;
 }): Promise<boolean> => {
     return sendEmail({
         name: `${data.name} from ${data.company}`,
         email: data.email,
-        subject: '🤝 New Employer Inquiry - AI Leaders',
+        subject: '🤝 New Partner Inquiry - AI Leaders',
         message: `
-New Employer Inquiry
+New Partner Inquiry
 ━━━━━━━━━━━━━━━━━━━━━━
 
 Company: ${data.company}
 Contact: ${data.name}
 Email: ${data.email}
 
-Roles / Needs:
-${data.roles}
+Technology / Needs:
+${data.technology}
 
 ━━━━━━━━━━━━━━━━━━━━━━
-Sent from ai-leaders.org/employers
+Sent from ai-leaders.org/partners
         `.trim()
     });
 };
 
-export const sendEduPartnerInquiryEmail = async (data: {
+export const sendUniversityInquiryEmail = async (data: {
     institution: string;
     name: string;
     email: string;
@@ -83,9 +83,9 @@ export const sendEduPartnerInquiryEmail = async (data: {
     return sendEmail({
         name: `${data.name} from ${data.institution}`,
         email: data.email,
-        subject: '🎓 New EDU Partner Inquiry - AI Leaders',
+        subject: '🎓 New University Inquiry - AI Leaders',
         message: `
-New EDU Partner Inquiry
+New University Inquiry
 ━━━━━━━━━━━━━━━━━━━━━━
 
 Institution: ${data.institution}
@@ -96,7 +96,7 @@ Message:
 ${data.message}
 
 ━━━━━━━━━━━━━━━━━━━━━━
-Sent from ai-leaders.org/edu-partners
+Sent from ai-leaders.org/universities
         `.trim()
     });
 };

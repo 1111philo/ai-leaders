@@ -137,18 +137,18 @@ export const sendNotification = async (data: NotificationData): Promise<boolean>
     }
 };
 
-export interface EmployerInquiryData {
+export interface PartnerInquiryData {
     company: string;
     name: string;
     email: string;
-    roles: string;
+    technology: string;
 }
 
-export const sendEmployerInquiry = async (data: EmployerInquiryData): Promise<boolean> => {
+export const sendPartnerInquiry = async (data: PartnerInquiryData): Promise<boolean> => {
     const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
     if (import.meta.env.VITE_DISABLE_SLACK === 'true') {
-        console.info('Slack employer notifications are disabled (VITE_DISABLE_SLACK=true). Skipping.');
+        console.info('Slack partner notifications are disabled (VITE_DISABLE_SLACK=true). Skipping.');
         return true;
     }
 
@@ -164,7 +164,7 @@ export const sendEmployerInquiry = async (data: EmployerInquiryData): Promise<bo
                     type: "header",
                     text: {
                         type: "plain_text",
-                        text: "🤝 New Employer Inquiry",
+                        text: "🤝 New Partner Inquiry",
                         emoji: true
                     }
                 },
@@ -197,7 +197,7 @@ export const sendEmployerInquiry = async (data: EmployerInquiryData): Promise<bo
                     type: "section",
                     text: {
                         type: "mrkdwn",
-                        text: `*Roles / Needs:*\n>${data.roles.replace(/\n/g, "\n>")}`
+                        text: `*Technology / Needs:*\n>${data.technology.replace(/\n/g, "\n>")}`
                     }
                 }
             ]
@@ -214,23 +214,23 @@ export const sendEmployerInquiry = async (data: EmployerInquiryData): Promise<bo
 
         return true;
     } catch (error) {
-        console.error('Error sending employer inquiry:', error);
+        console.error('Error sending partner inquiry:', error);
         return false;
     }
 };
 
-export interface EduPartnerInquiryData {
+export interface UniversityInquiryData {
     institution: string;
     name: string;
     email: string;
     message: string;
 }
 
-export const sendEduPartnerInquiry = async (data: EduPartnerInquiryData): Promise<boolean> => {
+export const sendUniversityInquiry = async (data: UniversityInquiryData): Promise<boolean> => {
     const webhookUrl = import.meta.env.VITE_SLACK_WEBHOOK_URL;
 
     if (import.meta.env.VITE_DISABLE_SLACK === 'true') {
-        console.info('Slack EDU partner notifications are disabled (VITE_DISABLE_SLACK=true). Skipping.');
+        console.info('Slack university notifications are disabled (VITE_DISABLE_SLACK=true). Skipping.');
         return true;
     }
 
@@ -246,7 +246,7 @@ export const sendEduPartnerInquiry = async (data: EduPartnerInquiryData): Promis
                     type: "header",
                     text: {
                         type: "plain_text",
-                        text: "🎓 New EDU Partner Inquiry",
+                        text: "🎓 New University Inquiry",
                         emoji: true
                     }
                 },
@@ -296,7 +296,7 @@ export const sendEduPartnerInquiry = async (data: EduPartnerInquiryData): Promis
 
         return true;
     } catch (error) {
-        console.error('Error sending EDU partner inquiry:', error);
+        console.error('Error sending university inquiry:', error);
         return false;
     }
 };

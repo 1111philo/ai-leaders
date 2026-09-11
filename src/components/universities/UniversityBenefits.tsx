@@ -19,7 +19,7 @@ const benefits = [
     }
 ];
 
-const PartnerBenefits: React.FC = () => {
+const UniversityBenefits: React.FC = () => {
     return (
         <section id="benefits" className="py-24 bg-black">
             <div className="container mx-auto px-6">
@@ -48,4 +48,4 @@ const PartnerBenefits: React.FC = () => {
     );
 };
 
-export default PartnerBenefits;
+export default UniversityBenefits;

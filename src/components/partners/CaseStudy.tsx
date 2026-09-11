@@ -11,17 +11,17 @@ const CaseStudy: React.FC = () => {
                             <span className="text-sm font-medium tracking-wide text-gray-300">Case Study · Automattic</span>
                         </div>
                         <h2 id="case-study-heading" className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-                            Building the Next Generation of <span className="text-gray-300">WordPress Leaders.</span>
+                            Putting WordPress in the Hands of <span className="text-gray-300">Students.</span>
                         </h2>
                         <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
                             <p>
                                 Automattic wanted to leverage WordPress for new educational opportunities.
                             </p>
                             <p>
-                                We built a course that centered students' job search around building a WordPress portfolio. Along the way, participants contribute to real projects, get to know the platform, and prove their skills through evidence, not tests.
+                                We custom-built a module that centered students' job search around building a WordPress portfolio. Along the way, participants contribute to real projects, learn the platform from the inside, and prove their skills through evidence, not tests.
                             </p>
                             <p>
-                                The result: a new generation of WordPress-enabled AI leaders at three major colleges.
+                                The result: WordPress in daily use at three major colleges — and a new generation of WordPress-enabled AI leaders.
                             </p>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const EduHero: React.FC = () => {
+const UniversityHero: React.FC = () => {
     const scrollTo = (id: string) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -14,7 +14,7 @@ const EduHero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">For Educational Partners</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">For Universities</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
@@ -111,4 +111,4 @@ const EduHero: React.FC = () => {
     );
 };
 
-export default EduHero;
+export default UniversityHero;

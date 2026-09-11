@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { sendEmployerInquiry } from '../../services/notifications';
-import { sendEmployerInquiryEmail } from '../../services/email';
+import { sendPartnerInquiry } from '../../services/notifications';
+import { sendPartnerInquiryEmail } from '../../services/email';
 import { syncToGoogleSheet } from '../../services/googleSheets';
 
 const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }) => {
@@ -17,7 +17,7 @@ const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }
     );
 };
 
-const EmployerForm: React.FC = () => {
+const PartnerForm: React.FC = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -26,7 +26,7 @@ const EmployerForm: React.FC = () => {
         company: '',
         name: '',
         email: '',
-        roles: ''
+        technology: ''
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,7 +52,7 @@ const EmployerForm: React.FC = () => {
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = "Please enter a valid email address (e.g., name@company.com).";
         }
-        if (!formData.roles) newErrors.roles = "Please tell us what roles you're hiring for.";
+        if (!formData.technology) newErrors.technology = "Please tell us about the technology you want students to use.";
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -67,7 +67,7 @@ const EmployerForm: React.FC = () => {
             return;
         }
 
-        const token = await executeRecaptcha('employer_inquiry');
+        const token = await executeRecaptcha('partner_inquiry');
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         if (!token && !isLocalhost) {
             alert("Security verification failed. Please try again.");
@@ -77,13 +77,13 @@ const EmployerForm: React.FC = () => {
         setIsSubmitting(true);
         try {
             await Promise.all([
-                sendEmployerInquiry(formData),
-                sendEmployerInquiryEmail(formData),
+                sendPartnerInquiry(formData),
+                sendPartnerInquiryEmail(formData),
                 syncToGoogleSheet({
                     email: formData.email,
                     firstName: formData.name,
                     affiliation: formData.company,
-                    response: formData.roles
+                    response: formData.technology
                 })
             ]);
             setSubmitted(true);
@@ -111,7 +111,7 @@ const EmployerForm: React.FC = () => {
                         </div>
                         <h2 className="text-3xl font-bold text-white mb-4">Thanks — We'll Be in Touch</h2>
                         <p className="text-gray-300 text-lg leading-relaxed">
-                            We've received your inquiry and will reach out shortly to learn more about your hiring needs.
+                            We've received your inquiry and will reach out shortly to talk through how to get your technology in front of students.
                         </p>
                     </motion.div>
                 </div>
@@ -125,14 +125,14 @@ const EmployerForm: React.FC = () => {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Work With Us</h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-                        Let's build new workforce opportunities together.
+                        Let's get your technology in front of the next generation of AI leaders.
                     </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="bg-black border border-white/30 p-10 rounded-3xl shadow-2xl relative overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div className="space-y-3">
-                            <label htmlFor="company" className="text-xs font-black uppercase tracking-widest text-zinc-300">Company Name</label>
+                            <label htmlFor="company" className="text-xs font-black uppercase tracking-widest text-zinc-300">Company or Organization</label>
                             <input
                                 type="text"
                                 id="company"
@@ -177,19 +177,19 @@ const EmployerForm: React.FC = () => {
                     </div>
 
                     <div className="space-y-3 mb-10">
-                        <label htmlFor="roles" className="text-xs font-black uppercase tracking-widest text-zinc-300">What Roles Are You Hiring For?</label>
+                        <label htmlFor="technology" className="text-xs font-black uppercase tracking-widest text-zinc-300">What Technology Do You Want Students Using?</label>
                         <textarea
-                            id="roles"
-                            value={formData.roles}
+                            id="technology"
+                            value={formData.technology}
                             onChange={handleInputChange}
                             rows={5}
-                            placeholder="Tell us about the roles, skills, and timeline you have in mind."
-                            aria-invalid={!!errors.roles}
-                            aria-describedby={errors.roles ? 'roles-error' : undefined}
-                            className={`w-full bg-zinc-950 border ${errors.roles ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm leading-relaxed`}
+                            placeholder="Tell us about your technology, the campuses or communities you want to reach, and the timeline you have in mind."
+                            aria-invalid={!!errors.technology}
+                            aria-describedby={errors.technology ? 'technology-error' : undefined}
+                            className={`w-full bg-zinc-950 border ${errors.technology ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500/50' : 'border-zinc-600'} rounded-2xl px-6 py-5 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all text-sm leading-relaxed`}
                             required
                         ></textarea>
-                        <FieldError id="roles-error" message={errors.roles} />
+                        <FieldError id="technology-error" message={errors.technology} />
                     </div>
 
                     <div className="space-y-4 mb-4">
@@ -245,4 +245,4 @@ const EmployerForm: React.FC = () => {
     );
 };
 
-export default EmployerForm;
+export default PartnerForm;

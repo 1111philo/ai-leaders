@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const EmployerHero: React.FC = () => {
+const PartnerHero: React.FC = () => {
     const scrollTo = (id: string) => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -14,16 +14,16 @@ const EmployerHero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">For Employers &amp; Partners</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">For Technology Partners</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Workforce Talent <br className="hidden md:block" />
-                    Pipeline
+                    Expose Campuses <br className="hidden md:block" />
+                    to Your Tech
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    We build courses and internships that cultivate job-ready talent.
+                    AI Leaders is a pathway to put your technology in students' hands. We custom-build modules that work with the vendor technology universities already run.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -81,7 +81,7 @@ const EmployerHero: React.FC = () => {
 
                             {/* 5. Text Content */}
                             <span className="relative z-10 text-white uppercase text-xs tracking-[0.3em] flex items-center gap-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                                Partner
+                                Become a Partner
                                 <motion.svg
                                     className="w-4 h-4"
                                     fill="none"
@@ -100,10 +100,10 @@ const EmployerHero: React.FC = () => {
                         </motion.button>
                     </div>
                     <button
-                        onClick={() => scrollTo('process')}
+                        onClick={() => scrollTo('offer')}
                         className="w-full sm:w-auto px-10 py-5 bg-transparent border border-white/20 text-white font-black rounded-2xl hover:bg-white/5 transition-all uppercase text-xs tracking-[0.2em] flex items-center justify-center cursor-pointer"
                     >
-                        Learn More
+                        See What We Offer
                     </button>
                 </div>
             </div>
@@ -111,4 +111,4 @@ const EmployerHero: React.FC = () => {
     );
 };
 
-export default EmployerHero;
+export default PartnerHero;

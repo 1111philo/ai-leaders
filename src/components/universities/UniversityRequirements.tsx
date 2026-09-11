@@ -19,7 +19,7 @@ const requirements = [
     }
 ];
 
-const PartnerRequirements: React.FC = () => {
+const UniversityRequirements: React.FC = () => {
     return (
         <section id="requirements" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6">
@@ -51,4 +51,4 @@ const PartnerRequirements: React.FC = () => {
     );
 };
 
-export default PartnerRequirements;
+export default UniversityRequirements;

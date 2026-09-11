@@ -20,7 +20,7 @@ interface FinalistsPanelProps {
 
 // Reusable "Cohort One Finalists" showcase: a 2×2 grid of portfolios where the
 // bottom row fades under a "view all" CTA to tease the full graduation list.
-// Shared by the For Students (About) and For Employers (case study) pages —
+// Shared by the For Students (About) and For Partners (case study) pages —
 // copy is overridable so each context can frame the same portfolios its own way.
 const FinalistsPanel: React.FC<FinalistsPanelProps> = ({
     headingId = 'finalists-heading',

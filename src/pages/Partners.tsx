@@ -1,24 +1,24 @@
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
-import EmployerHero from '../components/partners/EmployerHero';
-import WhyHire from '../components/partners/WhyHire';
-import HiringProcess from '../components/partners/HiringProcess';
-import EmployerForm from '../components/partners/EmployerForm';
+import PartnerHero from '../components/partners/PartnerHero';
+import WhatWeOffer from '../components/partners/WhatWeOffer';
+import PartnershipProcess from '../components/partners/PartnershipProcess';
+import PartnerForm from '../components/partners/PartnerForm';
 import CaseStudy from '../components/partners/CaseStudy';
 import Partners from '../components/Partners';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 function PartnersPage() {
     const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-    usePageTitle('For Employers');
+    usePageTitle('For Partners');
 
     return (
         <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey || ''}>
-            <EmployerHero />
-            <WhyHire />
+            <PartnerHero />
+            <WhatWeOffer />
             <Partners />
             <CaseStudy />
-            <HiringProcess />
-            <EmployerForm />
+            <PartnershipProcess />
+            <PartnerForm />
         </GoogleReCaptchaProvider>
     );
 }

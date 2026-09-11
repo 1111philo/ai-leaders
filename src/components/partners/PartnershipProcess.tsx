@@ -3,19 +3,19 @@ import React from 'react';
 const steps = [
     {
         title: "Meet With Us",
-        body: "We start by understanding your team, your hiring needs, and the skills you're looking to build."
+        body: "We start by understanding your technology, the communities you want to reach, and what exposure looks like for your team."
     },
     {
-        title: "Build the Program",
-        body: "Together we establish a course or internship that cultivates the talent your roles require."
+        title: "Build the Module",
+        body: "Together we design a competition, credential track, or event — custom-built to work with the vendor technology our universities already run."
     },
     {
-        title: "Interview & Hire",
-        body: "Meet your shortlist, review their real production work, and bring on team members who can hit the ground running."
+        title: "Reach Students",
+        body: "Your tech goes live across partner campuses. Students build with it, publish with it, and carry it into their careers."
     }
 ];
 
-const HiringProcess: React.FC = () => {
+const PartnershipProcess: React.FC = () => {
     return (
         <section id="process" className="py-24 bg-zinc-950 border-y border-white/20">
             <div className="container mx-auto px-6">
@@ -24,7 +24,7 @@ const HiringProcess: React.FC = () => {
                         Partnership Process.
                     </h2>
                     <p className="text-gray-300 text-lg leading-relaxed">
-                        A simple path from a first conversation to talent built for your team.
+                        A simple path from a first conversation to your technology in students' hands.
                     </p>
                 </div>
 
@@ -44,4 +44,4 @@ const HiringProcess: React.FC = () => {
     );
 };
 
-export default HiringProcess;
+export default PartnershipProcess;

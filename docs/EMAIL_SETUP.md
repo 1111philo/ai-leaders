@@ -1,6 +1,6 @@
 # Email Notification Setup
 
-The employer and EDU partner forms send notifications via email to `help@ai-leaders.org` using Web3Forms.
+The partner and university forms send notifications via email to `help@ai-leaders.org` using Web3Forms.
 
 ## Setup Instructions
 
@@ -37,21 +37,21 @@ All three methods run in parallel, so if one fails, the others still work.
 
 ## Email Format
 
-### Employer Inquiries
+### Partner Inquiries
 ```
-Subject: 🤝 New Employer Inquiry - AI Leaders
+Subject: 🤝 New Partner Inquiry - AI Leaders
 
 Company: [Company Name]
 Contact: [Contact Name]
 Email: [Email]
 
-Roles / Needs:
+Technology / Needs:
 [Their message]
 ```
 
-### EDU Partner Inquiries
+### University Inquiries
 ```
-Subject: 🎓 New EDU Partner Inquiry - AI Leaders
+Subject: 🎓 New University Inquiry - AI Leaders
 
 Institution: [Institution Name]
 Contact: [Contact Name]

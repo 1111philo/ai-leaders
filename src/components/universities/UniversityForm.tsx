@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
-import { sendEduPartnerInquiry } from '../../services/notifications';
-import { sendEduPartnerInquiryEmail } from '../../services/email';
+import { sendUniversityInquiry } from '../../services/notifications';
+import { sendUniversityInquiryEmail } from '../../services/email';
 import { syncToGoogleSheet } from '../../services/googleSheets';
 
 const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }) => {
@@ -17,7 +17,7 @@ const FieldError: React.FC<{ id?: string; message?: string }> = ({ id, message }
     );
 };
 
-const EduPartnerForm: React.FC = () => {
+const UniversityForm: React.FC = () => {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -67,7 +67,7 @@ const EduPartnerForm: React.FC = () => {
             return;
         }
 
-        const token = await executeRecaptcha('edu_partner_inquiry');
+        const token = await executeRecaptcha('university_inquiry');
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         if (!token && !isLocalhost) {
             alert("Security verification failed. Please try again.");
@@ -77,8 +77,8 @@ const EduPartnerForm: React.FC = () => {
         setIsSubmitting(true);
         try {
             await Promise.all([
-                sendEduPartnerInquiry(formData),
-                sendEduPartnerInquiryEmail(formData),
+                sendUniversityInquiry(formData),
+                sendUniversityInquiryEmail(formData),
                 syncToGoogleSheet({
                     email: formData.email,
                     firstName: formData.name,
@@ -245,4 +245,4 @@ const EduPartnerForm: React.FC = () => {
     );
 };
 
-export default EduPartnerForm;
+export default UniversityForm;
