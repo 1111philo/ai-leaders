@@ -58,7 +58,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        const sections = ['about', 'advisors', 'faq', 'apply', 'why', 'platform', 'case-study', 'process', 'connect', 'benefits', 'requirements'];
+        const sections = ['about', 'faq', 'apply', 'offer', 'platform', 'case-study', 'process', 'connect', 'benefits', 'requirements'];
 
         sections.forEach((id) => {
             const el = document.getElementById(id);
@@ -113,7 +113,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             links: [
                 { name: 'About', href: '/#about', id: 'about' },
                 { name: 'The Platform', href: '/#platform', id: 'platform' },
-                { name: 'Advisors', href: '/#advisors', id: 'advisors' },
                 { name: 'FAQ', href: '/#faq', id: 'faq' },
             ],
         },

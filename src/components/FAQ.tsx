@@ -39,7 +39,7 @@ const FAQ: React.FC = () => {
     const faqs = [
         {
             question: "What is the AI Leader Program and what do I get?",
-            answer: "A remote workforce program that helps you earn a WordPress micro-credential and compete for living-wage WordPress job placement."
+            answer: "A remote workforce program. You receive an AI Leaders micro-credential and a WordPress-powered portfolio, plus job placement through the program."
         },
         {
             question: "How is this different from a bootcamp?",

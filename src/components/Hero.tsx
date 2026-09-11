@@ -14,8 +14,7 @@ const Hero: React.FC = () => {
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-2 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
-                    Harness Your AI <br className="hidden md:block" />
-                    + WordPress Powers.
+                    Harness AI Powers.
                 </h1>
 
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent pb-2">
@@ -23,7 +22,7 @@ const Hero: React.FC = () => {
                 </h2>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Earn a Micro-credential in AI Leadership and WordPress development — and compete for living-wage jobs.
+                    Earn a Micro-credential in AI Leadership — and boost your ability to earn a living-wage job.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
