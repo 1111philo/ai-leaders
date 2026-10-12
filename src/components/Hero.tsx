@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort Two - Coming Soon</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort 2 - Launching 11/11/26</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-2 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
@@ -18,11 +18,11 @@ const Hero: React.FC = () => {
                 </h1>
 
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-8 bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent pb-2">
-                    Earn Living-Wage Jobs.
+                    Connect to Living-Wage Careers.
                 </h2>
 
                 <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Earn a Micro-credential in AI Leadership — and boost your ability to earn a living-wage job.
+                    Earn a Micro-credential in AI Literacy &amp; Leadership, build your Digital Portfolio, and accelerate your pathway to Living Wage Careers.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

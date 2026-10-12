@@ -66,10 +66,10 @@ const FAQ: React.FC = () => {
         },
         {
             question: "When is the next cohort?",
-            // No link here: the subscribe form is the very next section, so a
-            // "Subscribe for updates" link immediately followed by a
-            // "Subscribe for updates" heading is pure redundancy.
-            answer: "We're aiming to announce more by Summer 2026. Use the subscribe form below to be the first to know."
+            // No link here: the registration form is the very next section, so a
+            // "Register" link immediately followed by a "Register" heading is
+            // pure redundancy.
+            answer: "Cohort 2 launches November 11, 2026. Register using the form below."
         }
     ];
 
