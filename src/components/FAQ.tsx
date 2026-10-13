@@ -38,8 +38,8 @@ const FaqItem: React.FC<{ question: string; answer: React.ReactNode }> = ({ ques
 const FAQ: React.FC = () => {
     const faqs = [
         {
-            question: "What is the AI Leader Program and what do I get?",
-            answer: "A remote workforce program. You receive an AI Leaders micro-credential and a WordPress-powered portfolio, plus job placement through the program."
+            question: "What is the AI Leaders Program and what do I get?",
+            answer: "A remote micro-credential program on a mission to upskill students and professionals in AI leadership so they can land living-wage jobs. All graduates receive a micro-credential certificate as proof of completion and a WordPress-powered portfolio. Those selected as top 40 finalists who are seeking employment also receive expert career coaching, a letter of recommendation, and connections to hiring employers — plus more exciting perks to be announced along the way."
         },
         {
             question: "How is this different from a bootcamp?",
@@ -47,7 +47,7 @@ const FAQ: React.FC = () => {
         },
         {
             question: "Who can apply?",
-            answer: "AI Leaders is for those interested in exploring a career in technology."
+            answer: "AI Leaders is for students and professionals seeking to compete in today's job market. Anyone can apply, though only participants from partner organizations are eligible to be selected as top 40 finalists."
         },
         {
             question: "How do I register, and how are participants selected?",
@@ -55,14 +55,14 @@ const FAQ: React.FC = () => {
                 <div className="space-y-4">
                     <p>When a cohort is open for applications, the application will be added to this site. The application system immediately informs you if you are a strong candidate.</p>
                     <p>Strong candidates are invited to register for a cohort orientation. Orientation participants are introduced to the program and invited in.</p>
-                    <p>On the platform, you can select courses. Top Learners are selected for outcomes, as availability allows.</p>
+                    <p>On the platform, you can select courses. The top 40 finalists are selected based on community engagement and quality of work, and receive career coaching, connections to hiring organizations, and other exciting perks, as availability allows.</p>
                 </div>
             )
         },
 
         {
             question: "Where do I take the program, and is there a place I can work from?",
-            answer: "The program is remote. Optional facility access is available at Louisiana Tech, University of Louisiana Lafayette, and University of Illinois Chicago. Additional locations are added as needed."
+            answer: "The program is fully remote and can be completed from wherever you are. Optional facility access is available at Louisiana Tech University, Cleveland State University, and the University of Illinois Chicago. Additional locations are added as needed."
         },
         {
             question: "When is the next cohort?",
