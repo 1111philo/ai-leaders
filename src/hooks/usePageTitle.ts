@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const BASE = 'AI Leaders';
-const DEFAULT_TITLE = 'AI Leaders - Harness Your AI + WordPress Powers';
+const DEFAULT_TITLE = 'AI Leaders - Harness AI Powers. Connect to Living-Wage Careers.';
 
 // Sets document.title for the current route (client-side, for this SPA).
 // Pass a page-specific title like "Graduation" to get "AI Leaders — Graduation";
