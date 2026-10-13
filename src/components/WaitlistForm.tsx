@@ -17,8 +17,35 @@ type UserField = {
 
 type Status = 'loading' | 'open' | 'closed' | 'unavailable' | 'done';
 
+// These mirror plato's own checks (server/src/lib/waitlist.js and
+// user-fields.js), so people see the problem here instead of a generic
+// rejection after submitting.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^\+?[0-9 ().-]+$/;
+const MAX_LENGTH: Record<UserField['type'], number> = { text: 200, textarea: 2000, dropdown: 200, link: 2000, phone: 30 };
+
+// A field plato stores as plain text but labels "Phone" is still checked as a
+// phone number. Once its type is Phone in plato admin, the label match is moot.
+const isPhoneField = (f: UserField) => f.type === 'phone' || /phone/i.test(f.label);
+
+const isValidPhone = (value: string) => {
+    const digits = value.replace(/\D/g, '').length;
+    return PHONE_RE.test(value) && digits >= 7 && digits <= 15;
+};
+
+const isValidLink = (value: string) => {
+    try {
+        const url = new URL(value);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+        return false;
+    }
+};
+
+const fieldInputId = (f: UserField) => `waitlist-${f.id}`;
+
 const LABEL_CLASS = 'text-xs font-black uppercase tracking-widest text-zinc-300';
-const INPUT_CLASS = 'w-full bg-zinc-900 border border-zinc-600 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium';
+const INPUT_CLASS = 'w-full bg-zinc-900 border border-zinc-600 rounded-xl px-5 py-4 text-white focus:outline-none focus:ring-2 focus:ring-white/40 transition-all font-medium aria-[invalid=true]:border-red-400';
 
 const ChevronIcon = () => (
     <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-300">
@@ -33,6 +60,9 @@ const RequiredMark = () => (
     <span className="ml-2 normal-case tracking-normal font-medium text-zinc-400" aria-hidden="true">(required)</span>
 );
 
+const FieldError: React.FC<{ id: string; message?: string }> = ({ id, message }) =>
+    message ? <p id={`${id}-error`} className="text-sm text-red-300">{message}</p> : null;
+
 const WaitlistForm: React.FC = () => {
     const [status, setStatus] = useState<Status>('loading');
     const [groups, setGroups] = useState<string[]>([]);
@@ -42,6 +72,7 @@ const WaitlistForm: React.FC = () => {
     const [group, setGroup] = useState('');
     const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
     const [website, setWebsite] = useState(''); // honeypot, see below
+    const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({}); // keyed by input id
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
@@ -61,18 +92,47 @@ const WaitlistForm: React.FC = () => {
             .catch(() => setStatus('unavailable'));
     }, []);
 
+    const clearFieldError = (id: string) =>
+        setFieldErrors(prev => {
+            if (!prev[id]) return prev;
+            const next = { ...prev };
+            delete next[id];
+            return next;
+        });
+
+    // Errors in on-screen order, so focus lands on the first one.
+    const validate = (): Record<string, string> => {
+        const errors: Record<string, string> = {};
+        if (!name.trim()) errors['waitlist-name'] = 'Please enter your name.';
+        if (!email.trim()) errors['waitlist-email'] = 'Please enter your email address.';
+        else if (!EMAIL_RE.test(email.trim())) errors['waitlist-email'] = 'Please enter a valid email address, like name@example.com.';
+        if (groups.length > 0 && !group) errors['waitlist-group'] = 'Please select your affiliation.';
+
+        userFields.forEach(f => {
+            const id = fieldInputId(f);
+            const value = (fieldValues[f.id] || '').trim();
+            if (!value) {
+                if (f.required) errors[id] = f.type === 'dropdown' ? `Please select your ${f.label.toLowerCase()}.` : `Please enter your ${f.label.toLowerCase()}.`;
+            } else if (value.length > MAX_LENGTH[f.type]) {
+                errors[id] = `${f.label} must be ${MAX_LENGTH[f.type]} characters or fewer.`;
+            } else if (isPhoneField(f) && !isValidPhone(value)) {
+                errors[id] = 'Please enter a valid phone number, like (312) 555-0123.';
+            } else if (f.type === 'link' && !isValidLink(value)) {
+                errors[id] = 'Please enter a full link starting with https://.';
+            }
+        });
+        return errors;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        const missing: string[] = [];
-        if (!name.trim()) missing.push('Name');
-        if (!email.trim()) missing.push('Email Address');
-        if (groups.length > 0 && !group) missing.push('Affiliation');
-        userFields.forEach(f => {
-            if (f.required && !(fieldValues[f.id] || '').trim()) missing.push(f.label);
-        });
-        if (missing.length) {
-            setError(`Please fill in: ${missing.join(', ')}.`);
+        const errors = validate();
+        setFieldErrors(errors);
+        const invalidIds = Object.keys(errors);
+        if (invalidIds.length) {
+            setError(invalidIds.length === 1 ? 'Please fix the field marked below.' : `Please fix the ${invalidIds.length} fields marked below.`);
+            document.getElementById(invalidIds[0])?.focus();
             return;
         }
 
@@ -104,14 +164,24 @@ const WaitlistForm: React.FC = () => {
         }
     };
 
+    // Shared accessibility wiring: marks the control invalid and points it at
+    // its error message so screen readers read the message with the field.
+    const errorProps = (id: string) => ({
+        'aria-invalid': fieldErrors[id] ? true : undefined,
+        'aria-describedby': fieldErrors[id] ? `${id}-error` : undefined,
+    });
+
     const renderField = (f: UserField) => {
-        const id = `waitlist-${f.id}`;
+        const id = fieldInputId(f);
         const common = {
             id,
             value: fieldValues[f.id] || '',
             'aria-required': f.required || undefined,
-            onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-                setFieldValues(prev => ({ ...prev, [f.id]: e.target.value })),
+            ...errorProps(id),
+            onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+                setFieldValues(prev => ({ ...prev, [f.id]: e.target.value }));
+                clearFieldError(id);
+            },
         };
 
         let control: React.ReactNode;
@@ -127,7 +197,7 @@ const WaitlistForm: React.FC = () => {
                     <ChevronIcon />
                 </div>
             );
-        } else if (f.type === 'phone') {
+        } else if (isPhoneField(f)) {
             control = <input type="tel" autoComplete="tel" className={INPUT_CLASS} {...common} />;
         } else if (f.type === 'link') {
             control = <input type="url" inputMode="url" placeholder="https://" className={INPUT_CLASS} {...common} />;
@@ -142,6 +212,7 @@ const WaitlistForm: React.FC = () => {
                     {f.required && <RequiredMark />}
                 </label>
                 {control}
+                <FieldError id={id} message={fieldErrors[id]} />
             </div>
         );
     };
@@ -172,12 +243,16 @@ const WaitlistForm: React.FC = () => {
                     <div className="space-y-3">
                         <label htmlFor="waitlist-name" className={LABEL_CLASS}>Name<RequiredMark /></label>
                         <input id="waitlist-name" type="text" autoComplete="name" maxLength={200} aria-required="true"
-                            value={name} onChange={e => setName(e.target.value)} className={INPUT_CLASS} />
+                            {...errorProps('waitlist-name')}
+                            value={name} onChange={e => { setName(e.target.value); clearFieldError('waitlist-name'); }} className={INPUT_CLASS} />
+                        <FieldError id="waitlist-name" message={fieldErrors['waitlist-name']} />
                     </div>
                     <div className="space-y-3">
                         <label htmlFor="waitlist-email" className={LABEL_CLASS}>Email Address<RequiredMark /></label>
                         <input id="waitlist-email" type="email" autoComplete="email" maxLength={200} aria-required="true"
-                            value={email} onChange={e => setEmail(e.target.value)} className={INPUT_CLASS} />
+                            {...errorProps('waitlist-email')}
+                            value={email} onChange={e => { setEmail(e.target.value); clearFieldError('waitlist-email'); }} className={INPUT_CLASS} />
+                        <FieldError id="waitlist-email" message={fieldErrors['waitlist-email']} />
                     </div>
                 </div>
 
@@ -186,13 +261,15 @@ const WaitlistForm: React.FC = () => {
                         <div className="space-y-3">
                             <label htmlFor="waitlist-group" className={LABEL_CLASS}>Affiliation<RequiredMark /></label>
                             <div className="relative">
-                                <select id="waitlist-group" aria-required="true" value={group} onChange={e => setGroup(e.target.value)}
+                                <select id="waitlist-group" aria-required="true" {...errorProps('waitlist-group')} value={group}
+                                    onChange={e => { setGroup(e.target.value); clearFieldError('waitlist-group'); }}
                                     className={`${INPUT_CLASS} appearance-none cursor-pointer pr-12`}>
                                     <option value="">Select your affiliation...</option>
                                     {groups.map(g => <option key={g} value={g}>{g}</option>)}
                                 </select>
                                 <ChevronIcon />
                             </div>
+                            <FieldError id="waitlist-group" message={fieldErrors['waitlist-group']} />
                         </div>
                     )}
                     {userFields.map(renderField)}
