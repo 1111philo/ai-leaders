@@ -51,12 +51,7 @@ const FAQ: React.FC = () => {
         },
         {
             question: "How do I register, and how are participants selected?",
-            answer: (
-                <div className="space-y-4">
-                    <p>When a cohort is open for applications, the application will be added to this site. The application system immediately informs you if you are a strong candidate. Strong candidates are invited to register for a cohort orientation. Orientation participants are introduced to the program and invited in.</p>
-                    <p>On the platform, you can select courses. The top 40 finalists are selected based on community engagement and quality of work, and will receive career coaching, connections to hiring organizations and other exciting perks, as availability allows.</p>
-                </div>
-            )
+            answer: "Register using the form at the bottom of this page. Registrants receive an email invitation to join the learning platform and details regarding orientation. On the platform, you can select courses. The top 40 finalists of each cohort are selected based on community engagement and quality of work, and will receive career coaching, exclusive connections to hiring organizations and other exciting perks, as availability allows."
         },
 
         {
