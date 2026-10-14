@@ -39,7 +39,7 @@ const FAQ: React.FC = () => {
     const faqs = [
         {
             question: "What is the AI Leaders Program and what do I get?",
-            answer: "A remote micro-credential program on a mission to upskill students and professionals in AI leadership so they can land living-wage jobs. All graduates receive a micro-credential certificate as proof of completion and a WordPress-powered portfolio. Those selected as top 40 finalists who are seeking employment also receive expert career coaching, a letter of recommendation, and connections to hiring employers — plus more exciting perks to be announced along the way."
+            answer: "A remote micro-credential program on a mission to upskill students and professionals in AI leadership so they can land living-wage jobs. All graduates will receive a micro-credential certificate for proof of completion and a WordPress-powered portfolio. Those selected among the top 40 finalists who are seeking employment will also receive expert career coaching, a letter of recommendation, and connections to hiring employers — and more exciting perks to be announced along the way."
         },
         {
             question: "How is this different from a bootcamp?",
@@ -47,21 +47,21 @@ const FAQ: React.FC = () => {
         },
         {
             question: "Who can apply?",
-            answer: "AI Leaders is for students and professionals seeking to compete in today's job market. Anyone can apply, though only participants from partner organizations are eligible to be selected as top 40 finalists."
+            answer: "AI Leaders is for students and professionals seeking to compete in today's job market. Anyone can apply, though only participants from partner organizations are eligible to be chosen among the top 40 finalists."
         },
         {
             question: "How do I register, and how are participants selected?",
             answer: (
                 <div className="space-y-4">
-                    <p>Register using the form at the bottom of this page. Registrants receive an email invitation to join the learning platform.</p>
-                    <p>On the platform, you can select courses. The top 40 finalists are selected based on community engagement and quality of work, and receive career coaching, connections to hiring organizations, and other exciting perks, as availability allows.</p>
+                    <p>When a cohort is open for applications, the application will be added to this site. The application system immediately informs you if you are a strong candidate. Strong candidates are invited to register for a cohort orientation. Orientation participants are introduced to the program and invited in.</p>
+                    <p>On the platform, you can select courses. The top 40 finalists are selected based on community engagement and quality of work, and will receive career coaching, connections to hiring organizations and other exciting perks, as availability allows.</p>
                 </div>
             )
         },
 
         {
             question: "Where do I take the program, and is there a place I can work from?",
-            answer: "The program is fully remote and can be completed from wherever you are. Optional facility access is available at Louisiana Tech University, Cleveland State University, and the University of Illinois Chicago. Additional locations are added as needed."
+            answer: "The program is fully remote and can be completed from wherever you are. Optional facility access is available at Louisiana Tech University, Cleveland State University, and University of Illinois Chicago. Additional locations are added as needed."
         },
         {
             question: "When is the next cohort?",
