@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+
+// Pages aimed at institutions get a different banner that points to the
+// Cohort 1 report instead of the finalist portfolios.
+const REPORT_PAGES = ['/partners', '/universities'];
 
 interface AnnouncementBannerProps {
     /** Height of the fixed nav, so the banner sits flush beneath it. */
@@ -7,6 +11,22 @@ interface AnnouncementBannerProps {
 }
 
 const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
+    const { pathname } = useLocation();
+    const showReport = REPORT_PAGES.includes(pathname);
+    const cta = showReport
+        ? {
+            to: '/report',
+            label: 'Read the Report',
+            background: 'from-indigo-950 via-blue-900 to-cyan-800 border-cyan-400/30',
+            button: 'text-blue-950 hover:bg-cyan-50 hover:shadow-cyan-500/50 focus:ring-offset-blue-900',
+        }
+        : {
+            to: '/graduation',
+            label: 'Meet the Finalists',
+            background: 'from-purple-900 via-purple-800 to-purple-700 border-purple-500/30',
+            button: 'text-purple-900 hover:bg-purple-50 hover:shadow-purple-500/50 focus:ring-offset-purple-800',
+        };
+
     // role="region", not "banner": banner is the site-header landmark, and this
     // is a notice sitting below the header.
     return (
@@ -14,7 +34,7 @@ const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative w-full bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-b border-purple-500/30 overflow-hidden"
+            className={`relative w-full bg-gradient-to-r ${cta.background} border-b overflow-hidden`}
             style={{ marginTop: topOffset ?? '5rem' }}
             role="region"
             aria-label="Announcement"
@@ -48,11 +68,10 @@ const AnnouncementBanner = ({ topOffset }: AnnouncementBannerProps) => {
                     <span aria-hidden="true">🎉 </span>Cohort One Complete!
                 </motion.p>
                 <Link
-                    to="/graduation"
-                    className="px-6 py-2 text-sm font-bold bg-white text-purple-900 rounded-full hover:bg-purple-50 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-800 whitespace-nowrap"
-                    aria-label="Meet the Finalists"
+                    to={cta.to}
+                    className={`px-6 py-2 text-sm font-bold bg-white rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 whitespace-nowrap ${cta.button}`}
                 >
-                    Meet the Finalists <span aria-hidden="true">→</span>
+                    {cta.label} <span aria-hidden="true">→</span>
                 </Link>
             </div>
         </motion.div>
