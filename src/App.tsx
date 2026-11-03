@@ -8,6 +8,7 @@ import Universities from './pages/Universities';
 import Lessons from './pages/Lessons';
 import LessonDetail from './pages/LessonDetail';
 import Graduation from './pages/Graduation';
+import Report from './pages/Report';
 
 function FurqanRedirect() {
   const [searchParams] = useSearchParams();
@@ -34,6 +35,7 @@ function App() {
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lessons/:slug" element={<LessonDetail />} />
           <Route path="/graduation" element={<Graduation />} />
+          <Route path="/report" element={<Report />} />
         </Routes>
       </Layout>
     </BrowserRouter>
