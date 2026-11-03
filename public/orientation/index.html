@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Orientation and quiz for AI Leaders participants.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>AI Leaders Orientation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: black welcome band, then one centered card that steps through five orientation stops, ending in a graded quiz and a screenshot-ready score card. */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F3F6; --ink:#0B0B0D; --muted:#5A5862; --line:#E2E1E6;
+  --purple:#6A2BD9; --purple-text:#5B21C8; --purple-soft:#F1EBFC; --blue:#6A2BD9; --lime:#C4F135; --lime-ink:#1B2104;
+  --good:#1F8A4C; --good-soft:#E3F5EA; --bad:#C03545; --bad-soft:#FBE7EA;
+  --black:#0B0B0D;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B0B0D; --surface:#141417; --soft:#1C1C21; --ink:#F4F4F6; --muted:#A3A1AC; --line:#2A2A31;
+  --purple:#8E5CF5; --purple-text:#B898FF; --purple-soft:#211A33; --blue:#8E5CF5; --lime:#C4F135; --lime-ink:#1B2104;
+  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B0B0D; --surface:#141417; --soft:#1C1C21; --ink:#F4F4F6; --muted:#A3A1AC; --line:#2A2A31;
+  --purple:#8E5CF5; --purple-text:#B898FF; --purple-soft:#211A33; --blue:#8E5CF5; --lime:#C4F135; --lime-ink:#1B2104;
+  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.1}
+p{margin:0}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+
+/* Hero */
+.hero{background:#0B0B0D;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:var(--lime)}
+.hero .wrap{padding-block:44px 40px;display:grid;gap:14px;position:relative;z-index:1}
+.hero .eyebrow{color:#B898FF}
+.hero h1{font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:58ch;color:rgba(255,255,255,.9);font-size:17px}
+.hero-dots{position:absolute;right:-40px;top:-30px;width:300px;height:300px;opacity:.35;
+  background-image:radial-gradient(#6A2BD9 1.6px,transparent 1.8px);background-size:18px 18px;border-radius:50%}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.facts span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 12px;font-size:14px;font-weight:600}
+
+/* Stepper */
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 18px;padding:0;list-style:none}
+.steps button{font:600 14px var(--f-body);color:var(--muted);background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.steps button .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--purple-text);font:500 12px var(--f-mono)}
+.steps button[aria-current="step"]{color:var(--ink);border-color:var(--purple);box-shadow:0 0 0 1px var(--purple) inset}
+.steps button[aria-current="step"] .n{background:var(--purple);color:#fff}
+.steps button.done .n{background:var(--ink);color:var(--bg)}
+.steps button:focus-visible,.btn:focus-visible,.opt:focus-within,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,36px);display:grid;gap:22px}
+.panel-head{display:grid;gap:8px}
+.panel-head .eyebrow{color:var(--purple-text)}
+.panel-head h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.015em}
+.lede{color:var(--muted);font-size:17px;max-width:62ch}
+h3{font-size:19px;font-weight:600}
+
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 48px}
+.btn{font:700 15px var(--f-body);border-radius:12px;padding:12px 20px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.btn.lime{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* Program map */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:var(--soft);border-radius:14px;padding:16px;display:grid;gap:2px}
+.stat b{font:800 30px var(--f-display);color:var(--ink);font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.mods{display:grid;gap:10px}
+.mod{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:14px}
+.mod .chip{width:14px;height:44px;border-radius:6px}
+.mod div{min-width:0}
+.mod p{color:var(--muted);font-size:14.5px}
+.mod .wk{font:500 12.5px var(--f-mono);color:var(--muted);text-align:right;white-space:nowrap}
+.mod .wk b{display:block;color:var(--ink);font:700 15px var(--f-body)}
+.chip{background:var(--purple)}
+
+
+.callout{background:var(--soft);border-radius:14px;padding:16px 18px;display:grid;gap:6px}
+.callout.lime{background:var(--purple-soft);border-left:4px solid var(--purple)}
+.callout.lime .eyebrow{color:var(--purple-text)}
+.callout p{max-width:66ch}
+
+.list{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.list li{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start}
+.list li > div{min-width:0}
+.list .ic{width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--purple-text);display:grid;place-items:center;font:500 13px var(--f-mono)}
+.list p{color:var(--muted)}
+.list b{color:var(--ink)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:10px;align-content:start}
+
+/* Portfolio checklist */
+.check{display:grid;gap:10px}
+.check label{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;cursor:pointer}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--purple)}
+.check label span{min-width:0}
+.check label b{display:block}
+.check label small{color:var(--muted);font-size:14.5px}
+.check label:has(input:checked){border-color:var(--purple);background:var(--soft)}
+
+/* Help */
+.contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.contact{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:8px;align-content:start}
+.contact .eyebrow{color:var(--purple-text)}
+.contact .val{font-weight:700;word-break:break-word}
+.contact p{color:var(--muted);font-size:14.5px}
+.copy{justify-self:start;font:600 13px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+.contact a.btn{justify-self:start;text-decoration:none;font-size:14px;padding:9px 14px}
+.people{display:flex;flex-wrap:wrap;gap:8px}
+.people span{background:var(--soft);border-radius:999px;padding:5px 12px;font-size:14px}
+.people span b{font-weight:700}
+
+/* Quiz */
+.q{border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:12px}
+.q legend{font-weight:700;font-size:16.5px;padding:0;display:flex;gap:10px}
+.q legend .qn{font:500 13px var(--f-mono);color:var(--purple-text);padding-top:3px;white-space:nowrap}
+fieldset.q{margin:0;min-width:0}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.opt input{margin:3px 0 0;accent-color:var(--purple);width:16px;height:16px}
+.opt:has(input:checked){border-color:var(--purple);background:var(--soft)}
+.opt.right{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.fb{font-size:14.5px;padding:10px 12px;border-radius:10px}
+.fb.ok{background:var(--good-soft);color:var(--good)}
+.fb.no{background:var(--bad-soft);color:var(--bad)}
+.namefield{display:grid;gap:6px}
+.namefield label{font-weight:700}
+.namefield input{font:500 16px var(--f-body);padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink)}
+.err{color:var(--bad);font-size:14.5px;font-weight:600}
+
+/* Try-again card */
+.retry{border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:12px;background:var(--soft)}
+.retry .eyebrow{color:var(--muted)}
+.retry h3{font:800 clamp(26px,4vw,34px) var(--f-display)}
+.retry .big{font:800 56px var(--f-display);line-height:1;font-variant-numeric:tabular-nums}
+.retry .big small{font-size:.4em;color:var(--muted)}
+.retry .bar{height:10px;border-radius:999px;background:var(--line);position:relative;overflow:hidden}
+.retry .bar i{position:absolute;inset:0 auto 0 0;background:var(--ink);border-radius:999px}
+.retry .bar b{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--purple)}
+.retry .scale{position:relative;height:18px;margin-top:4px;font:500 12px var(--f-mono);color:var(--muted)}
+.retry .scale span{position:absolute;top:0}
+.retry .scale .mk{color:var(--purple-text);transform:translateX(-50%);white-space:nowrap}
+
+/* Golden ticket */
+.ticket{--tk:#0B0B0D;--notch:var(--surface);display:grid;grid-template-columns:1fr 150px;background:var(--tk);color:#fff;border-radius:18px;position:relative;overflow:hidden;box-shadow:0 18px 40px -18px rgba(106,43,217,.55)}
+.ticket::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.10) 45%,transparent 60%);transform:translateX(-100%)}
+.tk-main{padding:26px 26px 22px;display:grid;gap:14px;min-width:0;position:relative}
+.tk-main::after{content:"";position:absolute;right:0;top:0;bottom:0;width:0;border-right:2px dashed rgba(255,255,255,.28)}
+.tk-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.tk-admit{font:500 12px var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:#B898FF}
+.tk-pass{font:700 13px var(--f-body);background:var(--lime);color:var(--lime-ink);border-radius:999px;padding:4px 12px}
+.tk-title{font:800 clamp(28px,5vw,42px) var(--f-display);letter-spacing:-.02em;line-height:1.02}
+.tk-title span{color:#B898FF}
+.tk-label{font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.tk-name{font:800 clamp(20px,3.4vw,26px) var(--f-display);word-break:break-word}
+.tk-checks{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.tk-checks li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
+.tk-checks li::before{content:"✓";flex:none;width:20px;height:20px;border-radius:50%;background:#6A2BD9;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px}
+.tk-foot{display:flex;flex-wrap:wrap;gap:6px 18px;font:500 12.5px var(--f-mono);color:rgba(255,255,255,.7)}
+.tk-stub{background:#6A2BD9;padding:22px 14px;display:grid;align-content:center;justify-items:center;gap:6px;text-align:center}
+.tk-stub .tk-label{color:rgba(255,255,255,.75)}
+.tk-score{font:800 52px var(--f-display);line-height:1;font-variant-numeric:tabular-nums}
+.tk-score small{font-size:.42em;opacity:.8}
+.tk-stub .tk-pct{font:500 13px var(--f-mono)}
+.tk-notch{position:absolute;right:150px;width:26px;height:26px;border-radius:50%;background:var(--notch);transform:translateX(50%)}
+.tk-notch.t{top:-13px}.tk-notch.b{bottom:-13px}
+@media (max-width:560px){
+  .ticket{grid-template-columns:1fr}
+  .tk-main::after{left:0;right:0;top:auto;bottom:0;width:auto;height:0;border-right:0;border-bottom:2px dashed rgba(255,255,255,.28)}
+  .tk-stub{grid-auto-flow:column;justify-content:space-between;align-items:center;text-align:left;padding:16px 22px}
+  .tk-notch{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .ticket.show{animation:tkIn .55s cubic-bezier(.2,.9,.3,1.2) both}
+  .ticket.show::before{animation:sheen 1.4s .5s ease-out both}
+  @keyframes tkIn{from{transform:translateY(14px) scale(.97);opacity:.4}to{transform:none;opacity:1}}
+  @keyframes sheen{to{transform:translateX(100%)}}
+}
+.next{display:grid;gap:10px}
+#passNote{background:rgba(196,241,53,.7);color:#1B2104}
+#passNote .eyebrow{color:#1B2104;font-weight:700}
+.next ol{margin:0;padding-left:20px;display:grid;gap:6px}
+
+@media (max-width:640px){
+  .stats,.two,.contacts{grid-template-columns:1fr}
+  .mod{grid-template-columns:auto 1fr}
+  .mod .wk{grid-column:2;text-align:left}
+  .mod .wk b{display:inline;margin-right:6px}
+  .steps button .t{display:none}
+  .steps button{padding:8px}
+  .steps button[aria-current="step"] .t{display:inline}
+  .steps button[aria-current="step"]{padding-right:14px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .panel{animation:rise .35s ease both}
+  @keyframes rise{from{transform:translateY(6px);opacity:.6}to{transform:none;opacity:1}}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-dots" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">AI Leaders · Orientation</div>
+    <h1>Welcome, AI Leader.</h1>
+    <p>This is the short version of everything you need to know before you start. You'll get a tour of Slack and Plato in your live kick-off call. Work through the four stops, then take the quiz and send your score to your Plato coach.</p>
+    <p style="font-size:15px;color:rgba(255,255,255,.75)"><b style="color:#fff">Heads up:</b> this page doesn't save your progress. Plan to finish in one sitting, and screenshot your score before you close it.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav aria-label="Orientation steps"><ol class="steps" id="steps"></ol></nav>
+
+  <!-- 1 Program map -->
+  <section class="panel" data-step="0" aria-labelledby="h-map">
+    <div class="panel-head">
+      <div class="eyebrow">Stop 1 of 5</div>
+      <h2 id="h-map">Your program map</h2>
+      <p class="lede">Five modules over 12 weeks, with breaks built in around major holidays. Every lesson is open from day one, so you can work ahead whenever you like.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>3–5</b><span>lessons per week is a good suggested pace</span></div>
+      <div class="stat"><b>20–30 min</b><span>per lesson, a conversation with your Plato coach</span></div>
+      <div class="stat"><b>+ Portfolio</b><span>set aside additional time each week to design your portfolio</span></div>
+    </div>
+
+    <div class="mods">
+      <div class="mod"><i class="chip c1"></i><div><h3>Foundations</h3><p>Professional identity, organization, and strong online habits.</p></div><div class="wk"><b>7 lessons</b></div></div>
+      <div class="mod"><i class="chip c2"></i><div><h3>AI Leadership</h3><p>Generative and agentic AI, human in the loop, and your AI ethics.</p></div><div class="wk"><b>7 lessons</b></div></div>
+      <div class="mod"><i class="chip c3"></i><div><h3>Web Portfolio Development</h3><p>Build and launch your AI-assisted portfolio website.</p></div><div class="wk"><b>8 lessons</b></div></div>
+      <div class="mod"><i class="chip c4"></i><div><h3>Success Skills</h3><p>Living wages, healthy conflict, networking, and presenting your story.</p></div><div class="wk"><b>5 lessons</b></div></div>
+      <div class="mod"><i class="chip c5"></i><div><h3>Career Builder</h3><p>Resume, target jobs, applications, and follow-up.</p></div><div class="wk"><b>8 lessons</b></div></div>
+    </div>
+
+    <div class="callout">
+      <div class="eyebrow">Fell behind?</div>
+      <p>That's okay. Nothing closes. Use the breaks to catch up or rest, pick up where you left off, and reach out if you need a hand.</p>
+    </div>
+  </section>
+
+  <!-- 2 Top 40 -->
+  <section class="panel" data-step="1" aria-labelledby="h-top" hidden>
+    <div class="panel-head">
+      <div class="eyebrow">Stop 2 of 5</div>
+      <h2 id="h-top">Badges and the Top 40</h2>
+      <p class="lede">Every participant can earn the micro-credential. Learners from partner organizations can also be selected as one of 40 finalists who get extra support as they move into their careers.</p>
+    </div>
+    <div class="callout lime">
+      <div class="eyebrow">Badge vs. Top 40</div>
+      <p><b>Everyone who completes all coursework and submits a portfolio receives their micro-credential badge</b>, but only learners from partner organizations are eligible for the Top 40 cohort.</p>
+    </div>
+    <div class="two">
+      <div class="box">
+        <div class="eyebrow" style="color:var(--purple-text)">How finalists are chosen</div>
+        <ul class="list">
+          <li><span class="ic">01</span><div><b>Lessons</b><p>Completion and quality of your lessons.</p></div></li>
+          <li><span class="ic">02</span><div><b>Portfolio</b><p>Creativity and content of your portfolio.</p></div></li>
+          <li><span class="ic">03</span><div><b>Community</b><p>Engagement in the Slack community.</p></div></li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="eyebrow" style="color:var(--purple-text)">What finalists get</div>
+        <ul class="list">
+          <li><span class="ic">01</span><div><b>Expert career coaching</b><p>One step beyond the Plato coach.</p></div></li>
+          <li><span class="ic">02</span><div><b>Employment connections</b><p>Introductions to employers who are hiring.</p></div></li>
+          <li><span class="ic">03</span><div><b>Graduation networking event</b><p>Opportunities to attend and meet employers. More perks will be announced closer to graduation.</p></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <div class="eyebrow">When</div>
+      <p>Selection happens <b>near the end of the cohort</b>, before the program wraps up. Keep your lessons and portfolio moving so your work is ready to review.</p>
+    </div>
+    <div class="callout">
+      <div class="eyebrow">Tip</div>
+      <p>Engagement starts on day one. Post your intro in Slack, answer a poll, and reply to a classmate. Small, steady participation adds up.</p>
+    </div>
+  </section>
+
+  <!-- 3 Portfolio -->
+  <section class="panel" data-step="2" aria-labelledby="h-port" hidden>
+    <div class="panel-head">
+      <div class="eyebrow">Stop 3 of 5</div>
+      <h2 id="h-port">Your portfolio: the culminating task</h2>
+      <p class="lede">Your portfolio is your main proof of skill, and you'll present it as the program wraps up. It's scored on the six criteria below. Tick them off to preview the standard.</p>
+    </div>
+    <div class="callout lime">
+      <div class="eyebrow">Don't start yet</div>
+      <p>Your lessons will tell you when it's time to start building your portfolio.</p>
+    </div>
+    <div class="check" id="portcheck">
+      <label><input type="checkbox" id="pc1"><span><b>1. AI in action</b><small>Exhibits artifacts showing skillful generative and agentic AI use for efficiency, ideation, iteration, or experimentation.</small></span></label>
+      <label><input type="checkbox" id="pc2"><span><b>2. Your AI ethics</b><small>Concisely explains and demonstrates your personal approach to AI ethics.</small></span></label>
+      <label><input type="checkbox" id="pc3"><span><b>3. A live, multi-page site</b><small>Deployed site with multiple pages that use multiple design elements and features.</small></span></label>
+      <label><input type="checkbox" id="pc4"><span><b>4. Built-in AI tools</b><small>Uses the current AI capabilities of your site platform.</small></span></label>
+      <label><input type="checkbox" id="pc5"><span><b>5. The essentials</b><small>Includes a personal introduction, resume, work artifacts, and visuals that demonstrate your skills and goals.</small></span></label>
+      <label><input type="checkbox" id="pc6"><span><b>6. Professional presentation</b><small>Visuals, design, and organization support your goals and align with professional standards in your field.</small></span></label>
+    </div>
+    <div class="callout">
+      <div class="eyebrow">How it's scored</div>
+      <p>Each criterion is equally weighted. Your portfolio needs to demonstrate all six clearly. Don't just touch on each one; show evidence of skill and intentionality in every area.</p>
+    </div>
+    <p class="err" id="portmsg" style="color:var(--purple-text)" aria-live="polite"></p>
+  </section>
+
+  <!-- 4 Help -->
+  <section class="panel" data-step="3" aria-labelledby="h-help" hidden>
+    <div class="panel-head">
+      <div class="eyebrow">Stop 4 of 5</div>
+      <h2 id="h-help">Getting help and our community</h2>
+      <p class="lede">You are never on your own here. Use whichever channel fits your question, and help us keep the community a place where everyone can learn.</p>
+    </div>
+    <div class="contacts">
+      <div class="contact">
+        <div class="eyebrow">Quick questions</div>
+        <div class="val">Post or DM on Slack</div>
+        <p>Post in the main channel, or send a direct message to Eli or Amanda. Stuck in a lesson? Share a screenshot or your last prompt so we can see what's happening.</p>
+      </div>
+      <div class="contact">
+        <div class="eyebrow">Email</div>
+        <div class="val" id="email">help@ai-leaders.org</div>
+        <p>For account, access, or anything you'd rather not post in Slack.</p>
+        <button class="copy" id="copyEmail" type="button">Copy address</button>
+      </div>
+      <div class="contact">
+        <div class="eyebrow">Comments &amp; concerns</div>
+        <div class="val">Comment and Concern Form</div>
+        <p>Share feedback, report a problem, or raise a concern. The form is anonymous.</p>
+        <a class="btn primary" id="formLink" href="https://forms.cloud.microsoft/r/MAxXTguvGS" target="_blank" rel="noopener">Open the form</a>
+      </div>
+    </div>
+    <div class="callout lime">
+      <div class="eyebrow">Accommodations</div>
+      <p>We want everyone to be able to take part fully. If an accommodation or a change in how something is delivered would make the program more accessible for you, reach out to Amanda on Slack or email help@ai-leaders.org. We're glad to help.</p>
+    </div>
+    <div class="box">
+      <div class="eyebrow" style="color:var(--purple-text)">Your program team on Slack</div>
+      <div class="people">
+        <span><b>Amanda</b> · Community Manager</span>
+        <span><b>Stefin</b> · Project Director</span>
+        <span><b>Blake</b> · PI &amp; Lead Engineer</span>
+        <span><b>Eli and Sabina</b> · Communication Coordinators</span>
+        <span><b>Shar and Henry</b> · Technical Assistance</span>
+      </div>
+    </div>
+    <div class="box" id="agreement">
+      <div class="eyebrow" style="color:var(--purple-text)">AI Leaders Community Agreement</div>
+      <ul class="list">
+          <li><span class="ic">01</span><div><b>Be respectful.</b><p>Disagree with ideas, not people. No harassment, discrimination or personal attacks.</p></div></li>
+          <li><span class="ic">02</span><div><b>Protect privacy.</b><p>Don't share other participants' personal information, screenshots of private messages, or anything shared in confidence.</p></div></li>
+          <li><span class="ic">03</span><div><b>Keep it professional.</b><p>Treat this space like a workplace. No spam, sales pitches or off-topic promotion.</p></div></li>
+          <li><span class="ic">04</span><div><b>Share your work honestly.</b><p>Credit sources and AI tools you used.</p></div></li>
+          <li><span class="ic">05</span><div><b>Ask for help.</b><p>Use the help channel, office hours, or help@ai-leaders.org.</p></div></li>
+          <li><span class="ic">06</span><div><b>Speak up.</b><p>If something makes you uncomfortable, message Amanda directly or email help@ai-leaders.org.</p></div></li>
+      </ul>
+      <p class="callout" style="color:var(--ink)">Violations may result in removed posts, a warning, or removal from the program.</p>
+    </div>
+    <div class="box" id="datanote">
+      <div class="eyebrow" style="color:var(--purple-text)">About your data</div>
+      <p>AI Leaders collects information about your participation, including your lesson progress and activity in Plato, your portfolio, survey responses, and your participation in Slack. We use this information to evaluate and improve the program. Results shared outside the program team are reported in summary form, without your name.</p>
+      <p style="color:var(--muted)">Read the full <a href="https://plato.courses/privacy" target="_blank" rel="noopener" style="color:var(--purple-text);font-weight:700">Plato privacy policy</a> (plato.courses/privacy). Questions about how your information is used? Email help@ai-leaders.org.</p>
+    </div>
+  </section>
+
+  <!-- 5 Quiz -->
+  <section class="panel" data-step="4" aria-labelledby="h-quiz" hidden>
+    <div class="panel-head">
+      <div class="eyebrow">Stop 5 of 5</div>
+      <h2 id="h-quiz">Orientation quiz</h2>
+      <p class="lede">Eight questions. Get at least 7 right to pass. Your score appears right away, and you can retake it as many times as you need.</p>
+    </div>
+    <form id="quiz" novalidate>
+      <div style="display:grid;gap:14px">
+        <div class="namefield">
+          <label for="pname">Your full name</label>
+          <input id="pname" autocomplete="name" placeholder="First and last name">
+        </div>
+        <div id="questions" style="display:grid;gap:14px"></div>
+        <div class="check"><label><input type="checkbox" id="agree"><span><b>I agree to the AI Leaders Community Agreement, and I understand that my participation data is collected for program evaluation and improvement</b><small>You'll find both in Stop 4, Help &amp; community.</small></span></label></div>
+        <p class="err" id="qerr" aria-live="polite"></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn primary" type="submit" id="submitBtn">Check my answers</button>
+        </div>
+      </div>
+    </form>
+    <div id="result" hidden style="display:grid;gap:18px">
+      <div class="retry" id="retryCard" hidden aria-live="polite">
+        <div class="eyebrow">Not quite yet</div>
+        <h3>Try again</h3>
+        <div class="big" id="fScore"></div>
+        <div>
+          <div class="bar" aria-hidden="true"><i id="fBar"></i><b style="left:87.5%"></b></div>
+          <div class="scale"><span style="left:0">0</span><span class="mk" style="left:87.5%;transform:translateX(-100%)">7 to pass ↑</span></div>
+        </div>
+        <p>You need at least 7 of 8 correct to get your ticket into the course. Read the explanations on the questions you missed, then select <b>Retake quiz</b> at the bottom of the page.</p>
+      </div>
+
+      <div id="passWrap" hidden style="display:grid;gap:18px">
+        <div class="ticket" id="ticket" aria-live="polite">
+          <span class="tk-notch t" aria-hidden="true"></span><span class="tk-notch b" aria-hidden="true"></span>
+          <div class="tk-main">
+            <div class="tk-top"><span class="tk-admit">Admit one · AI Leaders</span><span class="tk-pass" id="tkPass">Orientation passed</span></div>
+            <div class="tk-title">Your ticket to <span>AI Leaders</span></div>
+            <div style="display:grid;gap:2px"><div class="tk-label">Issued to</div><div class="tk-name" id="rName"></div></div>
+            <ul class="tk-checks">
+              <li>Agreed to the AI Leaders Community Agreement</li>
+              <li>Acknowledged the data collection and research statement</li>
+            </ul>
+            <div class="tk-foot"><span id="rDate"></span><span>AI Leaders micro-credential</span></div>
+          </div>
+          <div class="tk-stub">
+            <div class="tk-label">Score</div>
+            <div class="tk-score" id="rScore"></div>
+            <div class="tk-pct" id="rPct"></div>
+          </div>
+        </div>
+        <div class="callout next" id="passNote">
+          <div class="eyebrow">Last step</div>
+          <ol>
+            <li>Take a screenshot of your ticket above. It isn't saved anywhere else, so do this before you close the page.</li>
+            <li>Open your Plato coach and upload the screenshot.</li>
+            <li>Your coach will check it and mark orientation complete. Welcome aboard.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav">
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="prev" type="button">Back</button>
+      <button class="btn primary" id="retake" type="button" hidden>Retake quiz</button>
+    </div>
+    <button class="btn primary" id="next" type="button">Next</button>
+  </div>
+</main>
+
+<script>
+(function(){
+  var TITLES=["Program map","Top 40","Portfolio","Help & community","Quiz"];
+  var panels=[].slice.call(document.querySelectorAll(".panel"));
+  var stepsEl=document.getElementById("steps");
+  var cur=0, seen={0:true}, submitted=false, PASS=7;
+
+  TITLES.forEach(function(t,i){
+    var li=document.createElement("li");
+    var b=document.createElement("button");
+    b.type="button";
+    b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+t+'</span>';
+    b.addEventListener("click",function(){show(i)});
+    li.appendChild(b); stepsEl.appendChild(li);
+  });
+  var stepBtns=[].slice.call(stepsEl.querySelectorAll("button"));
+
+  function show(i){
+    seen[cur]=true;
+    cur=i; seen[i]=true;
+    panels.forEach(function(p,k){p.hidden=k!==i});
+    stepBtns.forEach(function(b,k){
+      if(k===i) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
+      b.classList.toggle("done",!!seen[k] && k!==i && k<4);
+    });
+    document.getElementById("prev").disabled=i===0;
+    var nx=document.getElementById("next");
+    nx.hidden=i===4;
+    document.getElementById("retake").hidden=!(i===4 && submitted);
+    nx.textContent=i===3?"Start the quiz":"Next";
+    nx.className="btn "+(i===3?"lime":"primary");
+    if(window.scrollY>200) document.querySelector(".steps").scrollIntoView({behavior:"smooth",block:"start"});
+  }
+  document.getElementById("prev").addEventListener("click",function(){if(cur>0)show(cur-1)});
+  document.getElementById("next").addEventListener("click",function(){if(cur<4)show(cur+1)});
+
+  /* Portfolio checklist */
+  var pcs=[].slice.call(document.querySelectorAll("#portcheck input"));
+  pcs.forEach(function(p){p.addEventListener("change",function(){
+    var n=pcs.filter(function(x){return x.checked}).length;
+    document.getElementById("portmsg").textContent=n===pcs.length?"That's the standard: all six, each with clear evidence of skill.":"";
+  })});
+
+  /* Copy email */
+  document.getElementById("copyEmail").addEventListener("click",function(){
+    var btn=this, txt="help@ai-leaders.org";
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected, press copy";}
+    try{navigator.clipboard.writeText(txt).then(function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy address"},1800)},sel);}catch(e){sel();}
+  });
+
+  /* Quiz */
+  var Q=[
+    {q:"How long does an AI Leaders cohort run?",o:["6 weeks","12 weeks","One semester, with a final exam","As long as you need, with no end date"],a:1,e:"Each cohort runs 12 weeks, with breaks built in around major holidays."},
+    {q:"When can you start any of the 35 lessons?",o:["One new lesson unlocks each week","Only after you finish the previous module","All lessons are open from day one","After you meet with your coach"],a:2,e:"Every lesson is open from day one, so you can work ahead whenever you like."},
+    {q:"What is a good suggested pace?",o:["3–5 lessons per week, 20–30 minutes each, plus portfolio time","All 35 lessons in the first week","One lesson per month","Only work on the portfolio at the end"],a:0,e:"Aim for 3–5 lessons a week at 20–30 minutes each, plus extra time to design your portfolio."},
+    {q:"When should you start building your portfolio?",o:["On day one, before any lessons","When your lessons tell you it's time","Only after the program ends","Whenever a classmate starts theirs"],a:1,e:"Your lessons will tell you when it's time to start building your portfolio."},
+    {q:"How are Top 40 Finalists chosen?",o:["Whoever finishes the lessons fastest","Completion and quality of lessons, portfolio creativity and content, and Slack engagement","GPA and a final exam","A random drawing"],a:1,e:"Selection looks at lesson completion and quality, your portfolio's creativity and content, and your engagement in Slack."},
+    {q:"Who receives the micro-credential badge, and who is eligible for the Top 40?",o:["Only the Top 40 receive a badge","Everyone who completes all coursework and submits a portfolio earns the badge; only learners from partner organizations are eligible for the Top 40","Everyone is eligible for the Top 40, and badges are optional","Badges and Top 40 spots go to the first 40 people to finish"],a:1,e:"Anyone who completes all coursework and submits a portfolio earns the badge. Top 40 eligibility is limited to learners from partner organizations."},
+    {q:"How are the six portfolio criteria weighted?",o:["The design criterion counts double","Each criterion is equally weighted, and all six must be clearly demonstrated","Only the resume really matters","You can skip any two criteria"],a:1,e:"All six criteria are equally weighted, and your portfolio needs clear evidence of skill and intentionality in each one."},
+    {q:"You want to share a concern anonymously. Where should you go?",o:["Post it in the main Slack channel","Wait until the end of the cohort","The Comment and Concern Form","Ask your Plato coach to fix it"],a:2,e:"The Comment and Concern Form is anonymous. For quick questions, post in the main channel or DM Eli or Amanda."}
+  ];
+  var qwrap=document.getElementById("questions");
+  Q.forEach(function(item,i){
+    var fs=document.createElement("fieldset"); fs.className="q"; fs.id="q"+i;
+    var h='<legend><span class="qn">Q'+(i+1)+'</span><span>'+item.q+'</span></legend><div class="opts">';
+    item.o.forEach(function(op,j){
+      h+='<label class="opt" id="o'+i+'_'+j+'"><input type="radio" name="q'+i+'" id="r'+i+'_'+j+'" value="'+j+'"><span>'+op+'</span></label>';
+    });
+    h+='</div><div class="fb" hidden></div>';
+    fs.innerHTML=h; qwrap.appendChild(fs);
+  });
+
+  var form=document.getElementById("quiz"), err=document.getElementById("qerr");
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var name=document.getElementById("pname").value.trim();
+    var answers=Q.map(function(_,i){var c=form.querySelector('input[name="q'+i+'"]:checked');return c?+c.value:-1});
+    var missing=answers.map(function(a,i){return a<0?i+1:0}).filter(Boolean);
+    if(!name){err.textContent="Add your full name so your coach knows whose score this is.";document.getElementById("pname").focus();return;}
+    if(!document.getElementById("agree").checked){err.textContent="Check the box to agree to the Community Agreement and data statement before submitting.";return;}
+    if(missing.length){err.textContent="Answer every question before checking. Still open: Q"+missing.join(", Q")+".";document.getElementById("q"+(missing[0]-1)).scrollIntoView({behavior:"smooth",block:"center"});return;}
+    err.textContent="";
+    var score=0;
+    Q.forEach(function(item,i){
+      var ok=answers[i]===item.a; if(ok) score++;
+      var fs=document.getElementById("q"+i);
+      item.o.forEach(function(_,j){
+        var l=document.getElementById("o"+i+"_"+j);
+        l.classList.remove("right","wrong");
+        if(j===item.a) l.classList.add("right");
+        else if(j===answers[i]) l.classList.add("wrong");
+      });
+      var fb=fs.querySelector(".fb"); fb.hidden=false;
+      fb.className="fb "+(ok?"ok":"no");
+      fb.textContent=(ok?"Correct. ":"Not quite. ")+item.e;
+      fs.querySelectorAll("input").forEach(function(x){x.disabled=true});
+    });
+    document.getElementById("pname").disabled=true;
+    document.getElementById("submitBtn").hidden=true;
+    submitted=true;
+    document.getElementById("retake").hidden=false;
+    var pct=Math.round(score/Q.length*100);
+    var passed=score>=PASS;
+    document.getElementById("retryCard").hidden=passed;
+    document.getElementById("passWrap").hidden=!passed;
+    document.getElementById("fScore").innerHTML=score+'<small> / '+Q.length+'</small>';
+    document.getElementById("fBar").style.width=(score/Q.length*100)+"%";
+    document.getElementById("rName").textContent=name;
+    document.getElementById("rScore").innerHTML=score+'<small>/'+Q.length+'</small>';
+    document.getElementById("rPct").textContent=pct+"%";
+    document.getElementById("tkPass").textContent=score===Q.length?"Perfect score":"Orientation passed";
+    var tk=document.getElementById("ticket"); tk.classList.remove("show"); void tk.offsetWidth; if(passed) tk.classList.add("show");
+    var d=new Date();
+    document.getElementById("rDate").textContent=d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})+" · "+d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
+    var r=document.getElementById("result"); r.hidden=false;
+    seen[4]=true; stepBtns[4].classList.add("done");
+    r.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  document.getElementById("retake").addEventListener("click",function(){
+    form.reset();
+    form.querySelectorAll("input").forEach(function(x){x.disabled=false});
+    form.querySelectorAll(".opt").forEach(function(l){l.classList.remove("right","wrong")});
+    form.querySelectorAll(".fb").forEach(function(f){f.hidden=true});
+    document.getElementById("submitBtn").hidden=false;
+    submitted=false;
+    this.hidden=true;
+    document.getElementById("result").hidden=true;
+    document.getElementById("h-quiz").scrollIntoView({behavior:"smooth",block:"start"});
+    document.getElementById("pname").focus({preventScroll:true});
+  });
+
+  show(0);
+})();
+</script>
+</body>
+</html>
