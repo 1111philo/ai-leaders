@@ -196,6 +196,27 @@ fieldset.q{margin:0;min-width:0}
 #passNote .eyebrow{color:#1B2104;font-weight:700}
 .next ol{margin:0;padding-left:20px;display:grid;gap:6px}
 
+/* PLC stop */
+.plcs{display:grid;gap:10px}
+.plc{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:14px}
+.plc > div{min-width:0}
+.plc .num{width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--purple-text);display:grid;place-items:center;font:500 13px var(--f-mono)}
+.plc p{color:var(--muted);font-size:14.5px}
+.plc h3{overflow-wrap:anywhere}
+.chan{font:500 13.5px var(--f-mono);color:var(--purple-text);background:var(--purple-soft);border:1px solid transparent;border-radius:8px;padding:6px 10px;cursor:pointer;white-space:nowrap}
+.chan:hover{border-color:var(--purple)}
+.chan:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.rule{background:var(--ink);color:var(--bg);border-radius:14px;padding:18px 20px;display:grid;gap:6px}
+.rule .eyebrow{color:var(--lime)}
+.rule b{font:800 22px var(--f-display)}
+.howto{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.howto ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.official{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+@media (max-width:640px){
+  .plc{grid-template-columns:auto 1fr}
+  .plc .chan{grid-column:2;justify-self:start;white-space:normal;word-break:break-all}
+  .howto{grid-template-columns:1fr}
+}
 @media (max-width:640px){
   .stats,.two,.contacts{grid-template-columns:1fr}
   .mod{grid-template-columns:auto 1fr}
@@ -218,7 +239,7 @@ fieldset.q{margin:0;min-width:0}
   <div class="wrap">
     <div class="eyebrow">AI Leaders · Orientation</div>
     <h1>Welcome, AI Leader.</h1>
-    <p>This is the short version of everything you need to know before you start. You'll get a tour of Slack and Plato in your live kick-off call. Work through the four stops, then take the quiz and send your score to your Plato coach.</p>
+    <p>This is the short version of everything you need to know before you start. You'll get a tour of Slack and Plato in your live kick-off call. Work through the five stops, then take the quiz and send your score to your Plato coach.</p>
     <p style="font-size:15px;color:rgba(255,255,255,.75)"><b style="color:#fff">Heads up:</b> this page doesn't save your progress. Plan to finish in one sitting, and screenshot your score before you close it.</p>
   </div>
 </header>
@@ -229,7 +250,7 @@ fieldset.q{margin:0;min-width:0}
   <!-- 1 Program map -->
   <section class="panel" data-step="0" aria-labelledby="h-map">
     <div class="panel-head">
-      <div class="eyebrow">Stop 1 of 5</div>
+      <div class="eyebrow">Stop 1 of 6</div>
       <h2 id="h-map">Your program map</h2>
       <p class="lede">Five modules over 12 weeks, with breaks built in around major holidays. Every lesson is open from day one, so you can work ahead whenever you like.</p>
     </div>
@@ -256,7 +277,7 @@ fieldset.q{margin:0;min-width:0}
   <!-- 2 Top 40 -->
   <section class="panel" data-step="1" aria-labelledby="h-top" hidden>
     <div class="panel-head">
-      <div class="eyebrow">Stop 2 of 5</div>
+      <div class="eyebrow">Stop 2 of 6</div>
       <h2 id="h-top">Badges and the Top 40</h2>
       <p class="lede">Every participant can earn the micro-credential. Learners from partner organizations can also be selected as one of 40 finalists who get extra support as they move into their careers.</p>
     </div>
@@ -295,7 +316,7 @@ fieldset.q{margin:0;min-width:0}
   <!-- 3 Portfolio -->
   <section class="panel" data-step="2" aria-labelledby="h-port" hidden>
     <div class="panel-head">
-      <div class="eyebrow">Stop 3 of 5</div>
+      <div class="eyebrow">Stop 3 of 6</div>
       <h2 id="h-port">Your portfolio: the culminating task</h2>
       <p class="lede">Your portfolio is your main proof of skill, and you'll present it as the program wraps up. It's scored on the six criteria below. Tick them off to preview the standard.</p>
     </div>
@@ -321,7 +342,7 @@ fieldset.q{margin:0;min-width:0}
   <!-- 4 Help -->
   <section class="panel" data-step="3" aria-labelledby="h-help" hidden>
     <div class="panel-head">
-      <div class="eyebrow">Stop 4 of 5</div>
+      <div class="eyebrow">Stop 4 of 6</div>
       <h2 id="h-help">Getting help and our community</h2>
       <p class="lede">You are never on your own here. Use whichever channel fits your question, and help us keep the community a place where everyone can learn.</p>
     </div>
@@ -377,10 +398,68 @@ fieldset.q{margin:0;min-width:0}
     </div>
   </section>
 
-  <!-- 5 Quiz -->
-  <section class="panel" data-step="4" aria-labelledby="h-quiz" hidden>
+  <!-- 5 PLCs -->
+  <section class="panel" data-step="4" aria-labelledby="h-plc" hidden>
     <div class="panel-head">
-      <div class="eyebrow">Stop 5 of 5</div>
+      <div class="eyebrow">Stop 5 of 6</div>
+      <h2 id="h-plc">Slack PLCs: meet your small group</h2>
+      <p class="lede">With a very small team and a very large cohort, we're trying something new: Professional Learning Communities (PLCs). We split into five smaller groups so everyone gets a close-knit community experience.</p>
+    </div>
+    <p>Four PLCs give a more targeted experience for specialized areas. The fifth, the <b>Gumbo</b> group, is for anyone who wants a highly mixed learning environment. Fun fact: gumbo is a Louisiana dish known for a mix of ingredients that come together to make an amazing stew.</p>
+    <div class="callout">
+      <div class="eyebrow">You choose your group</div>
+      <p>There are no restrictions. If you're a faculty member who wants to see how freshmen and sophomores engage with AI, join that group. If you're not a computer science major but want to push your technical skills to the limit, join Advanced Tech Skills.</p>
+    </div>
+    <div class="plcs">
+      <div class="plc"><span class="num">01</span><div><h3>Freshmen/Sophomores</h3><p>Looking for internships and still building your resume and LinkedIn.</p></div><button class="chan" type="button" data-chan="#ai-leaders-fresh-soph" title="Copy channel name">#ai-leaders-fresh-soph</button></div>
+      <div class="plc"><span class="num">02</span><div><h3>Educators</h3><p>Staff, faculty, and Education majors.</p></div><button class="chan" type="button" data-chan="#ai-leaders-educators" title="Copy channel name">#ai-leaders-educators</button></div>
+      <div class="plc"><span class="num">03</span><div><h3>Upperclassmen/Professionals</h3><p>Juniors, seniors, grad students, and professionals outside of education.</p></div><button class="chan" type="button" data-chan="#ai-leaders-upperclassmen-professionals" title="Copy channel name">#ai-leaders-upperclassmen-professionals</button></div>
+      <div class="plc"><span class="num">04</span><div><h3>Advanced Tech Skills</h3><p>CS majors, developers, and anyone with advanced tech skills.</p></div><button class="chan" type="button" data-chan="#ai-leaders-advanced-tech" title="Copy channel name">#ai-leaders-advanced-tech</button></div>
+      <div class="plc"><span class="num">05</span><div><h3>Gumbo</h3><p>Can't decide, or just want to mix it up? This one's for you.</p></div><button class="chan" type="button" data-chan="#ai-leaders-gumbo" title="Copy channel name">#ai-leaders-gumbo</button></div>
+    </div>
+    <p style="color:var(--muted);font-size:14px">Tap a channel name to copy it, then paste it into Slack's search bar.</p>
+    <div class="rule">
+      <div class="eyebrow">The one rule</div>
+      <b>Pick ONE group and stick with it for the whole cohort.</b>
+      <p>Other than that, there are no restrictions. Choose wisely, and join your channel today.</p>
+    </div>
+    <div class="two">
+      <div class="box">
+        <div class="eyebrow" style="color:var(--purple-text)">Your PLC is home base</div>
+        <p>Once you join your PLC channel, that's where most of your interaction will happen. Share anything program-related right there.</p>
+        <p style="color:var(--muted);font-size:14.5px">You're still welcome to network and chat in #ai-leaders and #ai-leaders-community, but those channels aren't official.</p>
+      </div>
+      <div class="callout lime">
+        <div class="eyebrow">Mandatory for everyone</div>
+        <p>Also join <b>#ai-leaders-official-announcements</b>. That's where official program updates are posted.</p>
+        <div class="official"><button class="chan" type="button" data-chan="#ai-leaders-official-announcements">#ai-leaders-official-announcements</button></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="eyebrow" style="color:var(--purple-text)">How to join a channel</div>
+      <div class="howto">
+        <div style="display:grid;gap:8px"><h3>Desktop or web</h3>
+          <ol>
+            <li>In the sidebar, click <b>Channels</b>, then <b>Browse channels</b>. You can also type the channel name in the search bar at the top.</li>
+            <li>Click the channel you want.</li>
+            <li>Click <b>Join Channel</b> at the bottom of the screen.</li>
+          </ol>
+        </div>
+        <div style="display:grid;gap:8px"><h3>Mobile</h3>
+          <ol>
+            <li>Tap <b>Home</b>, then <b>+</b> next to Channels.</li>
+            <li>Tap <b>Browse channels</b>.</li>
+            <li>Tap the channel, then tap <b>Join</b>.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 Quiz -->
+  <section class="panel" data-step="5" aria-labelledby="h-quiz" hidden>
+    <div class="panel-head">
+      <div class="eyebrow">Stop 6 of 6</div>
       <h2 id="h-quiz">Orientation quiz</h2>
       <p class="lede">Eight questions. Get at least 7 right to pass. Your score appears right away, and you can retake it as many times as you need.</p>
     </div>
@@ -452,8 +531,9 @@ fieldset.q{margin:0;min-width:0}
 
 <script>
 (function(){
-  var TITLES=["Program map","Top 40","Portfolio","Help & community","Quiz"];
+  var TITLES=["Program map","Top 40","Portfolio","Help & community","Your PLC","Quiz"];
   var panels=[].slice.call(document.querySelectorAll(".panel"));
+  var LAST=TITLES.length-1;
   var stepsEl=document.getElementById("steps");
   var cur=0, seen={0:true}, submitted=false, PASS=7;
 
@@ -473,18 +553,18 @@ fieldset.q{margin:0;min-width:0}
     panels.forEach(function(p,k){p.hidden=k!==i});
     stepBtns.forEach(function(b,k){
       if(k===i) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
-      b.classList.toggle("done",!!seen[k] && k!==i && k<4);
+      b.classList.toggle("done",!!seen[k] && k!==i && k<LAST);
     });
     document.getElementById("prev").disabled=i===0;
     var nx=document.getElementById("next");
-    nx.hidden=i===4;
-    document.getElementById("retake").hidden=!(i===4 && submitted);
-    nx.textContent=i===3?"Start the quiz":"Next";
-    nx.className="btn "+(i===3?"lime":"primary");
+    nx.hidden=i===LAST;
+    document.getElementById("retake").hidden=!(i===LAST && submitted);
+    nx.textContent=i===LAST-1?"Start the quiz":"Next";
+    nx.className="btn "+(i===LAST-1?"lime":"primary");
     if(window.scrollY>200) document.querySelector(".steps").scrollIntoView({behavior:"smooth",block:"start"});
   }
   document.getElementById("prev").addEventListener("click",function(){if(cur>0)show(cur-1)});
-  document.getElementById("next").addEventListener("click",function(){if(cur<4)show(cur+1)});
+  document.getElementById("next").addEventListener("click",function(){if(cur<LAST)show(cur+1)});
 
   /* Portfolio checklist */
   var pcs=[].slice.call(document.querySelectorAll("#portcheck input"));
@@ -492,6 +572,16 @@ fieldset.q{margin:0;min-width:0}
     var n=pcs.filter(function(x){return x.checked}).length;
     document.getElementById("portmsg").textContent=n===pcs.length?"That's the standard: all six, each with clear evidence of skill.":"";
   })});
+
+  /* Copy channel names */
+  [].slice.call(document.querySelectorAll(".chan")).forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var name=btn.getAttribute("data-chan"), label=btn.textContent;
+      function done(t){btn.textContent=t;setTimeout(function(){btn.textContent=label},1600);}
+      function sel(){var r=document.createRange();r.selectNodeContents(btn);var x=getSelection();x.removeAllRanges();x.addRange(r);done("Selected, press copy");}
+      try{navigator.clipboard.writeText(name).then(function(){done("Copied")},sel);}catch(e){sel();}
+    });
+  });
 
   /* Copy email */
   document.getElementById("copyEmail").addEventListener("click",function(){
@@ -565,7 +655,7 @@ fieldset.q{margin:0;min-width:0}
     var d=new Date();
     document.getElementById("rDate").textContent=d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})+" · "+d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
     var r=document.getElementById("result"); r.hidden=false;
-    seen[4]=true; stepBtns[4].classList.add("done");
+    seen[LAST]=true; stepBtns[LAST].classList.add("done");
     r.scrollIntoView({behavior:"smooth",block:"start"});
   });
   document.getElementById("retake").addEventListener("click",function(){
