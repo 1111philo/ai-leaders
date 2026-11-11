@@ -223,7 +223,7 @@ const WaitlistForm: React.FC = () => {
     } else if (status === 'done') {
         body = (
             <p className="text-center text-lg text-white" role="status">
-                You're registered for Cohort 2. We'll email you an invitation to join.
+                You're on the Cohort 2 Waitlist. We'll send you a weekly update until we're able to invite you into the Cohort.
             </p>
         );
     } else if (status === 'closed') {
@@ -308,9 +308,9 @@ const WaitlistForm: React.FC = () => {
         <section id="apply" className="py-24 bg-zinc-950">
             <div className="container mx-auto px-6 max-w-6xl">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Register for Cohort 2 - Launching 11/11/26</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">Join the Cohort 2 Waitlist</h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed mb-10">
-                        <strong>Cohort 2 launches November 11, 2026.</strong> Register below to get launch details and next steps.
+                        Cohort 2 launched 11/11/26 at 11:11 AM Central Time. You can still join the Waitlist for Cohort 2 by registering below and we'll send you a weekly update until we're able to invite you into the Cohort.
                     </p>
                 </div>
 

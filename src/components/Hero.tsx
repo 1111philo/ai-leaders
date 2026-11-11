@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
 
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm">
-                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort 2 - Launching 11/11/26</span>
+                    <span className="text-sm font-medium tracking-wide text-gray-300">Cohort 2 - Launched 11/11/26</span>
                 </div>
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-2 bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent pb-2">
