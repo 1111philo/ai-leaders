@@ -51,7 +51,7 @@ const FAQ: React.FC = () => {
         },
         {
             question: "How do I register, and how are participants selected?",
-            answer: "Join the Cohort 2 Waitlist using the form at the bottom of this page. You'll receive a weekly update until we're able to invite you into the Cohort. Once invited, you'll receive an email invitation to join the learning platform and details regarding orientation. On the platform, you can select courses. The top 40 finalists of each cohort are selected based on community engagement and quality of work, and will receive career coaching, exclusive connections to hiring organizations and other exciting perks, as availability allows."
+            answer: "Join the Cohort 2 Waitlist using the form at the bottom of this page. You'll receive a weekly update until we're able to invite you into the Cohort. When a spot opens, you'll receive an email invitation to join the learning platform and details regarding orientation. On the platform, you can select courses. The top 40 finalists of each cohort are selected based on community engagement and quality of work, and will receive career coaching, exclusive connections to hiring organizations and other exciting perks, as availability allows."
         },
 
         {
