@@ -61,9 +61,9 @@ const FAQ: React.FC = () => {
         {
             question: "When is the next cohort?",
             // No link here: the registration form is the very next section, so a
-            // "Register" link immediately followed by a "Register" heading is
+            // link immediately followed by the waitlist heading is
             // pure redundancy.
-            answer: "Cohort 2 launches November 11, 2026. Register using the form below."
+            answer: "Cohort 2 launched November 11, 2026 at 11:11 AM Central Time. You can still join the Waitlist for Cohort 2 using the form below."
         }
     ];
 
