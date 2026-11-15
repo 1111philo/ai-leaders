@@ -15,8 +15,8 @@
 :root{
   --bg:#FFFFFF; --surface:#FFFFFF; --soft:#F4F3F6; --ink:#0B0B0D; --muted:#5A5862; --line:#E2E1E6;
   --purple:#6A2BD9; --purple-text:#5B21C8; --purple-soft:#F1EBFC; --blue:#6A2BD9; --lime:#C4F135; --lime-ink:#1B2104;
-  --good:#1F8A4C; --good-soft:#E3F5EA; --bad:#C03545; --bad-soft:#FBE7EA;
-  --black:#0B0B0D;
+  --good:#1A7A43; --good-soft:#E3F5EA; --bad:#C03545; --bad-soft:#FBE7EA;
+  --black:#0B0B0D; --purple-fill:#6A2BD9; --rule-accent:#C4F135;
   --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
   --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -24,11 +24,11 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0B0B0D; --surface:#141417; --soft:#1C1C21; --ink:#F4F4F6; --muted:#A3A1AC; --line:#2A2A31;
   --purple:#8E5CF5; --purple-text:#B898FF; --purple-soft:#211A33; --blue:#8E5CF5; --lime:#C4F135; --lime-ink:#1B2104;
-  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; color-scheme:dark}}
+  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; --purple-fill:#7B3FE4; --rule-accent:#5B21C8; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0B0B0D; --surface:#141417; --soft:#1C1C21; --ink:#F4F4F6; --muted:#A3A1AC; --line:#2A2A31;
   --purple:#8E5CF5; --purple-text:#B898FF; --purple-soft:#211A33; --blue:#8E5CF5; --lime:#C4F135; --lime-ink:#1B2104;
-  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; color-scheme:dark}
+  --good:#5BD68B; --good-soft:#123222; --bad:#FF7F8C; --bad-soft:#3A1720; --black:#000000; --purple-fill:#7B3FE4; --rule-accent:#5B21C8; color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -56,20 +56,23 @@ p{margin:0}
   border-radius:999px;padding:8px 14px 8px 8px;display:flex;align-items:center;gap:8px;cursor:pointer}
 .steps button .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--purple-text);font:500 12px var(--f-mono)}
 .steps button[aria-current="step"]{color:var(--ink);border-color:var(--purple);box-shadow:0 0 0 1px var(--purple) inset}
-.steps button[aria-current="step"] .n{background:var(--purple);color:#fff}
+.steps button[aria-current="step"] .n{background:var(--purple-fill);color:#fff}
 .steps button.done .n{background:var(--ink);color:var(--bg)}
-.steps button:focus-visible,.btn:focus-visible,.opt:focus-within,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.steps button:focus-visible,.btn:focus-visible,.copy:focus-visible,a:focus-visible,.opt:focus-within,input:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+[tabindex="-1"]:focus:not(:focus-visible){outline:none}
 
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,36px);display:grid;gap:22px}
 .panel-head{display:grid;gap:8px}
 .panel-head .eyebrow{color:var(--purple-text)}
 .panel-head h2{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.015em}
 .lede{color:var(--muted);font-size:17px;max-width:62ch}
-h3{font-size:19px;font-weight:600}
+h3,.howto h4{font-size:19px;font-weight:600}
+.howto h4{font-family:var(--f-display);margin:0;line-height:1.1}
 
 .nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:18px 0 48px}
 .btn{font:700 15px var(--f-body);border-radius:12px;padding:12px 20px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
-.btn.primary{background:var(--purple);border-color:var(--purple);color:#fff}
+.btn.primary{background:var(--purple-fill);border-color:var(--purple-fill);color:#fff}
 .btn.lime{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn[disabled]{opacity:.45;cursor:not-allowed}
 
@@ -207,7 +210,7 @@ fieldset.q{margin:0;min-width:0}
 .chan:hover{border-color:var(--purple)}
 .chan:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
 .rule{background:var(--ink);color:var(--bg);border-radius:14px;padding:18px 20px;display:grid;gap:6px}
-.rule .eyebrow{color:var(--lime)}
+.rule .eyebrow{color:var(--rule-accent)}
 .rule b{font:800 22px var(--f-display)}
 .howto{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .howto ol{margin:0;padding-left:20px;display:grid;gap:6px}
@@ -225,9 +228,9 @@ fieldset.q{margin:0;min-width:0}
   .mod{grid-template-columns:auto 1fr}
   .mod .wk{grid-column:2;text-align:left}
   .mod .wk b{display:inline;margin-right:6px}
-  .steps button .t{display:none}
+  .steps button .t{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .steps button{padding:8px}
-  .steps button[aria-current="step"] .t{display:inline}
+  .steps button[aria-current="step"] .t{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}
   .steps button[aria-current="step"]{padding-right:14px}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -247,6 +250,8 @@ fieldset.q{margin:0;min-width:0}
   </div>
 </header>
 
+<div id="srStatus" class="sr-only" role="status" aria-live="polite"></div>
+
 <main class="wrap">
   <nav aria-label="Orientation steps"><ol class="steps" id="steps"></ol></nav>
 
@@ -254,7 +259,7 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="0" aria-labelledby="h-map">
     <div class="panel-head">
       <div class="eyebrow">Stop 1 of 6</div>
-      <h2 id="h-map">Your program map</h2>
+      <h2 id="h-map" tabindex="-1">Your program map</h2>
       <p class="lede">Five modules over 12 weeks, with breaks built in around major holidays.</p>
     </div>
     <div class="stats">
@@ -264,11 +269,11 @@ fieldset.q{margin:0;min-width:0}
     </div>
 
     <div class="mods">
-      <div class="mod"><i class="chip c1"></i><div><h3>Foundations</h3><p>Professional identity, organization, and strong online habits.</p></div><div class="wk"><b>7 lessons</b></div></div>
-      <div class="mod"><i class="chip c2"></i><div><h3>AI Leadership</h3><p>Generative and agentic AI, human in the loop, and your AI ethics.</p></div><div class="wk"><b>7 lessons</b></div></div>
-      <div class="mod"><i class="chip c3"></i><div><h3>Web Portfolio Development</h3><p>Build and launch your AI-assisted portfolio website.</p></div><div class="wk"><b>8 lessons</b></div></div>
-      <div class="mod"><i class="chip c4"></i><div><h3>Success Skills</h3><p>Living wages, healthy conflict, networking, and presenting your story.</p></div><div class="wk"><b>5 lessons</b></div></div>
-      <div class="mod"><i class="chip c5"></i><div><h3>Career Builder</h3><p>Resume, target jobs, applications, and follow-up.</p></div><div class="wk"><b>8 lessons</b></div></div>
+      <div class="mod"><i aria-hidden="true" class="chip c1"></i><div><h3>Foundations</h3><p>Professional identity, organization, and strong online habits.</p></div><div class="wk"><b>7 lessons</b></div></div>
+      <div class="mod"><i aria-hidden="true" class="chip c2"></i><div><h3>AI Leadership</h3><p>Generative and agentic AI, human in the loop, and your AI ethics.</p></div><div class="wk"><b>7 lessons</b></div></div>
+      <div class="mod"><i aria-hidden="true" class="chip c3"></i><div><h3>Web Portfolio Development</h3><p>Build and launch your AI-assisted portfolio website.</p></div><div class="wk"><b>8 lessons</b></div></div>
+      <div class="mod"><i aria-hidden="true" class="chip c4"></i><div><h3>Success Skills</h3><p>Living wages, healthy conflict, networking, and presenting your story.</p></div><div class="wk"><b>5 lessons</b></div></div>
+      <div class="mod"><i aria-hidden="true" class="chip c5"></i><div><h3>Career Builder</h3><p>Resume, target jobs, applications, and follow-up.</p></div><div class="wk"><b>8 lessons</b></div></div>
     </div>
 
     <div class="callout">
@@ -281,7 +286,7 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="1" aria-labelledby="h-top" hidden>
     <div class="panel-head">
       <div class="eyebrow">Stop 2 of 6</div>
-      <h2 id="h-top">Badges and the Top 40</h2>
+      <h2 id="h-top" tabindex="-1">Badges and the Top 40</h2>
       <p class="lede">Every participant can earn the micro-credential. Learners from partner organizations can also be selected as one of 40 finalists who get extra support as they move into their careers.</p>
     </div>
     <div class="callout lime">
@@ -290,7 +295,7 @@ fieldset.q{margin:0;min-width:0}
     </div>
     <div class="two">
       <div class="box">
-        <div class="eyebrow" style="color:var(--purple-text)">How finalists are chosen</div>
+        <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">How finalists are chosen</div>
         <ul class="list">
           <li><span class="ic">01</span><div><b>Lessons</b><p>Completion and quality of your lessons.</p></div></li>
           <li><span class="ic">02</span><div><b>Portfolio</b><p>Creativity and content of your portfolio.</p></div></li>
@@ -298,7 +303,7 @@ fieldset.q{margin:0;min-width:0}
         </ul>
       </div>
       <div class="box">
-        <div class="eyebrow" style="color:var(--purple-text)">What finalists get</div>
+        <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">What finalists get</div>
         <ul class="list">
           <li><span class="ic">01</span><div><b>Expert career coaching</b><p>One step beyond the Plato coach.</p></div></li>
           <li><span class="ic">02</span><div><b>Employment connections</b><p>Introductions to employers who are hiring.</p></div></li>
@@ -320,7 +325,7 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="2" aria-labelledby="h-port" hidden>
     <div class="panel-head">
       <div class="eyebrow">Stop 3 of 6</div>
-      <h2 id="h-port">Your portfolio: the culminating task</h2>
+      <h2 id="h-port" tabindex="-1">Your portfolio: the culminating task</h2>
       <p class="lede">Your portfolio is your main proof of skill, and you'll present it as the program wraps up. It's scored on the six criteria below. Tick them off to preview the standard.</p>
     </div>
     <div class="callout lime">
@@ -346,7 +351,7 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="3" aria-labelledby="h-help" hidden>
     <div class="panel-head">
       <div class="eyebrow">Stop 4 of 6</div>
-      <h2 id="h-help">Getting help and our community</h2>
+      <h2 id="h-help" tabindex="-1">Getting help and our community</h2>
       <p class="lede">You are never on your own here. Use whichever channel fits your question, and help us keep the community a place where everyone can learn.</p>
     </div>
     <div class="contacts">
@@ -359,13 +364,13 @@ fieldset.q{margin:0;min-width:0}
         <div class="eyebrow">Email</div>
         <div class="val" id="email">help@ai-leaders.org</div>
         <p>For account, access, or anything you'd rather not post in Slack.</p>
-        <button class="copy" id="copyEmail" type="button">Copy address</button>
+        <button class="copy" id="copyEmail" type="button" aria-label="Copy email address help@ai-leaders.org">Copy address</button>
       </div>
       <div class="contact">
         <div class="eyebrow">Comments &amp; concerns</div>
         <div class="val">Comment and Concern Form</div>
         <p>Share feedback, report a problem, or raise a concern. The form is anonymous.</p>
-        <a class="btn primary" id="formLink" href="https://forms.cloud.microsoft/r/MAxXTguvGS" target="_blank" rel="noopener">Open the form</a>
+        <a class="btn primary" id="formLink" href="https://forms.cloud.microsoft/r/MAxXTguvGS" target="_blank" rel="noopener">Open the form<span class="sr-only">: Comment and Concern Form (opens in a new tab)</span></a>
       </div>
     </div>
     <div class="callout lime">
@@ -373,7 +378,7 @@ fieldset.q{margin:0;min-width:0}
       <p>We want everyone to be able to take part fully. If an accommodation or a change in how something is delivered would make the program more accessible for you, reach out to Amanda on Slack or email help@ai-leaders.org. We're glad to help.</p>
     </div>
     <div class="box">
-      <div class="eyebrow" style="color:var(--purple-text)">Your program team on Slack</div>
+      <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">Your program team on Slack</div>
       <div class="people">
         <span><b>Amanda</b> · Community Manager</span>
         <span><b>Stefin</b> · Project Director</span>
@@ -383,7 +388,7 @@ fieldset.q{margin:0;min-width:0}
       </div>
     </div>
     <div class="box" id="agreement">
-      <div class="eyebrow" style="color:var(--purple-text)">AI Leaders Community Agreement</div>
+      <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">AI Leaders Community Agreement</div>
       <ul class="list">
           <li><span class="ic">01</span><div><b>Be respectful.</b><p>Disagree with ideas, not people. No harassment, discrimination or personal attacks.</p></div></li>
           <li><span class="ic">02</span><div><b>Protect privacy.</b><p>Don't share other participants' personal information, screenshots of private messages, or anything shared in confidence.</p></div></li>
@@ -395,9 +400,9 @@ fieldset.q{margin:0;min-width:0}
       <p class="callout" style="color:var(--ink)">Violations may result in removed posts, a warning, or removal from the program.</p>
     </div>
     <div class="box" id="datanote">
-      <div class="eyebrow" style="color:var(--purple-text)">About your data</div>
+      <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">About your data</div>
       <p>AI Leaders collects information about your participation, including your lesson progress and activity in Plato, your portfolio, survey responses, and your participation in Slack. We use this information to evaluate and improve the program. Results shared outside the program team are reported in summary form, without your name.</p>
-      <p style="color:var(--muted)">Read the full <a href="https://plato.courses/privacy" target="_blank" rel="noopener" style="color:var(--purple-text);font-weight:700">Plato privacy policy</a> (plato.courses/privacy). Questions about how your information is used? Email help@ai-leaders.org.</p>
+      <p style="color:var(--muted)">Read the full <a href="https://plato.courses/privacy" target="_blank" rel="noopener" style="color:var(--purple-text);font-weight:700">Plato privacy policy<span class="sr-only"> (opens in a new tab)</span></a> (plato.courses/privacy). Questions about how your information is used? Email help@ai-leaders.org.</p>
     </div>
   </section>
 
@@ -405,7 +410,7 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="4" aria-labelledby="h-plc" hidden>
     <div class="panel-head">
       <div class="eyebrow">Stop 5 of 6</div>
-      <h2 id="h-plc">Slack PLCs: meet your small group</h2>
+      <h2 id="h-plc" tabindex="-1">Slack PLCs: meet your small group</h2>
       <p class="lede">With a very small team and a very large cohort, we're trying something new: Professional Learning Communities (PLCs). We split into five smaller groups so everyone gets a close-knit community experience.</p>
     </div>
     <div class="callout lime" id="joinslack">
@@ -424,11 +429,11 @@ fieldset.q{margin:0;min-width:0}
       <p>There are no restrictions. If you're a faculty member who wants to see how freshmen and sophomores engage with AI, join that group. If you're not a computer science major but want to push your technical skills to the limit, join Advanced Tech Skills.</p>
     </div>
     <div class="plcs">
-      <div class="plc"><span class="num">01</span><div><h3>Freshmen/Sophomores</h3><p>Looking for internships and still building your resume and LinkedIn.</p></div><button class="chan" type="button" data-chan="#ai-leaders-fresh-soph" title="Copy channel name">#ai-leaders-fresh-soph</button></div>
-      <div class="plc"><span class="num">02</span><div><h3>Educators</h3><p>Staff, faculty, and Education majors.</p></div><button class="chan" type="button" data-chan="#ai-leaders-educators" title="Copy channel name">#ai-leaders-educators</button></div>
-      <div class="plc"><span class="num">03</span><div><h3>Upperclassmen/Professionals</h3><p>Juniors, seniors, grad students, and professionals outside of education.</p></div><button class="chan" type="button" data-chan="#ai-leaders-upperclassmen-professionals" title="Copy channel name">#ai-leaders-upperclassmen-professionals</button></div>
-      <div class="plc"><span class="num">04</span><div><h3>Advanced Tech Skills</h3><p>CS majors, developers, and anyone with advanced tech skills.</p></div><button class="chan" type="button" data-chan="#ai-leaders-advanced-tech" title="Copy channel name">#ai-leaders-advanced-tech</button></div>
-      <div class="plc"><span class="num">05</span><div><h3>Gumbo</h3><p>Can't decide, or just want to mix it up? This one's for you.</p></div><button class="chan" type="button" data-chan="#ai-leaders-gumbo" title="Copy channel name">#ai-leaders-gumbo</button></div>
+      <div class="plc"><span class="num">01</span><div><h3>Freshmen/Sophomores</h3><p>Looking for internships and still building your resume and LinkedIn.</p></div><button class="chan" type="button" data-chan="#ai-leaders-fresh-soph" title="Copy channel name" aria-label="Copy channel name #ai-leaders-fresh-soph">#ai-leaders-fresh-soph</button></div>
+      <div class="plc"><span class="num">02</span><div><h3>Educators</h3><p>Staff, faculty, and Education majors.</p></div><button class="chan" type="button" data-chan="#ai-leaders-educators" title="Copy channel name" aria-label="Copy channel name #ai-leaders-educators">#ai-leaders-educators</button></div>
+      <div class="plc"><span class="num">03</span><div><h3>Upperclassmen/Professionals</h3><p>Juniors, seniors, grad students, and professionals outside of education.</p></div><button class="chan" type="button" data-chan="#ai-leaders-upperclassmen-professionals" title="Copy channel name" aria-label="Copy channel name #ai-leaders-upperclassmen-professionals">#ai-leaders-upperclassmen-professionals</button></div>
+      <div class="plc"><span class="num">04</span><div><h3>Advanced Tech Skills</h3><p>CS majors, developers, and anyone with advanced tech skills.</p></div><button class="chan" type="button" data-chan="#ai-leaders-advanced-tech" title="Copy channel name" aria-label="Copy channel name #ai-leaders-advanced-tech">#ai-leaders-advanced-tech</button></div>
+      <div class="plc"><span class="num">05</span><div><h3>Gumbo</h3><p>Can't decide, or just want to mix it up? This one's for you.</p></div><button class="chan" type="button" data-chan="#ai-leaders-gumbo" title="Copy channel name" aria-label="Copy channel name #ai-leaders-gumbo">#ai-leaders-gumbo</button></div>
     </div>
     <p style="color:var(--muted);font-size:14px">Tap a channel name to copy it, then paste it into Slack's search bar.</p>
     <div class="rule">
@@ -438,27 +443,27 @@ fieldset.q{margin:0;min-width:0}
     </div>
     <div class="two">
       <div class="box">
-        <div class="eyebrow" style="color:var(--purple-text)">Your PLC is home base</div>
+        <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">Your PLC is home base</div>
         <p>Once you join your PLC channel, that's where most of your interaction will happen. Share anything program-related right there.</p>
         <p style="color:var(--muted);font-size:14.5px">You're still welcome to network and chat in #ai-leaders and #ai-leaders-community, but those channels aren't official.</p>
       </div>
       <div class="callout lime">
         <div class="eyebrow">Mandatory for everyone</div>
         <p>Also join <b>#ai-leaders-official-announcements</b>. That's where official program updates are posted.</p>
-        <div class="official"><button class="chan" type="button" data-chan="#ai-leaders-official-announcements">#ai-leaders-official-announcements</button></div>
+        <div class="official"><button class="chan" type="button" data-chan="#ai-leaders-official-announcements" title="Copy channel name" aria-label="Copy channel name #ai-leaders-official-announcements">#ai-leaders-official-announcements</button></div>
       </div>
     </div>
     <div class="box">
-      <div class="eyebrow" style="color:var(--purple-text)">How to join a channel</div>
+      <div class="eyebrow" role="heading" aria-level="3" style="color:var(--purple-text)">How to join a channel</div>
       <div class="howto">
-        <div style="display:grid;gap:8px"><h3>Desktop or web</h3>
+        <div style="display:grid;gap:8px"><h4>Desktop or web</h4>
           <ol>
             <li>In the sidebar, click <b>Channels</b>, then <b>Browse channels</b>. You can also type the channel name in the search bar at the top.</li>
             <li>Click the channel you want.</li>
             <li>Click <b>Join Channel</b> at the bottom of the screen.</li>
           </ol>
         </div>
-        <div style="display:grid;gap:8px"><h3>Mobile</h3>
+        <div style="display:grid;gap:8px"><h4>Mobile</h4>
           <ol>
             <li>Tap <b>Home</b>, then <b>+</b> next to Channels.</li>
             <li>Tap <b>Browse channels</b>.</li>
@@ -473,17 +478,17 @@ fieldset.q{margin:0;min-width:0}
   <section class="panel" data-step="5" aria-labelledby="h-quiz" hidden>
     <div class="panel-head">
       <div class="eyebrow">Stop 6 of 6</div>
-      <h2 id="h-quiz">Orientation quiz</h2>
+      <h2 id="h-quiz" tabindex="-1">Orientation quiz</h2>
       <p class="lede">Eight questions. Get at least 7 right to pass. Your score appears right away, and you can retake it as many times as you need.</p>
     </div>
     <form id="quiz" novalidate>
       <div style="display:grid;gap:14px">
         <div class="namefield">
           <label for="pname">Your full name</label>
-          <input id="pname" autocomplete="name" placeholder="First and last name">
+          <input id="pname" autocomplete="name" placeholder="First and last name" aria-required="true" aria-describedby="qerr">
         </div>
         <div id="questions" style="display:grid;gap:14px"></div>
-        <div class="check"><label><input type="checkbox" id="agree"><span><b>I agree to the AI Leaders Community Agreement, and I understand that my participation data is collected for program evaluation and improvement</b><small>You'll find both in Stop 4, Help &amp; community.</small></span></label></div>
+        <div class="check"><label><input type="checkbox" id="agree" aria-required="true"><span><b>I agree to the AI Leaders Community Agreement, and I understand that my participation data is collected for program evaluation and improvement</b><small>You'll find both in Stop 4, Help &amp; community.</small></span></label></div>
         <p class="err" id="qerr" aria-live="polite"></p>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn primary" type="submit" id="submitBtn">Check my answers</button>
@@ -491,7 +496,8 @@ fieldset.q{margin:0;min-width:0}
       </div>
     </form>
     <div id="result" hidden style="display:grid;gap:18px">
-      <div class="retry" id="retryCard" hidden aria-live="polite">
+      <p class="sr-only" id="resHead" tabindex="-1"></p>
+      <div class="retry" id="retryCard" hidden>
         <div class="eyebrow">Not quite yet</div>
         <h3>Try again</h3>
         <div class="big" id="fScore"></div>
@@ -503,7 +509,7 @@ fieldset.q{margin:0;min-width:0}
       </div>
 
       <div id="passWrap" hidden style="display:grid;gap:18px">
-        <div class="ticket" id="ticket" aria-live="polite">
+        <div class="ticket" id="ticket">
           <span class="tk-notch t" aria-hidden="true"></span><span class="tk-notch b" aria-hidden="true"></span>
           <div class="tk-main">
             <div class="tk-top"><span class="tk-admit">Admit one · AI Leaders</span><span class="tk-pass" id="tkPass">Orientation passed</span></div>
@@ -549,24 +555,29 @@ fieldset.q{margin:0;min-width:0}
   var LAST=TITLES.length-1;
   var stepsEl=document.getElementById("steps");
   var cur=0, seen={0:true}, submitted=false, PASS=7;
+  var SMOOTH=(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)?"auto":"smooth";
+  var srStatus=document.getElementById("srStatus");
+  function announce(msg){srStatus.textContent="";setTimeout(function(){srStatus.textContent=msg},50);}
 
   TITLES.forEach(function(t,i){
     var li=document.createElement("li");
     var b=document.createElement("button");
     b.type="button";
     b.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+t+'</span>';
-    b.addEventListener("click",function(){show(i)});
+    b.addEventListener("click",function(){show(i,true)});
     li.appendChild(b); stepsEl.appendChild(li);
   });
   var stepBtns=[].slice.call(stepsEl.querySelectorAll("button"));
 
-  function show(i){
+  function show(i,moveFocus){
     seen[cur]=true;
     cur=i; seen[i]=true;
     panels.forEach(function(p,k){p.hidden=k!==i});
     stepBtns.forEach(function(b,k){
       if(k===i) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current");
-      b.classList.toggle("done",!!seen[k] && k!==i && k<LAST);
+      var isDone=!!seen[k] && k!==i && k<LAST;
+      b.classList.toggle("done",isDone);
+      b.setAttribute("aria-label","Stop "+(k+1)+" of "+TITLES.length+": "+TITLES[k]+(isDone?", visited":""));
     });
     document.getElementById("prev").disabled=i===0;
     var nx=document.getElementById("next");
@@ -574,10 +585,12 @@ fieldset.q{margin:0;min-width:0}
     document.getElementById("retake").hidden=!(i===LAST && submitted);
     nx.textContent=i===LAST-1?"Start the quiz":"Next";
     nx.className="btn "+(i===LAST-1?"lime":"primary");
-    if(window.scrollY>200) document.querySelector(".steps").scrollIntoView({behavior:"smooth",block:"start"});
+    if(window.scrollY>200) document.querySelector(".steps").scrollIntoView({behavior:SMOOTH,block:"start"});
+    /* Move focus to the new stop's heading so screen readers announce it and keyboard users start there. */
+    if(moveFocus){var h=panels[i].querySelector("h2"); if(h) h.focus({preventScroll:window.scrollY>200});}
   }
-  document.getElementById("prev").addEventListener("click",function(){if(cur>0)show(cur-1)});
-  document.getElementById("next").addEventListener("click",function(){if(cur<LAST)show(cur+1)});
+  document.getElementById("prev").addEventListener("click",function(){if(cur>0)show(cur-1,true)});
+  document.getElementById("next").addEventListener("click",function(){if(cur<LAST)show(cur+1,true)});
 
   /* Portfolio checklist */
   var pcs=[].slice.call(document.querySelectorAll("#portcheck input"));
@@ -590,17 +603,17 @@ fieldset.q{margin:0;min-width:0}
   [].slice.call(document.querySelectorAll(".chan")).forEach(function(btn){
     btn.addEventListener("click",function(){
       var name=btn.getAttribute("data-chan"), label=btn.textContent;
-      function done(t){btn.textContent=t;setTimeout(function(){btn.textContent=label},1600);}
-      function sel(){var r=document.createRange();r.selectNodeContents(btn);var x=getSelection();x.removeAllRanges();x.addRange(r);done("Selected, press copy");}
-      try{navigator.clipboard.writeText(name).then(function(){done("Copied")},sel);}catch(e){sel();}
+      function done(t,say){btn.textContent=t;announce(say);setTimeout(function(){btn.textContent=label},1600);}
+      function sel(){var r=document.createRange();r.selectNodeContents(btn);var x=getSelection();x.removeAllRanges();x.addRange(r);done("Selected, press copy","Couldn't copy automatically. The channel name "+name+" is selected; copy it with your keyboard.");}
+      try{navigator.clipboard.writeText(name).then(function(){done("Copied","Copied "+name)},sel);}catch(e){sel();}
     });
   });
 
   /* Copy email */
   document.getElementById("copyEmail").addEventListener("click",function(){
     var btn=this, txt="help@ai-leaders.org";
-    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected, press copy";}
-    try{navigator.clipboard.writeText(txt).then(function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy address"},1800)},sel);}catch(e){sel();}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected, press copy";announce("Couldn't copy automatically. The address "+txt+" is selected; copy it with your keyboard.");}
+    try{navigator.clipboard.writeText(txt).then(function(){btn.textContent="Copied";announce("Copied "+txt);setTimeout(function(){btn.textContent="Copy address"},1800)},sel);}catch(e){sel();}
   });
 
   /* Quiz */
@@ -621,7 +634,7 @@ fieldset.q{margin:0;min-width:0}
     item.o.forEach(function(op,j){
       h+='<label class="opt" id="o'+i+'_'+j+'"><input type="radio" name="q'+i+'" id="r'+i+'_'+j+'" value="'+j+'"><span>'+op+'</span></label>';
     });
-    h+='</div><div class="fb" hidden></div>';
+    h+='</div><div class="fb" id="fb'+i+'" hidden></div>';
     fs.innerHTML=h; qwrap.appendChild(fs);
   });
 
@@ -631,9 +644,11 @@ fieldset.q{margin:0;min-width:0}
     var name=document.getElementById("pname").value.trim();
     var answers=Q.map(function(_,i){var c=form.querySelector('input[name="q'+i+'"]:checked');return c?+c.value:-1});
     var missing=answers.map(function(a,i){return a<0?i+1:0}).filter(Boolean);
-    if(!name){err.textContent="Add your full name so your coach knows whose score this is.";document.getElementById("pname").focus();return;}
-    if(!document.getElementById("agree").checked){err.textContent="Check the box to agree to the Community Agreement and data statement before submitting.";return;}
-    if(missing.length){err.textContent="Answer every question before checking. Still open: Q"+missing.join(", Q")+".";document.getElementById("q"+(missing[0]-1)).scrollIntoView({behavior:"smooth",block:"center"});return;}
+    var pn=document.getElementById("pname");
+    pn.removeAttribute("aria-invalid");
+    if(!name){err.textContent="Add your full name so your coach knows whose score this is.";pn.setAttribute("aria-invalid","true");pn.focus();return;}
+    if(!document.getElementById("agree").checked){err.textContent="Check the box to agree to the Community Agreement and data statement before submitting.";document.getElementById("agree").focus();return;}
+    if(missing.length){err.textContent="Answer every question before checking. Still open: Q"+missing.join(", Q")+".";var fq=document.getElementById("q"+(missing[0]-1));fq.scrollIntoView({behavior:SMOOTH,block:"center"});fq.querySelector("input").focus({preventScroll:true});return;}
     err.textContent="";
     var score=0;
     Q.forEach(function(item,i){
@@ -642,10 +657,14 @@ fieldset.q{margin:0;min-width:0}
       item.o.forEach(function(_,j){
         var l=document.getElementById("o"+i+"_"+j);
         l.classList.remove("right","wrong");
-        if(j===item.a) l.classList.add("right");
-        else if(j===answers[i]) l.classList.add("wrong");
+        var old=l.querySelector(".mark"); if(old) old.remove();
+        var tag="";
+        if(j===item.a){l.classList.add("right");tag=j===answers[i]?" (your answer, correct)":" (correct answer)";}
+        else if(j===answers[i]){l.classList.add("wrong");tag=" (your answer, incorrect)";}
+        if(tag){var m=document.createElement("span");m.className="sr-only mark";m.textContent=tag;l.appendChild(m);}
       });
       var fb=fs.querySelector(".fb"); fb.hidden=false;
+      fs.setAttribute("aria-describedby",fb.id);
       fb.className="fb "+(ok?"ok":"no");
       fb.textContent=(ok?"Correct. ":"Not quite. ")+item.e;
       fs.querySelectorAll("input").forEach(function(x){x.disabled=true});
@@ -669,18 +688,24 @@ fieldset.q{margin:0;min-width:0}
     document.getElementById("rDate").textContent=d.toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"})+" · "+d.toLocaleTimeString(undefined,{hour:"numeric",minute:"2-digit"});
     var r=document.getElementById("result"); r.hidden=false;
     seen[LAST]=true; stepBtns[LAST].classList.add("done");
-    r.scrollIntoView({behavior:"smooth",block:"start"});
+    var rh=document.getElementById("resHead");
+    rh.textContent=passed?"You passed with "+score+" of "+Q.length+" correct. Your ticket is below. Take a screenshot of it, then upload it to your Plato coach."
+      :"Not quite yet: "+score+" of "+Q.length+" correct. You need at least "+PASS+" to pass. Each question now shows the correct answer and an explanation. Use the Retake quiz button at the bottom of the page to try again.";
+    r.scrollIntoView({behavior:SMOOTH,block:"start"});
+    rh.focus({preventScroll:true});
   });
   document.getElementById("retake").addEventListener("click",function(){
     form.reset();
     form.querySelectorAll("input").forEach(function(x){x.disabled=false});
     form.querySelectorAll(".opt").forEach(function(l){l.classList.remove("right","wrong")});
     form.querySelectorAll(".fb").forEach(function(f){f.hidden=true});
+    form.querySelectorAll(".mark").forEach(function(m){m.remove()});
+    form.querySelectorAll("fieldset.q").forEach(function(f){f.removeAttribute("aria-describedby")});
     document.getElementById("submitBtn").hidden=false;
     submitted=false;
     this.hidden=true;
     document.getElementById("result").hidden=true;
-    document.getElementById("h-quiz").scrollIntoView({behavior:"smooth",block:"start"});
+    document.getElementById("h-quiz").scrollIntoView({behavior:SMOOTH,block:"start"});
     document.getElementById("pname").focus({preventScroll:true});
   });
 
