@@ -212,6 +212,9 @@ fieldset.q{margin:0;min-width:0}
 .howto{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .howto ol{margin:0;padding-left:20px;display:grid;gap:6px}
 .official{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#joinslack{gap:10px}
+#joinslack ol{margin:0;padding-left:20px;display:grid;gap:6px;max-width:66ch}
+#joinslack a{color:var(--purple-text);font-weight:700}
 @media (max-width:640px){
   .plc{grid-template-columns:auto 1fr}
   .plc .chan{grid-column:2;justify-self:start;white-space:normal;word-break:break-all}
@@ -405,6 +408,16 @@ fieldset.q{margin:0;min-width:0}
       <h2 id="h-plc">Slack PLCs: meet your small group</h2>
       <p class="lede">With a very small team and a very large cohort, we're trying something new: Professional Learning Communities (PLCs). We split into five smaller groups so everyone gets a close-knit community experience.</p>
     </div>
+    <div class="callout lime" id="joinslack">
+      <div class="eyebrow">First things first</div>
+      <h3>Join our Slack workspace</h3>
+      <ol>
+        <li>Go to your email and find your invitation to the <b>11:11 Philosophers Group</b> Slack workspace.</li>
+        <li>Open the invitation and follow it to join the workspace.</li>
+        <li>Can't find the invitation? Email <a href="mailto:help@ai-leaders.org">help@ai-leaders.org</a> and we'll help you get in.</li>
+      </ol>
+      <p>Once you're in, come back here to pick your PLC channel.</p>
+    </div>
     <p>Four PLCs give a more targeted experience for specialized areas. The fifth, the <b>Gumbo</b> group, is for anyone who wants a highly mixed learning environment. Fun fact: gumbo is a Louisiana dish known for a mix of ingredients that come together to make an amazing stew.</p>
     <div class="callout">
       <div class="eyebrow">You choose your group</div>
@@ -531,7 +544,7 @@ fieldset.q{margin:0;min-width:0}
 
 <script>
 (function(){
-  var TITLES=["Program map","Top 40","Portfolio","Help & community","Your PLC","Quiz"];
+  var TITLES=["Program map","Top 40","Portfolio","Help & community","Slack & PLCs","Quiz"];
   var panels=[].slice.call(document.querySelectorAll(".panel"));
   var LAST=TITLES.length-1;
   var stepsEl=document.getElementById("steps");
